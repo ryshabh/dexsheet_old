@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="9px" viewBox="0 0 19 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>forward</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="5.85446429 10.8053393 15.2321429 10.8053393 16.5723214 9.4785625 23.2651786 9.4785625 23.2651786 0.194660714 0.498214286 0.194660714 0.498214286 10.8053393"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="attachment" transform="translate(-344.000000, -121.000000)">
+            <g id="forward" transform="translate(350.500000, 124.500000) scale(-1, 1) translate(-350.500000, -124.500000) translate(338.000000, 119.000000)">
+                <g id="Clipped" transform="translate(0.892857, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="b"></g>
+                    <path d="M-2.18214286,13.4509375 C-2.18214286,7.59491071 2.31428571,2.84467857 7.86517857,2.84467857 C13.4080357,2.84467857 17.9044643,7.59491071 17.9044643,13.4509375 M17.9044643,13.4509375 C17.9044643,9.05958036 14.6080357,5.49823214 10.5455357,5.49823214 C6.47589286,5.49823214 3.175,9.05958036 3.175,13.4509375" id="Shape" fill="#9299B9" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                </g>
+                <polyline id="Shape" fill="#9299B9" fill-rule="nonzero" points="0.0508928571 2.84467857 0.0508928571 10.8053393 8.0875 10.8053393"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

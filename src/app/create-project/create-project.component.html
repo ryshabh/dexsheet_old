@@ -1,0 +1,119 @@
+<section >
+  <div>    
+    <table class="topnav">
+      <tr>
+        <td>
+          <span>ALL</span>
+          <img src="../../assets/img/dots.svg">
+        </td>
+        <td>
+          <span id="demo1">Weekly Sales</span>
+        </td>
+        <td>
+          <span>Regular Work</span>
+        </td>
+        <td>
+          <img src="../../assets/img/menu.svg">
+        </td>
+        <td>
+          <img src="../../assets/img/Group 3.svg">
+        </td>
+        <td style="width: 760px"></td>
+      </tr>
+    </table>   
+          
+    <table class="mainnav" border="0">
+      <tr>
+        <td>File</td>
+        <td>Home</td>
+        <td>Lorem</td>
+        <td>Lorem</td>
+        <td>Lorem</td>
+        <td style="width: 760px"></td>
+      </tr>
+    </table>
+        
+    <table border="1" class="midnav">
+      <tr >
+        <td style="width: 50px;" class="space">
+          <button class="file" id="save" onclick="saveit();"><img src="./../assets/img/save.svg"></button>&nbsp;
+          <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg"></button>
+        </td>
+      <td> 
+        <img src="../../assets/img/sheet.svg">&nbsp;
+        <img src="../../assets/img/planner.svg">&nbsp;
+        <img src="../../assets/img/calendar.svg">
+        <img src="../../assets/img/gantt.svg">
+      </td>
+      <td>
+        <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg"></button>
+        <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg"></button>
+        <img src="../../assets/img/paint.svg">
+      </td>
+      <td>
+        <img src="../../assets/img/Left Indent.svg">
+        <img src="../../assets/img/Right Indent.svg">
+      </td>
+      <td>
+        <div class="dropdown">
+          <button onclick="myFunction()" class="drop-btn"><img src="../../assets/img/arrow_2.svg"></button>
+            <div id="myDropdown" class="dropdown-content">
+              <button  class="file" onclick="changeFont()" value="Change font">30</button>
+              <!-- <button  class="file" onclick="changeFont1()" value="Change font">32</button> -->
+            </div>
+          </div>
+        </td>
+        <td>
+          <button class="file" id="jBold"><img src="../../assets/img/bold.svg"></button>
+          <button class="file" onclick="document.execCommand('italic',false,null);"><img src="../../assets/img/italic.svg"></button>
+          <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg"></button>
+        </td>
+        <td>
+          <img src="../../assets/img/text fill.svg">
+          <img src="../../assets/img/arrow_2.svg">
+          <img src="../../assets/img/table.svg">
+          <img src="../../assets/img/arrow_2.svg">
+        </td>
+        <td>
+          <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg"></button>
+          <img src="../../assets/../../assets/img/arrow_2.svg">
+          <img src="../../assets/img/Text Warp.svg">
+          <img src="../../assets/img/arrow_2.svg">
+        </td>
+        <td>
+          <img src="../../assets/img/sigma.svg">
+        </td>
+        <td>
+          <img src="../../assets/img/filter.svg">
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+       
+<section class="spreadsheet">
+  <table class="spreadsheet__table" id="table-main">
+    <thead class="spreadsheet__table--headers" id="table-headers">
+    </thead>
+    <tbody class="spreadsheet__table--body" id="table-body">
+    </tbody>
+  </table>
+</section>
+
+<table class="topnav">
+  <tr>
+    <td>
+      <img src="../../assets/img/menu.svg">
+      <img src="../../assets/img/Group 3.svg">
+    </td>
+    <td><span>Sheet1<img src="../../assets/img/arrow_2.svg"></span></td>
+    <td><span>Sheet2<img src="../../assets/img/arrow_2.svg"></span></td>
+    <td><span>Sheet3<img src="../../assets/img/arrow_2.svg"></span></td>
+    <td style="width: 855px;"></td>
+  </tr>
+</table>
+
+<section class="spreadsheet-controls">
+  <button class="reset-btn" id="reset">Reset Data</button>
+</section>
+<div class="demo1" style="color: white;"></div>

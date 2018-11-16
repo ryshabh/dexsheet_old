@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Inject, AfterViewInit, ElementRef } from '@angular/core';
+import { Inject, AfterViewInit,AfterViewChecked ,ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -16,9 +16,11 @@ export class CreateProjectComponent implements OnInit,AfterViewInit {
     var b = localStorage.getItem("project")
     document.getElementById("demo1").innerHTML = b;
     console.log("project ",b)
+    let defaultRowCount = 10; // No of rows
+  let defaultColCount = 12; // No of cols
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     const s = this.document.createElement('script');
     s.type = 'text/javascript';
     s.src = '../../assets/js/main.js';

@@ -3,7 +3,9 @@
     <table class="topnav">
       <tr>
         <td>
-          <span>ALL</span>
+          <span>ALL</span>  
+        </td>
+        <td>
           <img src="../../assets/img/dots.svg">
         </td>
         <td>
@@ -18,66 +20,94 @@
         <td>
           <img src="../../assets/img/Group 3.svg">
         </td>
-        <td style="width: 760px"></td>
+        <td style="width: 100%"></td>
       </tr>
     </table>   
           
-    <table class="mainnav" border="0">
+    <table class="mainnav">
       <tr>
-        <td>File</td>
+        <td style="width: 70px">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">File
+            <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="#">Open</a></li>
+                  <li><a tabindex="-1" href="#">New</a></li>
+                  <li><a tabindex="-1" href="#">Save</a></li>
+                  <li class="dropdown-submenu">
+                    <a class="test" tabindex="-1" href="#">Save as<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="#">PDF</a></li>
+                        <li><a tabindex="-1" href="#">Excel</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a class="test" tabindex="-1" href="#">Import<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="#">Excel</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+        </td>
         <td>Home</td>
-        <td>Lorem</td>
-        <td>Lorem</td>
-        <td>Lorem</td>
-        <td style="width: 760px"></td>
+        <td style="width: 100%"></td>
       </tr>
     </table>
         
     <table border="1" class="midnav">
-      <tr >
-        <td style="width: 50px;" class="space">
-          <button class="file" id="save" onclick="saveit();"><img src="./../assets/img/save.svg"></button>&nbsp;
-          <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg"></button>
+      <tr style="margin-top:6px; margin-bottom:2px;">
+        <td style="width: 50px; margin-top:6px; margin-bottom:2px;" class="space">
+          <button class="file" id="save" onclick="saveit();"><img src="../../assets/img/save.svg" ></button>&nbsp;&nbsp;
+          <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg" ></button>
         </td>
-      <td> 
-        <img src="../../assets/img/sheet.svg">&nbsp;
-        <img src="../../assets/img/planner.svg">&nbsp;
-        <img src="../../assets/img/calendar.svg">
-        <img src="../../assets/img/gantt.svg">
-      </td>
-      <td>
-        <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg"></button>
-        <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg"></button>
-        <img src="../../assets/img/paint.svg">
-      </td>
-      <td>
-        <img src="../../assets/img/Left Indent.svg">
-        <img src="../../assets/img/Right Indent.svg">
-      </td>
-      <td>
-        <div class="dropdown">
-          <button onclick="myFunction()" class="drop-btn"><img src="../../assets/img/arrow_2.svg"></button>
-            <div id="myDropdown" class="dropdown-content">
-              <button  class="file" onclick="changeFont()" value="Change font">30</button>
-              <!-- <button  class="file" onclick="changeFont1()" value="Change font">32</button> -->
-            </div>
-          </div>
+        <td >
+          <input type="image" src="../../assets/img/sheet.svg" style="margin-top:6px; margin-bottom:2px;">&nbsp;
+          <input type="image" src="../../assets/img/planner.svg" style="margin-top:6px; margin-bottom:2px;">&nbsp;
+          <input type="image" src="../../assets/img/gantt.svg" style="margin-top:6px; margin-bottom:2px;">
+          <input type="image" id = "datepicker-13" src="../../assets/img/calendar.svg" id = "datepicker-13" style="margin-top:6px; margin-bottom:2px;">
         </td>
         <td>
-          <button class="file" id="jBold"><img src="../../assets/img/bold.svg"></button>
-          <button class="file" onclick="document.execCommand('italic',false,null);"><img src="../../assets/img/italic.svg"></button>
-          <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg"></button>
+          <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
+          <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
+          <img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px; height:15px;">
+        </td>
+        <td>
+          <button class="file" onclick="document.execCommand('justifyRight',false,null);"><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
+          <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
+        </td>
+        <td>
+          <input type="button" id="plus" class="button " value="+" style="margin-left:5px;" onclick="PlusCaps()" />
+
+          <input type="tel" id="caps" maxlength="3" size="1" min="0" max="999" pattern="[0-9]" value="8"  />
+                      
+          <input type="button" id="minus" class="button" value="-" onclick="MinusCaps()" />
+        </td>
+        <td>
+          <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
+          <button class="file" onclick="document.execCommand('italic',false,null);"><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
+          <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
+          <!-- <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;"></button>&nbsp; -->
         </td>
         <td>
           <img src="../../assets/img/text fill.svg">
-          <img src="../../assets/img/arrow_2.svg">
+            <!-- <input type="color" value=" " id="favcolor1" style="height: 7px; width: 16px;"> -->
+          <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
           <img src="../../assets/img/table.svg">
-          <img src="../../assets/img/arrow_2.svg">
+          <img src="../../assets/img/arrow_2.svg">  
         </td>
+
         <td>
-          <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg"></button>
-          <img src="../../assets/../../assets/img/arrow_2.svg">
-          <img src="../../assets/img/Text Warp.svg">
+          <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg" style="height:15px;"></button>
+          <div class="drop">
+            <button class="dr-btn file" onclick="myFunction2()"><img src="../../assets/img/arrow_2.svg"></button>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <div id="my-Dropdown" class="drop-content">
+              <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
+              <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
+            </div>
+          </div>
+          <!-- <img src="img/arrow_2.svg"> -->
+          <img src="../../assets/img/Text Warp.svg" style="height:15px;">
           <img src="../../assets/img/arrow_2.svg">
         </td>
         <td>
@@ -86,6 +116,8 @@
         <td>
           <img src="../../assets/img/filter.svg">
         </td>
+        <!-- <div id="img"></div> -->
+        <td style="width: 100%"></td>
       </tr>
     </table>
   </div>
@@ -93,10 +125,8 @@
        
 <section class="spreadsheet">
   <table class="spreadsheet__table" id="table-main">
-    <thead class="spreadsheet__table--headers" id="table-headers">
-    </thead>
-    <tbody class="spreadsheet__table--body" id="table-body">
-    </tbody>
+    <thead class="spreadsheet__table--headers" id="table-headers"></thead>
+    <tbody class="spreadsheet__table--body" id="table-body"></tbody>
   </table>
 </section>
 
@@ -109,7 +139,7 @@
     <td><span>Sheet1<img src="../../assets/img/arrow_2.svg"></span></td>
     <td><span>Sheet2<img src="../../assets/img/arrow_2.svg"></span></td>
     <td><span>Sheet3<img src="../../assets/img/arrow_2.svg"></span></td>
-    <td style="width: 855px;"></td>
+    <td style="width: 100%;"></td>
   </tr>
 </table>
 

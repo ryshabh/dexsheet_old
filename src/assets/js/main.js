@@ -1,9 +1,36 @@
-let defaultRowCount = 10; // No of rows
-let defaultColCount = 12; // No of cols
-const SPREADSHEET_DB = "spreadsheet_db";
+// 'use strict';
+
+// function defaultRowCountController(){
+//   let foo = 10;
+// }
+
+// function defaultColCountController(){
+//   let foo = 12;
+// }
+
+// defaultRowCount Controller(){
+//   let foo = 10;
+// }
+// deafultColCount Controller(){
+//   let foo = 12;
+// }
+
+// SPREADSHEET_DB Controller(){
+//   const foo = spreadsheet_db;
+// }
+
+// function SPREADSHEETController(){
+//   const foo = spreadsheet_db;
+// }
+  
+  //const SPREADSHEET_DB = "spreadsheet_db";
+  // const SPREADSHEET_DB  ='spreadsheet_db';
+  //let SPREADSHEET_DB ="";
+
 
 initializeData = () => {
   // console.log("initializeData");
+
   const data = [];
   for (let i = 0; i <= defaultRowCount; i++) {
     const child = [];
@@ -16,7 +43,8 @@ initializeData = () => {
 };
 
 getData = () => {
-  let data = localStorage.getItem(SPREADSHEET_DB);
+  // SPREADSHEET_DB = "spreadsheet_db";
+  let data = localStorage.getItem('spreadsheet_db');
   if (data === undefined || data === null) {
     return initializeData();
   }
@@ -24,11 +52,11 @@ getData = () => {
 };
 
 saveData = data => {
-  localStorage.setItem(SPREADSHEET_DB, JSON.stringify(data));
+  localStorage.setItem('spreadsheet_db', JSON.stringify(data));
 };
 
 resetData = data => {
-  localStorage.removeItem(SPREADSHEET_DB);
+  localStorage.removeItem('spreadsheet_db');
   this.createSpreadsheet();
 };
 
@@ -71,13 +99,13 @@ createTableBodyRow = rowNum => {
       const span = document.createElement("span");
       const dropDownDiv = document.createElement("div");
       span.innerHTML = rowNum;
-      dropDownDiv.setAttribute("class", "dropdown");
-      dropDownDiv.innerHTML = `<button class="dropbtn" id="row-dropbtn-${rowNum}">+</button>
-        <div id="row-dropdown-${rowNum}" class="dropdown-content">
-          <p class="row-insert-top">Insert 1 row above</p>
-          <p class="row-insert-bottom">Insert 1 row below</p>
-          <p class="row-delete">Delete row</p>
-        </div>`;
+      // dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="row-dropbtn-${rowNum}">+</button>
+      //   <div id="row-dropdown-${rowNum}" class="dropdown-content">
+      //     <p class="row-insert-top">Insert 1 row above</p>
+      //     <p class="row-insert-bottom">Insert 1 row below</p>
+      //     <p class="row-delete">Delete row</p>
+      //   </div>`;
       cell.appendChild(span);
       cell.appendChild(dropDownDiv);
       cell.setAttribute("class", "row-header");
@@ -463,4 +491,86 @@ function changeFont1() {
         }
     }
 }
+
+$(document).ready(function(){
+  
+  var fontSize = 16;
+  
+  $('#minus').click(function(){
+    if (fontSize > 6)
+      fontSize-=2;
+    document.execCommand("fontSize", false, "1");
+    resetFont();
+  });
+  
+  $('#plus').click(function(){
+    if (fontSize < 64)
+      fontSize+=2;
+    document.execCommand("fontSize", false, "1");
+    resetFont();
+  });
+  
+  function resetFont(){
+    $("font[size=1]").removeAttr("size").css("font-size", fontSize + "px");
+  }
+})
+
+var CapsNum;
+
+window.onload = function() {
+  //var CapsNum = localStorage.getItem("CapsNum");
+
+  if (CapsNum == null) {
+    CapsNum = "0";
+  } else {
+    document.getElementById("caps").value = CapsNum;
+  }
+}
+window.onbeforeunload = function() {
+  localStorage.setItem("CapsNum", document.getElementById("caps").value);
+}
+
+function PlusCaps() {
+  var nextValue = parseInt(document.getElementById("caps").value) + 1;
+  setNextValue(nextValue);
+}
+
+function MinusCaps() {
+  var nextValue = parseInt(document.getElementById("caps").value) - 1;
+  setNextValue(nextValue);
+}
+
+function setNextValue(nextValue) {
+  //localStorage.setItem("CapsNum", nextValue);
+  document.getElementById("caps").value = nextValue;
+}
+
+ var theInput = document.getElementById("favcolor");
+      var theColor = theInput.value;
+      
+      function setcolor(){
+      // Get Selection
+      sel = window.getSelection();
+      if (sel.rangeCount && sel.getRangeAt) {
+        range = sel.getRangeAt(0);
+      }
+      // Set design mode to on
+      document.designMode = "on";
+      if (range) {
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      // Colorize text
+      document.execCommand("ForeColor", false, theInput.value);
+      // Set design mode to off
+      document.designMode = "off";
+    }
+
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
 

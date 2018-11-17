@@ -16,8 +16,8 @@ export class CreateProjectComponent implements OnInit,AfterViewInit {
     var b = localStorage.getItem("project")
     document.getElementById("demo1").innerHTML = b;
     console.log("project ",b)
-    let defaultRowCount = 10; // No of rows
-  let defaultColCount = 12; // No of cols
+    let defaultRowCount = 50; // No of rows
+  let defaultColCount = 50; // No of cols
   }
 
   ngAfterViewInit(): void {

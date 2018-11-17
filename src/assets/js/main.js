@@ -68,19 +68,428 @@ createHeaderRow = () => {
     th.setAttribute("id", `h-0-${i}`);
     th.setAttribute("class", `${i === 0 ? "" : "column-header"}`);
     // th.innerHTML = i === 0 ? `` : `Col ${i}`;
-    if (i !== 0) {
+    if (i == 1) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `A`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 2) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `B`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 3) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `C`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 4) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `D`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 5) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `E`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 6) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `F`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 7) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `G`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 8) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `H`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 9) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `I`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    } else if (i == 10) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `J`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 11) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `K`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 12) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `L`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 13) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `M`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 14) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `N`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 15) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `O`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 16) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `P`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 17) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `Q`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 18) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `R`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 19) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `S`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 20) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `T`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 21) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `U`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 22) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `V`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 23) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `W`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 24) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `X`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 25) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `Y`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+    else if (i == 26) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `Z`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      th.appendChild(dropDownDiv);
+    }
+
+
+    if (i >=27 ) {
       const span = document.createElement("span");
       span.contentEditable = true;
       span.innerHTML = `Col ${i}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
       dropDownDiv.setAttribute("class", "dropdown");
-      dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
-        <div id="col-dropdown-${i}" class="dropdown-content">
-          <p class="col-insert-left">Insert 1 column left</p>
-          <p class="col-insert-right">Insert 1 column right</p>
-          <p class="col-delete">Delete column</p>
-        </div>`;
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
       th.appendChild(span);
       th.appendChild(dropDownDiv);
     }
@@ -88,6 +497,35 @@ createHeaderRow = () => {
   }
   return tr;
 };
+
+// createHeaderRow = () => {
+//   const tr = document.createElement("tr");
+//   tr.setAttribute("id", "h-0");
+//   for (let i = 0; i <= defaultColCount; i++) {
+//     const th = document.createElement("th");
+//     th.setAttribute("id", `h-0-${i}`);
+//     th.setAttribute("class", `${i === 0 ? "" : "column-header"}`);
+//     // th.innerHTML = i === 0 ? `` : `Col ${i}`;
+//     if (i !== 0) {
+//       const span = document.createElement("span");
+//       span.contentEditable = true;
+//       span.innerHTML = `A`;
+//       span.setAttribute("class", "column-header-span");
+//       const dropDownDiv = document.createElement("div");
+//       dropDownDiv.setAttribute("class", "dropdown");
+//       dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+//         <div id="col-dropdown-${i}" class="dropdown-content">
+//           <p class="col-insert-left">Insert 1 column left</p>
+//           <p class="col-insert-right">Insert 1 column right</p>
+//           <p class="col-delete">Delete column</p>
+//         </div>`;
+//       th.appendChild(span);
+//       th.appendChild(dropDownDiv);
+//     }
+//     tr.appendChild(th);
+//   }
+//   return tr;
+// };
 
 createTableBodyRow = rowNum => {
   const tr = document.createElement("tr");
@@ -393,13 +831,13 @@ console.log("mystring", myString);
 }
 
 
-document.getElementById("reset").addEventListener("click", e => {
-  if (
-    confirm("This will erase all data and set default configs. Are you sure?")
-  ) {
-    this.resetData();
-  }
-});
+// document.getElementById("reset").addEventListener("click", e => {
+//   if (
+//     confirm("This will erase all data and set default configs. Are you sure?")
+//   ) {
+//     this.resetData();
+//   }
+// });
 
 
 
@@ -574,3 +1012,10 @@ $(document).ready(function(){
   });
 });
 
+function getValue(){
+               var retVal = prompt("Enter your project name : ", "your project name here");
+               localStorage.setItem("project",retVal)
+               document.getElementById("demo").innerHTML = retVal;
+               // document.write("You have entered : " + retVal);
+            }
+         //-->

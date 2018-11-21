@@ -3,6 +3,7 @@
     <table class="topnav">
       <tr>
         <td>
+          <img src="../../assets/img/logo.png" style="height:25px; width:25px; margin-right:5px;">
           <span>ALL</span>  
         </td>
         <td>
@@ -18,8 +19,13 @@
           <img src="../../assets/img/menu.svg">
         </td>
         <td>
-         <!--  <img src="../../assets/img/Group 3.svg"> -->
-         <button class="file" type="submit" onclick="getValue();"><img src="../../assets/img/Group 3.svg"></button>
+         <button class="file" type="submit" (click)="getValue();"><img src="../../assets/img/Group 3.svg"></button>
+        </td>
+        <td>
+          <img src="../../assets/img/share1.png" style="width: 15px; height:15px; ">
+        </td>
+        <td>
+          <img src="../../assets/img/notification.svg">
         </td>
         <td style="width: 100%"></td>
       </tr>
@@ -51,24 +57,96 @@
               </ul>
           </div>
         </td>
-        <td>Home</td>
+        <td id="home"><button class="file">Home</button></td>
         <td style="width: 100%"></td>
       </tr>
     </table>
         
-    <table border="1" class="midnav">
+    <table border="1" class="midnav" id="middle">
       <tr style="margin-top:6px; margin-bottom:2px;">
         <td style="width: 50px; margin-top:6px; margin-bottom:2px;" class="space">
           <!-- <button class="file" id="save" onclick="saveit();"><img src="../../assets/img/save.svg" ><p class="text">Save</p></button>&nbsp;&nbsp;
           <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg" ><p class="text">Print</p></button> -->
-          <button class="file" id="save" onclick="saveit();"><img src="../../assets/img/save.svg" ></button>&nbsp;&nbsp;
-          <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg" ></button>
+          <button class="file" onclick="saveit();"><img src="../../assets/img/save.svg" ></button>
+          <button class="file" onclick="myprint();"><img src="../../assets/img/print.svg" ></button>
         </td>
         <td >
           <input type="image" src="../../assets/img/sheet.svg" style="margin-top:6px; margin-bottom:2px;">&nbsp;
           <input type="image" src="../../assets/img/planner.svg" style="margin-top:6px; margin-bottom:2px;">&nbsp;
           <input type="image" src="../../assets/img/gantt.svg" style="margin-top:6px; margin-bottom:2px;">
-          <input type="image" id = "datepicker-13" src="../../assets/img/calendar.svg" id = "datepicker-13" style="margin-top:6px; margin-bottom:2px;">
+          <input type="image" src="../../assets/img/calendar.svg" style="margin-top:6px; margin-bottom:2px;">
+         <!--  <button type="image" id = "datepicker-13" src="../../assets/img/calendar.svg" id = "datepicker-13" (click)="getCalendar()" style="margin-top:6px; margin-bottom:2px;"></button> -->
+          <!-- <div class='overlay'>
+          <div class="container">
+            <div class="calendar-base">
+              <div class="year">2017</div>
+                <div class="triangle-left"></div>
+                  <div class="triangle-right"></div>
+                    <div class="months">
+                      <span class="month-hover">Jan</span>
+                      <span class="month-hover">Feb</span> 
+                      <span class="month-hover">Mar</span> 
+                      <strong class="month-color">Apr</strong>
+                      <span class="month-hover">May</span>
+                      <span class="month-hover">Jun</span>
+                      <span class="month-hover">July</span> 
+                      <span class="month-hover">Aug</span> 
+                      <span class="month-hover">Sep</span> 
+                      <span class="month-hover">Oct</span> 
+                      <span class="month-hover">Nov</span> 
+                      <span class="month-hover">Dec</span>
+                    </div>
+                    <hr class="month-line" />
+
+                    <div class="days">SUN MON TUE WED THU FRI SAT</div>
+                   
+                      <div class="num-dates">
+
+                        <div class="first-week"><span class="grey">26 27 28 29 30 31</span> 01</div>
+                       
+                        <div class="second-week">02 03 04 05 06 07 08</div>
+                      
+                        <div class="third-week"> 09 10 11 12 13 14 15</div>
+                       
+                        <div class="fourth-week"> 16 17 18 19 20 21 22</div>
+                       
+                        <div class="fifth-week"> 23 24 25 26 <strong class="white">27</strong> 28 29</div>
+                       
+                        <div class="sixth-week"> 30 <span class="grey">01 02 03 04 05 06</span></div>
+                        
+                      </div>
+                      
+                      <div class="event-indicator"></div>
+                     
+                      <div class="active-day"></div>
+                      
+                      <div class="event-indicator two"></div>
+                    </div>
+                    <div class="calendar-left">
+
+                      <div class="hamburger">
+                        <div class="burger-line"></div>
+                       
+                        <div class="burger-line"></div>
+                       
+                        <div class="burger-line"></div>
+                       
+                      </div>
+                      <div class="num-date">27</div>
+                      <div class="day">THURSDAY</div>
+                      <div class="current-events">Current Events
+                        <br/>
+                        <ul>
+                          <li>Day 09 Daily CSS Image</li>
+                        </ul>
+                        <span class="posts">See post events</span></div>
+                      <div class="create-event">Create an Event</div>
+                      <hr class="event-line" />
+                      <div class="add-event"><span class="add">+</span></div>
+                    </div>
+                  </div>
+                </div> -->
+                
         </td>
         <td>
           <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
@@ -80,11 +158,11 @@
           <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
         </td>
         <td>
-          <!-- <input type="button" id="plus" class="button " value="+" style="margin-left:5px;" onclick="PlusCaps()" />
+          <input type="button" id="plus" class="button " value="+" style="margin-left:5px;" onclick="PlusCaps()" />
 
           <input type="tel" id="caps" maxlength="3" size="1" min="0" max="999" pattern="[0-9]" value="8"  />
                       
-          <input type="button" id="minus" class="button" value="-" onclick="MinusCaps()" /> -->
+          <input type="button" id="minus" class="button" value="-" onclick="MinusCaps()" />
         </td>
         <td>
           <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;

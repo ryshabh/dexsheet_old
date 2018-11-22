@@ -12,33 +12,13 @@ export class CreateProjectComponent implements OnInit,AfterViewInit {
   constructor(@Inject(DOCUMENT) private document, private elementRef: ElementRef) { }
 
   ngOnInit() {
-  	const s = this.document.createElement('script');
-    var b = localStorage.getItem("project")
-    document.getElementById("demo1").innerHTML = b;
-    console.log("project ",b)
-    // $(document).ready(function(){
-    //   $("#home").click(function(){
-    //     $("#middle").toggle();
-    //   });
-    // });
+  	// const s = this.document.createElement('script');
+    // var b = localStorage.getItem("project")
+    // document.getElementById("demo1").innerHTML = b;
+    // console.log("project ",b)
+    // localStorage.clear();
+    document.getElementById("spreadsheethide").style.display = "none";
   }
-
-  getValue(){
-    var retVal = prompt("Enter your project name : ", "your project name here");
-    localStorage.setItem("project",retVal)
-    document.getElementById("demo1").innerHTML = retVal;
-    // document.write("You have entered : " + retVal);
-  }
-
-  // abc(){
-  //   console.log("calendar");
-  //   var x = document.getElementById("holder");
-  //   if(x.style.display === "none") {
-  //     x.style.display === "block";
-  //   } else {
-  //     x.style.display = "none";
-  //   }
-  // }
 
   ngAfterViewInit(): void {
     const s = this.document.createElement('script');
@@ -50,5 +30,6 @@ export class CreateProjectComponent implements OnInit,AfterViewInit {
     this.elementRef.nativeElement.appendChild(s);
 
   }
+
 }
 

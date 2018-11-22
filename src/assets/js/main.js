@@ -1,6 +1,33 @@
-  let defaultRowCount = 500; // No of rows
-  let defaultColCount = 500; // No of cols
-  const SPREADSHEET_DB = "spreadsheet_db";
+// 'use strict';
+
+// function defaultRowCountController(){
+//   let foo = 10;
+// }
+
+// function defaultColCountController(){
+//   let foo = 12;
+// }
+
+// defaultRowCount Controller(){
+//   let foo = 10;
+// }
+// deafultColCount Controller(){
+//   let foo = 12;
+// }
+
+// SPREADSHEET_DB Controller(){
+//   const foo = spreadsheet_db;
+// }
+
+// function SPREADSHEETController(){
+//   const foo = spreadsheet_db;
+// }
+  
+  //const SPREADSHEET_DB = "spreadsheet_db";
+  // const SPREADSHEET_DB  ='spreadsheet_db';
+  //let SPREADSHEET_DB ="";
+let defaultRowCount = 50; // No of rows
+let defaultColCount = 26; // No of cols
 
 initializeData = () => {
   // console.log("initializeData");
@@ -17,6 +44,7 @@ initializeData = () => {
 };
 
 getData = () => {
+  // SPREADSHEET_DB = "spreadsheet_db";
   let data = localStorage.getItem('spreadsheet_db');
   if (data === undefined || data === null) {
     return initializeData();
@@ -44,10 +72,10 @@ createHeaderRow = () => {
     if (i !== 0) {
       const span = document.createElement("span");
       span.contentEditable = true;
-      span.innerHTML = `Col ${i}`;
+      span.innerHTML = `${(i+9).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
-      const dropDownDiv = document.createElement("div");
-      dropDownDiv.setAttribute("class", "dropdown");
+      // const dropDownDiv = document.createElement("div");
+      // dropDownDiv.setAttribute("class", "dropdown");
       // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
       //   <div id="col-dropdown-${i}" class="dropdown-content">
       //     <p class="col-insert-left">Insert 1 column left</p>
@@ -55,12 +83,43 @@ createHeaderRow = () => {
       //     <p class="col-delete">Delete column</p>
       //   </div>`;
       th.appendChild(span);
-      th.appendChild(dropDownDiv);
+      // th.appendChild(dropDownDiv);
     }
     tr.appendChild(th);
   }
   return tr;
+    
+    
 };
+
+// createHeaderRow = () => {
+//   const tr = document.createElement("tr");
+//   tr.setAttribute("id", "h-0");
+//   for (let i = 0; i <= defaultColCount; i++) {
+//     const th = document.createElement("th");
+//     th.setAttribute("id", `h-0-${i}`);
+//     th.setAttribute("class", `${i === 0 ? "" : "column-header"}`);
+//     // th.innerHTML = i === 0 ? `` : `Col ${i}`;
+//     if (i !== 0) {
+//       const span = document.createElement("span");
+//       span.contentEditable = true;
+//       span.innerHTML = `A`;
+//       span.setAttribute("class", "column-header-span");
+//       const dropDownDiv = document.createElement("div");
+//       dropDownDiv.setAttribute("class", "dropdown");
+//       dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+//         <div id="col-dropdown-${i}" class="dropdown-content">
+//           <p class="col-insert-left">Insert 1 column left</p>
+//           <p class="col-insert-right">Insert 1 column right</p>
+//           <p class="col-delete">Delete column</p>
+//         </div>`;
+//       th.appendChild(span);
+//       th.appendChild(dropDownDiv);
+//     }
+//     tr.appendChild(th);
+//   }
+//   return tr;
+// };
 
 createTableBodyRow = rowNum => {
   const tr = document.createElement("tr");
@@ -79,9 +138,6 @@ createTableBodyRow = rowNum => {
       //     <p class="row-insert-bottom">Insert 1 row below</p>
       //     <p class="row-delete">Delete row</p>
       //   </div>`;
-      // img.src = "../../assets/img/attachment.svg";
-      // img.width = "12";
-      // img.height = "12";
       cell.appendChild(span);
       cell.appendChild(dropDownDiv);
       cell.setAttribute("class", "row-header");
@@ -369,13 +425,13 @@ console.log("mystring", myString);
 }
 
 
-document.getElementById("reset").addEventListener("click", e => {
-  if (
-    confirm("This will erase all data and set default configs. Are you sure?")
-  ) {
-    this.resetData();
-  }
-});
+// document.getElementById("reset").addEventListener("click", e => {
+//   if (
+//     confirm("This will erase all data and set default configs. Are you sure?")
+//   ) {
+//     this.resetData();
+//   }
+// });
 
 
 
@@ -521,8 +577,8 @@ function setNextValue(nextValue) {
   document.getElementById("caps").value = nextValue;
 }
 
- var theInput = document.getElementById("favcolor");
-      var theColor = theInput.value;
+ // var theInput = document.getElementById("favcolor");
+ //      var theColor = theInput.value;
       
       function setcolor(){
       // Get Selection
@@ -550,8 +606,49 @@ $(document).ready(function(){
   });
 });
 
-$(document).ready(function(){
-  $("home").click(function(){
-    $("middle").tooggle();
-  })
-})
+// function getValue(){
+//                var retVal = prompt("Enter your project name : ", "your project name here");
+//                localStorage.setItem("project",retVal)
+//                document.getElementById("demo").innerHTML = retVal;
+//                // document.write("You have entered : " + retVal);
+//             }
+//          //-->
+function getValue(){
+               var retVal = prompt("Enter your name : ", "your name here");
+               localStorage.setItem("project",retVal)
+               // document.getElementById("demo").innerHTML = retVal;
+               CreateTable(); 
+               showtable();
+            }
+        
+function CreateTable() {
+         
+        // NOW CREATE AN INPUT BOX TYPE BUTTON USING createElement() METHOD.
+        var button = document.createElement('input');
+
+        // SET INPUT ATTRIBUTE 'type' AND 'value'.
+        button.setAttribute('type', 'button');
+        button.setAttribute('value', 'Read Table Data');
+        var a = document.getElementById('demo');
+        // button.setAttribute('id','demo');
+        var b = localStorage.getItem("project")
+        button.setAttribute('value', b);
+
+        var row = document.getElementById("myRow");
+         var x = row.insertCell(2);
+        
+         x.innerHTML = b;
+         // x.setAttribute(onclick,'showtable();');
+    
+        // ADD THE BUTTON's 'onclick' EVENT.
+        button.setAttribute('onclick', 'GetTableValues()');
+
+        // FINALLY ADD THE NEWLY CREATED TABLE AND BUTTON TO THE BODY.
+        // document.body.appendChild(table);
+        // a.appendChild(button);
+    }
+
+    function showtable(){
+      document.getElementById("spreadsheethide").style.display = "block";
+    }
+

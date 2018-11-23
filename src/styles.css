@@ -302,3 +302,29 @@ visibility:hidden;
 .file:hover .text {
 visibility:visible;
 }
+
+#rightclicked{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+/*    padding: 12px 16px;
+*/    z-index: 1;
+}
+
+#content{
+  margin: 0px; 
+  padding: 0px; 
+  text-align: left; 
+  list-style-type: none; 
+  text-indent: 0px ; 
+  color: black;
+}
+
+#content :hover {background-color: #f1f1f1}
+
+#content:hover  {
+    display: block;
+}
+

@@ -26,7 +26,7 @@
   //const SPREADSHEET_DB = "spreadsheet_db";
   // const SPREADSHEET_DB  ='spreadsheet_db';
   //let SPREADSHEET_DB ="";
-let defaultRowCount = 50; // No of rows
+let defaultRowCount = 26; // No of rows
 let defaultColCount = 26; // No of cols
 
 initializeData = () => {
@@ -651,4 +651,132 @@ function CreateTable() {
     function showtable(){
       document.getElementById("spreadsheethide").style.display = "block";
     }
+    
+document.body.addEventListener('click', function() {
+  document.getElementById("rightclicked").style.display = "none";
+})
+document.body.addEventListener('contextmenu', function() {
+  document.getElementById("rightclicked").style.display = "none";
+})
+document.getElementById("spreadsheethide").addEventListener('contextmenu', function(ev) {
+  ev.stopPropagation();
+  ev.preventDefault();
+  rightclick();
+  return false;
+}, false);
+
+function rightclick() {
+  var e = window.event;
+  var cantThinkOfAName = document.getElementById("rightclicked");
+  cantThinkOfAName.style.display = "block";
+  cantThinkOfAName.style.left = e.clientX + "px";
+  cantThinkOfAName.style.top = e.clientY + "px";
+}
+
+var tbl = document.getElementById("table-main");
+
+        if (tbl != null) {
+
+            for (var i = 0; i < tbl.rows.length; i++) {
+
+                for (var j = 0; j < tbl.rows[i].cells.length; j++)
+
+                    tbl.rows[i].cells[j].onmousedown = function (event) { 
+                      if (event.which == 3){
+
+                      getval(this); 
+                      }
+                    };
+
+            }
+
+        }
+
+        function getval(cel) {
+            console.log("test",cel.id)
+            localStorage.setItem("cell",cel.id);
+            // document.getElementById("demo").innerHTML = cel.id;
+        }
+function swaptext(){
+  // document.getElementById("demo").innerHTML = "Hello World";
+let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Task"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el.innerHTML = "Task"
+}
+
+function swaptext2(){
+  var tbl = document.getElementById("table-main");
+  let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+    for (var j = 1; j  <=defaultColCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    var x = row.insertCell(res_id);
+    var button = document.createElement('input');
+     button.setAttribute('type', 'date');
+     // button.setAttribute('value', 'raj')
+     x.appendChild(button);
+}
+  
+  // }
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="From"){
+      count= count+1;
+      console.log("count",count)
+    }
+    
+    
+
+  }
+  el.innerHTML = "From"
+}
+
+function swaptext3(){
+  let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+   for (var j = 1; j  <=defaultColCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    var x = row.insertCell(res_id);
+    var button = document.createElement('input');
+     button.setAttribute('type', 'date');
+     // button.setAttribute('value', 'raj')
+     x.appendChild(button);
+   }
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el.innerHTML = "To"
+}
 

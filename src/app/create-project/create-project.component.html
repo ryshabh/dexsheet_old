@@ -133,71 +133,78 @@
   </table>
 </section>
 
- <div id="rightclicked">
-      <ul id="content" >
+   <div id="rightclicked">
+      <ul id="content" class="w3-bar-block w3-border">
        <!--  <a href="#"> -->
-          <li style="border-top: none; margin-top: -1px; ">
+          <li class="w3-bar-item w3-button" style="border-top: none; margin-top: -1px; ">
             Cut
           </li>
         <!-- </a> -->
         <!-- <a href="#"> -->
-          <li>
+          <li class="w3-bar-item w3-button">
             Copy
           </li>
         <!-- </a> -->
         <!-- <a href="#"> -->
-          <li>
+          <li class="w3-bar-item w3-button">
             Paste
           </li>
-          <li>
+          <li class="w3-bar-item w3-button">
             Insert row 
           </li>
-          <li>
+          <li class="w3-bar-item w3-button" onclick="Addcoloms();">
             Insert Column
           </li>
-          <li>
+          <li class="w3-bar-item w3-button">
             Insert Cell
           </li>
-          <li>
+          <li class="w3-bar-item w3-button">
             Delete row
           </li>
-          <li>
+          <li class="w3-bar-item w3-button">
             Delete Column
-          </li>
-          <li >
+          </li >
+          <li class="w3-bar-item w3-button">
             Delete Cell
           </li>
-          <li id="special" style="margin-bottom: 1px;">
+          <li class="dropdown-submenu">
+                <a class="test w3-button w3-white" tabindex="-1" href="#">Special<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext();">Task Name</a></li>
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();createcell();">From</a></li>
+                        <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext3();">To</a></li>
+                      </ul>
+          </li>
+         <!--  <li id="special" style="margin-bottom: 1px;">
             <div class="w3-dropdown-hover">
-              <button class="w3-button w3-black">Special </button>
+              <button class="w3-button w3-white">Special </button>
               <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a href="#" class="w3-bar-item w3-button" onclick="swaptext();">Task Name</a>
-                <a href="#" class="w3-bar-item w3-button" onclick="swaptext2();createcell();">From</a>
-                <a href="#" class="w3-bar-item w3-button" onclick="swaptext3();">To</a>
-                <!-- <a href="#" class="w3-bar-item w3-button">To</a> -->
+                <a href="#" tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext();">Task Name</a>
+                <a href="#" tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();createcell();">From</a>
+                <a href="#" tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext3();">To</a>
+                
               </div>
             </div>
-          </li>
+          </li> -->
        <!--  </a>
         <a href="#"> -->
            <!--  </a> -->
       </ul>
     </div>
+     
     
-<table class="topnav">
+
+<table class="topnav" style="position: fixed;  top: 870px;" >
   <tr>
-    <td>
+    <td style="background-color:  #d9d9d9">
       <img src="../../assets/img/menu.svg">
       <img src="../../assets/img/Group 3.svg">
     </td>
-    <td><span>Sheet1<img src="../../assets/img/arrow_2.svg"></span></td>
-    <td><span>Sheet2<img src="../../assets/img/arrow_2.svg"></span></td>
-    <td><span>Sheet3<img src="../../assets/img/arrow_2.svg"></span></td>
-    <td style="width: 100%;"></td>
+    <td style="background-color:  #d9d9d9"><span>Sheet1<img src="../../assets/img/arrow_2.svg"></span></td>
+    <td style="background-color:  #d9d9d9"><span>Sheet2<img src="../../assets/img/arrow_2.svg"></span></td>
+    <td style="background-color:  #d9d9d9"><span>Sheet3<img src="../../assets/img/arrow_2.svg"></span></td>
+    <td style="width: 100%; background-color:  #d9d9d9"></td>
   </tr>
 </table>
 
-<!-- <section class="spreadsheet-controls">
-  <button class="reset-btn" id="reset">Reset Data</button>
-</section> -->
-<div class="demo1" style="color: white;"></div>
+

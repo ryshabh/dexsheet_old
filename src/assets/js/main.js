@@ -26,8 +26,8 @@
   //const SPREADSHEET_DB = "spreadsheet_db";
   // const SPREADSHEET_DB  ='spreadsheet_db';
   //let SPREADSHEET_DB ="";
-let defaultRowCount = 26; // No of rows
-let defaultColCount = 26; // No of cols
+let defaultRowCount = 50; // No of rows
+let defaultColCount = 100; // No of cols
 
 initializeData = () => {
   // console.log("initializeData");
@@ -69,7 +69,23 @@ createHeaderRow = () => {
     th.setAttribute("id", `h-0-${i}`);
     th.setAttribute("class", `${i === 0 ? "" : "column-header"}`);
     // th.innerHTML = i === 0 ? `` : `Col ${i}`;
-    if (i !== 0) {
+    // if (i !== 0) {
+    //   const span = document.createElement("span");
+    //   span.contentEditable = true;
+    //   span.innerHTML = `${(i+9).toString(36).toUpperCase()}`;
+    //   span.setAttribute("class", "column-header-span");
+    //   // const dropDownDiv = document.createElement("div");
+    //   // dropDownDiv.setAttribute("class", "dropdown");
+    //   // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+    //   //   <div id="col-dropdown-${i}" class="dropdown-content">
+    //   //     <p class="col-insert-left">Insert 1 column left</p>
+    //   //     <p class="col-insert-right">Insert 1 column right</p>
+    //   //     <p class="col-delete">Delete column</p>
+    //   //   </div>`;
+    //   th.appendChild(span);
+    //   // th.appendChild(dropDownDiv);
+    // }
+    if (i !== 0 && i<=26 ) {
       const span = document.createElement("span");
       span.contentEditable = true;
       span.innerHTML = `${(i+9).toString(36).toUpperCase()}`;
@@ -84,6 +100,52 @@ createHeaderRow = () => {
       //   </div>`;
       th.appendChild(span);
       // th.appendChild(dropDownDiv);
+    } else if(i !== 0 && i>26 && i<=52 ) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `A${(i-17).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      // dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      // th.appendChild(dropDownDiv);
+    } else if(i !== 0 && i>52 && i<=78){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `B${(i-43).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      // dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      // th.appendChild(dropDownDiv);
+    } else if(i !== 0 && i>78){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `C${(i-69).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      // dropDownDiv.setAttribute("class", "dropdown");
+      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
+      //   <div id="col-dropdown-${i}" class="dropdown-content">
+      //     <p class="col-insert-left">Insert 1 column left</p>
+      //     <p class="col-insert-right">Insert 1 column right</p>
+      //     <p class="col-delete">Delete column</p>
+      //   </div>`;
+      th.appendChild(span);
+      // th.appendChild(dropDownDiv);
+
     }
     tr.appendChild(th);
   }
@@ -726,13 +788,20 @@ function swaptext2(){
   var res_id = res[2];
   console.log("res",res[2]);
   var el = document.getElementById(`h-0-${res_id}`);
-    for (var j = 1; j  <=defaultColCount; j++){
+    for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
     var x = row.insertCell(res_id);
     var button = document.createElement('input');
-     button.setAttribute('type', 'date');
+    button.setAttribute('placeholder',' ');
+    button.setAttribute('class','form-control');
+    button.setAttribute('type','text');
+    button.setAttribute('onfocus',"(this.type='date')");
+    button.setAttribute('onblur',"(this.type='text')")
+    button.setAttribute('id', 'date');
+     // button.setAttribute('data-placeholder',' ');
+     // button.setAttribute('aria-required','true')
      // button.setAttribute('value', 'raj')
      x.appendChild(button);
 }
@@ -759,13 +828,18 @@ function swaptext3(){
   var res_id = res[2];
   console.log("res",res[2]);
   var el = document.getElementById(`h-0-${res_id}`);
-   for (var j = 1; j  <=defaultColCount; j++){
+   for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
     var x = row.insertCell(res_id);
     var button = document.createElement('input');
-     button.setAttribute('type', 'date');
+       button.setAttribute('placeholder',' ');
+    button.setAttribute('class','form-control');
+    button.setAttribute('type','text');
+    button.setAttribute('onfocus',"(this.type='date')");
+    button.setAttribute('onblur',"(this.type='text')")
+     button.setAttribute('id', 'date');
      // button.setAttribute('value', 'raj')
      x.appendChild(button);
    }
@@ -779,4 +853,3 @@ function swaptext3(){
   }
   el.innerHTML = "To"
 }
-

@@ -56,36 +56,50 @@
       </tr>
     </table>
         
-    <table border="1" class="midnav">
+    <table border="1" class="midnav" id="middle">
       <tr style="margin-top:6px; margin-bottom:2px;">
-        <td style="width: 50px; margin-top:6px; margin-bottom:2px;" class="space">
-          <!-- <button class="file" id="save" onclick="saveit();"><img src="../../assets/img/save.svg" ><p class="text">Save</p></button>&nbsp;&nbsp;
-          <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg" ><p class="text">Print</p></button> -->
-          <button class="file" id="save" onclick="saveit();"><img src="../../assets/img/save.svg" ></button>&nbsp;&nbsp;
-          <button class="file" id="print" onclick="myprint();"><img src="../../assets/img/print.svg" ></button>
-        </td>
-        <td >
-          <input type="image" src="../../assets/img/sheet.svg" style="margin-top:6px; margin-bottom:2px;">&nbsp;
-          <input type="image" src="../../assets/img/planner.svg" style="margin-top:6px; margin-bottom:2px;">&nbsp;
-          <input type="image" src="../../assets/img/gantt.svg" style="margin-top:6px; margin-bottom:2px;">
-          <input type="image" id = "datepicker-13" src="../../assets/img/calendar.svg" id = "datepicker-13" style="margin-top:6px; margin-bottom:2px;">
-        </td>
-        <td>
-          <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
-          <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
-          <img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px; height:15px;">
-        </td>
-        <td>
-          <button class="file" onclick="document.execCommand('justifyRight',false,null);"><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
-          <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
-        </td>
-        <td>
-          <!-- <input type="button" id="plus" class="button " value="+" style="margin-left:5px;" onclick="PlusCaps()" />
-
-          <input type="tel" id="caps" maxlength="3" size="1" min="0" max="999" pattern="[0-9]" value="8"  />
-                      
-          <input type="button" id="minus" class="button" value="-" onclick="MinusCaps()" /> -->
-        </td>
+                <td style=" margin-top:10px; margin-bottom:2px; " class="space">
+                    <button class="file" id="save" onclick="saveit(); "><span class="tooltiptext">Save</span><img src="../../assets/img/save.svg">  </button>
+                    <button class="file" id="print" onclick="myprint();"><span class="tooltiptext">Print</span><img src="../../assets/img/print.svg"><!-- <p class="text">Print</p> --></button>
+                </td>
+                <td>
+                    <!-- <input  class="file" type="image"  src="img/sheet.svg" > -->
+                    <button class="file"><span class="tooltiptext">Sheet</span><img src="../../assets/img/sheet.svg"  ></button>
+                    <button class="file"><span class="tooltiptext">Planner</span><img src="../../assets/img/planner.svg "></button>
+                    <button class="file"><span class="tooltiptext">Gantt</span><img src="../../assets/img/gantt.svg"></button>
+                    <button class="file"><span class="tooltiptext">Calender</span><img src="../../assets/img/calendar.svg" ></button>
+                    <!-- <input class="file" type="image" src="img/planner.svg" onclick="planner();" >
+                    <input class="file" type="image" src="img/gantt.svg" >
+                    <button class="file" id="button"><img src="img/calendar.svg"></button>     -->                      
+                </td>
+                <td class="space">
+                    <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
+                    <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
+                    <img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px;">
+                </td>
+                <td class="space">
+                    <button class="file" onclick="document.execCommand('justifyRight',false,null);"><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
+                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
+                </td>
+                <td class="space">
+                    <select  id="sel1" onchange="changeSize(this);">
+                      <option>4</option>
+                      <option>8</option>
+                      <option>12</option>
+                      <option>16</option>
+                      <option>20</option>
+                      <option>24</option>
+                      <option>28</option>
+                      <option>32</option>
+                      <option>36</option>
+                      <option>40</option>
+                      <option>44</option>
+                      <option>48</option>
+                      <option>52</option>
+                      <option>56</option>
+                      <option>58</option>
+                    </select>
+                </td>
         <td>
           <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
           <button class="file" onclick="document.execCommand('italic',false,null);"><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
@@ -93,12 +107,12 @@
           <!-- <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;"></button>&nbsp; -->
         </td>
         <td>
-          <img src="../../assets/img/text fill.svg">
-            <!-- <input type="color" value=" " id="favcolor1" style="height: 7px; width: 16px;"> -->
-          <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
-          <img src="../../assets/img/table.svg">
-          <img src="../../assets/img/arrow_2.svg">  
-        </td>
+                    <img src="../../assets/img/text fill.svg" onclick="Fillcolor()">
+                        <input type="color" value=" " id="favcolor1"  style="height: 7px; width: 16px;">
+                    <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
+                    <img src="../../assets/img/table.svg">
+                    <img src="../../assets/img/arrow_2.svg">  
+                </td>
 
         <td>
           <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg" style="height:15px;"></button>
@@ -126,12 +140,32 @@
   </div>
 </section>
        
-<section class="spreadsheet" id="spreadsheethide" >
-  <table class="spreadsheet__table" id="table-main">
-    <thead class="spreadsheet__table--headers" id="table-headers"></thead>
-    <tbody class="spreadsheet__table--body" id="table-body"></tbody>
-  </table>
-</section>
+  <div style="height:815px;width:100%;overflow:auto;">
+    <section class="spreadsheet" id="spreadsheethide">
+        <table class="spreadsheet__table"
+            id="table-main">
+            <thead class="spreadsheet__table--headers"
+                id="table-headers">
+            </thead>
+            <tbody class="spreadsheet__table--body"
+                id="table-body">
+            </tbody>
+        </table>
+    </section>
+    <table class="topnav" id="new" style="position: fixed; top: 867px;" >
+        <tr id="myrow1">
+            <td style="background-color:  #d9d9d9">
+                 <img src="../../assets/img/menu.svg">
+                 <button class="file" onclick="CreateTable2();" ><img src="../../assets/img/Group 3.svg"></button>
+            </td>
+            <!-- <td style="background-color:  #d9d9d9"><span><button>Sheet1</button><img src="img/arrow_2.svg"></span></td>
+            <td style="background-color:  #d9d9d9"><span><button ">Sheet2</button><img src="img/arrow_2.svg"></span></td>
+            <td style="background-color:  #d9d9d9"><span>Sheet3<img src="img/arrow_2.svg"></span></td> -->
+            <td style="width: 100%; background-color:  #d9d9d9"></td>
+        </tr>
+    </table>
+    </div>
+
 
    <div id="rightclicked">
       <ul id="content" class="w3-bar-block w3-border">
@@ -194,7 +228,7 @@
      
     
 
-<table class="topnav" style="position: fixed;  top: 870px;" >
+<!-- <table class="topnav" style="position: fixed;  top: 870px;" >
   <tr>
     <td style="background-color:  #d9d9d9">
       <img src="../../assets/img/menu.svg">
@@ -206,5 +240,5 @@
     <td style="width: 100%; background-color:  #d9d9d9"></td>
   </tr>
 </table>
-
+ -->
 

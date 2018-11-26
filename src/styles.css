@@ -360,3 +360,39 @@ overflow: scroll;
 }
 
 
+.file {
+    position: relative;
+    display: inline-block;
+    /*border-bottom: 1px dotted black;*/
+}
+
+.file .tooltiptext {
+    visibility: hidden;
+    /*width: 35px;*/
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    /*padding: 1px 0;*/
+    /*height: 25px; */
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 300%; 
+    margin-left: -60px
+
+}
+
+.file:hover .tooltiptext {
+    visibility: visible;
+}
+
+#myrow1{
+  background-color: grey;
+}
+
+#myrow1 td{
+  color: white;
+}

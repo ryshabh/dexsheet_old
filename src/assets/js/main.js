@@ -26,6 +26,13 @@
   //const SPREADSHEET_DB = "spreadsheet_db";
   // const SPREADSHEET_DB  ='spreadsheet_db';
   //let SPREADSHEET_DB ="";
+
+$(document).ready(function(){
+   $("#home").click(function(){
+     $("#middle").toggle();
+ });
+});
+
 let defaultRowCount = 50; // No of rows
 let defaultColCount = 100; // No of cols
 
@@ -748,6 +755,10 @@ var tbl = document.getElementById("table-main");
 
                       getval(this); 
                       }
+                      else if(event.which == 1) {
+                          getval(this); 
+
+                      } 
                     };
 
             }
@@ -759,6 +770,22 @@ var tbl = document.getElementById("table-main");
             localStorage.setItem("cell",cel.id);
             // document.getElementById("demo").innerHTML = cel.id;
         }
+
+
+        function Fillcolor() {
+          var theInput1 = document.getElementById("favcolor1");
+          var theColor1 = theInput1.value;
+          var a = localStorage.getItem("cell");
+          var s = document.getElementById(a);
+          document.getElementById(a).style.backgroundColor = theInput1.value;
+            }
+
+        function changeSize(n) {
+          var a = localStorage.getItem("cell");
+        var s = document.getElementById(a);
+        s.style.fontSize = n.value + 'px'
+        }
+
 function swaptext(){
   // document.getElementById("demo").innerHTML = "Hello World";
 let count = 0;

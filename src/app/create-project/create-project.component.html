@@ -3,10 +3,15 @@
     <table class="topnav">
       <tr id="myRow">
         <td>
+          <img src="../../assets/img/logo.png" alt="sheets" class="title__logo">
           <span>ALL</span>  
         </td>
+        
         <td>
           <img src="../../assets/img/dots.svg">
+        </td>
+        <td>
+          <span>New Project</span>
         </td>
         <!-- <td>
           <span id="demo1">Weekly Sales</span>
@@ -73,65 +78,64 @@
                     <button class="file" id="button"><img src="img/calendar.svg"></button>     -->                      
                 </td>
                 <td class="space">
-                    <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
-                    <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
-                    <img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px;">
+                    <button class="file" onclick="document.execCommand('undo',false,null);"><span class="tooltiptext">Undo</span><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
+                    <button class="file" onclick="document.execCommand('redo',false,null);"><span class="tooltiptext">Redo</span><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
+                    <button class="file"><span class="tooltiptext">Paint</span><img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px;"></button>
                 </td>
                 <td class="space">
-                    <button class="file" onclick="document.execCommand('justifyRight',false,null);"><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
-                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
+                    <button class="file" onclick="document.execCommand('justifyRight',false,null);"><span class="tooltiptext">Left Indent</span><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
+                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><span class="tooltiptext">Right Indent</span><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
                 </td>
                 <td class="space">
                     <select  id="sel1" onchange="changeSize(this);">
-                      <option>4</option>
+                      <option>6</option>
+                      <option>7</option>
                       <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
                       <option>12</option>
+                      <option>14</option>
                       <option>16</option>
-                      <option>20</option>
+                      <option>18</option>
                       <option>24</option>
-                      <option>28</option>
-                      <option>32</option>
                       <option>36</option>
-                      <option>40</option>
-                      <option>44</option>
-                      <option>48</option>
-                      <option>52</option>
-                      <option>56</option>
-                      <option>58</option>
                     </select>
                 </td>
         <td>
-          <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
-          <button class="file" onclick="document.execCommand('italic',false,null);"><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
-          <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
-          <!-- <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;"></button>&nbsp; -->
+          <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Bold</span></button>&nbsp;
+          <button class="file" onclick="document.execCommand('italic',false,null);"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
+          <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
+          <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;"><span class="tooltiptext">Color</span></button>&nbsp;
         </td>
         <td>
-                    <img src="../../assets/img/text fill.svg" onclick="Fillcolor()">
+                    <button class="file"><span class="tooltiptext">Text Fill</span><img src="../../assets/img/text fill.svg" onclick="Fillcolor()"></button>
                         <input type="color" value=" " id="favcolor1"  style="height: 7px; width: 16px;">
                     <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
-                    <img src="../../assets/img/table.svg">
-                    <img src="../../assets/img/arrow_2.svg">  
+                    <button class="file" onclick="addborder();"><span class="tooltiptext">Table</span><img src="../../assets/img/table.svg"></button>
+                   <!--  <img src="../../assets/img/arrow_2.svg">   -->
                 </td>
 
         <td>
-          <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg" style="height:15px;"></button>
+          <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><span class="tooltiptext">Center</span><img src="../../assets/img/alignment.svg" style="height:15px;"></button>
           <div class="drop">
             <button class="dr-btn file" onclick="myFunction2()"><img src="../../assets/img/arrow_2.svg"></button>&nbsp;&nbsp;&nbsp;&nbsp; 
-            <div id="my-Dropdown" class="drop-content">
-              <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
-              <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
-            </div>
+             <div id="my-Dropdown" class="drop-content" >
+                <button onclick="document.execCommand('justifyCenter',false,null);" ><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
+                <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
+                <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
+              </div>
           </div>
+
           <!-- <img src="img/arrow_2.svg"> -->
-          <img src="../../assets/img/Text Warp.svg" style="height:15px;">
+          <button class="file"><span class="tooltiptext">Text wrap</span><img src="../../assets/img/Text Warp.svg" style="height:15px;"></button>
           <img src="../../assets/img/arrow_2.svg">
         </td>
         <td>
-          <img src="../../assets/img/sigma.svg">
+          <button class="file"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg"></button>
         </td>
         <td>
-          <img src="../../assets/img/filter.svg">
+          <button class="file"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg"></button>
         </td>
         <!-- <div id="img"></div> -->
         <td style="width: 100%"></td>
@@ -170,7 +174,7 @@
    <div id="rightclicked">
       <ul id="content" class="w3-bar-block w3-border">
        <!--  <a href="#"> -->
-          <li class="w3-bar-item w3-button" style="border-top: none; margin-top: -1px; ">
+          <li class="w3-bar-item w3-button" onclick="document.execCommand('cut',false,null);"  style="border-top: none; margin-top: -1px; ">
             Cut
           </li>
         <!-- </a> -->
@@ -189,16 +193,16 @@
           <li class="w3-bar-item w3-button" onclick="Addcoloms();">
             Insert Column
           </li>
-          <li class="w3-bar-item w3-button">
+          <li class="w3-bar-item w3-button" onclick="Addcell()">
             Insert Cell
           </li>
           <li class="w3-bar-item w3-button">
             Delete row
           </li>
-          <li class="w3-bar-item w3-button">
+          <li class="w3-bar-item w3-button" onclick="deletecolmn()">
             Delete Column
           </li >
-          <li class="w3-bar-item w3-button">
+          <li class="w3-bar-item w3-button" onclick="deletecell()">
             Delete Cell
           </li>
           <li class="dropdown-submenu">

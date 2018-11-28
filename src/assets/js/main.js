@@ -518,6 +518,20 @@ function fileSelected(input){
 //                document.getElementById("demo1").innerHTML = retVal;
 //              }
 
+function getValue(){
+  var retVal = prompt("Enter the name of the project", "New Project");
+  if (retVal == null) {
+    console.log("printing");
+    document.getElementById("spreadsheethide").style.display = "none";
+    Createmptytable();
+  } else{
+    localStorage.setItem("project",retVal)
+    // document.getElementById("demo").innerHTML = retVal;
+    CreateTable(); 
+    showtable();
+  }
+}
+
 function myprint() {
     window.print();
 }
@@ -646,8 +660,8 @@ function setNextValue(nextValue) {
   document.getElementById("caps").value = nextValue;
 }
 
- // var theInput = document.getElementById("favcolor");
- //      var theColor = theInput.value;
+  var theInput = document.getElementById("favcolor");
+      var theColor = theInput.value;
       
       function setcolor(){
       // Get Selection
@@ -683,12 +697,25 @@ $(document).ready(function(){
 //             }
 //          //-->
 function getValue(){
-               var retVal = prompt("Enter your name : ", "your name here");
-               localStorage.setItem("project",retVal)
-               // document.getElementById("demo").innerHTML = retVal;
-               CreateTable(); 
-               showtable();
-            }
+  var retVal = prompt("Enter the name of the project", "New Project");
+  if (retVal == null) {
+    console.log("printing");
+    document.getElementById("spreadsheethide").style.display = "none";
+    // Createmptytable();
+  } else{
+    localStorage.setItem("project",retVal)
+    // document.getElementById("demo").innerHTML = retVal;
+    CreateTable(); 
+    showtable();
+  }
+}
+
+function Createmptytable(){
+  var row = document.getElementById("myRow");
+  var x = row.insertCell(2);
+  x.innerHTML = " ";
+}
+
         
 function CreateTable() {
          
@@ -778,6 +805,11 @@ var tbl = document.getElementById("table-main");
           var a = localStorage.getItem("cell");
           var s = document.getElementById(a);
           document.getElementById(a).style.backgroundColor = theInput1.value;
+            }
+
+            function addborder(){
+              var a = localStorage.getItem("cell");
+             document.getElementById(a).style.border = "thick solid ";
             }
 
         function changeSize(n) {
@@ -879,4 +911,100 @@ function swaptext3(){
 
   }
   el.innerHTML = "To"
+}
+
+function Addcoloms(){
+  let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+   for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    var x = row.insertCell(res_id);
+    // var button = document.createElement('button');
+    // button.setAttribute('class','file');
+    x.contentEditable = true;
+    
+     // button.setAttribute('value', 'raj')
+     // x.appendChild(button);
+   }
+ 
+}
+
+function deletecolmn(){
+  let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+   for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    var x = row.deleteCell(res_id);
+    // var button = document.createElement('button');
+    // button.setAttribute('class','file');
+    // button.setAttribute('value','read');
+    // x.contentEditable = true;
+    
+     // button.setAttribute('value', 'raj')
+     // x.appendChild(button);
+   }
+ 
+}
+
+function Addcell(){
+  let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[1];
+  var res_id2 = res[2]
+  console.log("res",res[2]);
+  var el = document.getElementById(`r-${res_id}-${res_id2}`);
+  // el.innerHTML = "To"
+   // for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${res_id}`);
+  // var row = document.getElementById("r-8-1");
+    var x = row.insertCell(res_id2);
+    // var button = document.createElement('button');
+    // button.setAttribute('class','file');
+    // button.setAttribute('value','read');
+    x.contentEditable = true;
+    
+     // button.setAttribute('value', 'raj')
+     // x.appendChild(button);
+   
+}
+
+function deletecell(){
+   let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[1];
+  var res_id2 = res[2]
+  console.log("res",res[2]);
+  var el = document.getElementById(`r-${res_id}-${res_id2}`);
+  // el.innerHTML = "To"
+   // for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${res_id}`);
+  // var row = document.getElementById("r-8-1");
+    var x = row.deleteCell(res_id2);
+    // var button = document.createElement('button');
+    // button.setAttribute('class','file');
+    // button.setAttribute('value','read');
+    // x.contentEditable = true;
+    
+     // button.setAttribute('value', 'raj')
+     // x.appendChild(button);
 }

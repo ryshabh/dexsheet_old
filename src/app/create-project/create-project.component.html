@@ -106,13 +106,62 @@
           <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Bold</span></button>&nbsp;
           <button class="file" onclick="document.execCommand('italic',false,null);"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
           <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
-          <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;"><span class="tooltiptext">Color</span></button>&nbsp;
-        </td>
-        <td>
-                    <button class="file"><span class="tooltiptext">Text Fill</span><img src="../../assets/img/text fill.svg" onclick="Fillcolor()"></button>
-                        <input type="color" value=" " id="favcolor1"  style="height: 7px; width: 16px;">
+           <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;" list="reds">
+                    <datalist id="reds">
+              <option>#ff0000</option>
+              <option>#cc0000</option>
+              <option>#990000</option>
+              <option>#660000</option>
+              <option>#330000</option>
+              <option>red</option> <!--ignored as invalid -->
+              <option>#F00</option> <!--ignored as invalid -->
+              <option>#FF7F50 </option>
+              <option>#FFFFE0 </option>
+              <option>#FAFAD2 </option>
+              <option>#FFEFD5 </option>
+              <option>#7CFC00 </option>
+              <option>#00FF7F </option>
+              <option>#87CEFA </option>
+              <option>#EE82EE </option>
+              <option>#9932CC </option>
+              <option>#FFF8DC </option>
+            </datalist></button>&nbsp;
+                </td>
+                <td>
+                    <img src="../../assets/img/text fill.svg" onclick="Fillcolor()">
+                        <input type="color" value=" " id="favcolor1"  style="height: 7px; width: 16px;" list="reds1">
+                        <datalist id="reds1">
+              <option>#ff0000</option>
+              <option>#cc0000</option>
+              <option>#990000</option>
+              <option>#660000</option>
+              <option>#330000</option>
+              <option>red</option> <!--ignored as invalid -->
+              <option>#F00</option> <!--ignored as invalid -->
+              <option>#FF7F50 </option>
+              <option>#FFFFE0 </option>
+              <option>#FAFAD2 </option>
+              <option>#FFEFD5 </option>
+              <option>#7CFC00 </option>
+              <option>#00FF7F </option>
+              <option>#87CEFA </option>
+              <option>#EE82EE </option>
+              <option>#9932CC </option>
+              <option>#FFF8DC  </option>
+            </datalist>
+                    
                     <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
                     <button class="file" onclick="addborder();"><span class="tooltiptext">Table</span><img src="../../assets/img/table.svg"></button>
+
+                    <div class="drop1">
+                      <button class="dr-btn1 file" onclick="myFunction3()"><img src="../../assets/img/arrow_2.svg"> </button>&nbsp;&nbsp;&nbsp;&nbsp; 
+                      <div id="my-Dropdown1" class="drop1-content" >
+                         <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
+                        <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-hori.png"></span></button>
+                        <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-to.png"></span></button>
+                        <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-verti.png"></span></button>
+                      </div>
+                    </div> 
                    <!--  <img src="../../assets/img/arrow_2.svg">   -->
                 </td>
 
@@ -187,7 +236,7 @@
           <li class="w3-bar-item w3-button">
             Paste
           </li>
-          <li class="w3-bar-item w3-button">
+          <li class="w3-bar-item w3-button" onclick="appendRow()">
             Insert row 
           </li>
           <li class="w3-bar-item w3-button" onclick="Addcoloms();">
@@ -209,9 +258,12 @@
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Special<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext();">Task Name</a></li>
-                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();createcell();">From</a></li>
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();">From</a></li>
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext3();">To</a></li>
                       </ul>
+          </li>
+           <li class="w3-bar-item w3-button" onClick="removeSpecial();"> 
+            Remove Special Feature
           </li>
          <!--  <li id="special" style="margin-bottom: 1px;">
             <div class="w3-dropdown-hover">

@@ -33,8 +33,8 @@ $(document).ready(function(){
  });
 });
 
-let defaultRowCount = 50; // No of rows
-let defaultColCount = 100; // No of cols
+let defaultRowCount = 500; // No of rows
+let defaultColCount = 500; // No of cols
 
 initializeData = () => {
   // console.log("initializeData");
@@ -75,38 +75,14 @@ createHeaderRow = () => {
     const th = document.createElement("th");
     th.setAttribute("id", `h-0-${i}`);
     th.setAttribute("class", `${i === 0 ? "" : "column-header"}`);
-    // th.innerHTML = i === 0 ? `` : `Col ${i}`;
-    // if (i !== 0) {
-    //   const span = document.createElement("span");
-    //   span.contentEditable = true;
-    //   span.innerHTML = `${(i+9).toString(36).toUpperCase()}`;
-    //   span.setAttribute("class", "column-header-span");
-    //   // const dropDownDiv = document.createElement("div");
-    //   // dropDownDiv.setAttribute("class", "dropdown");
-    //   // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
-    //   //   <div id="col-dropdown-${i}" class="dropdown-content">
-    //   //     <p class="col-insert-left">Insert 1 column left</p>
-    //   //     <p class="col-insert-right">Insert 1 column right</p>
-    //   //     <p class="col-delete">Delete column</p>
-    //   //   </div>`;
-    //   th.appendChild(span);
-    //   // th.appendChild(dropDownDiv);
-    // }
+    
     if (i !== 0 && i<=26 ) {
       const span = document.createElement("span");
       span.contentEditable = true;
       span.innerHTML = `${(i+9).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
-      // const dropDownDiv = document.createElement("div");
-      // dropDownDiv.setAttribute("class", "dropdown");
-      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
-      //   <div id="col-dropdown-${i}" class="dropdown-content">
-      //     <p class="col-insert-left">Insert 1 column left</p>
-      //     <p class="col-insert-right">Insert 1 column right</p>
-      //     <p class="col-delete">Delete column</p>
-      //   </div>`;
+     
       th.appendChild(span);
-      // th.appendChild(dropDownDiv);
     } else if(i !== 0 && i>26 && i<=52 ) {
       const span = document.createElement("span");
       span.contentEditable = true;
@@ -122,7 +98,7 @@ createHeaderRow = () => {
       //   </div>`;
       th.appendChild(span);
       // th.appendChild(dropDownDiv);
-    } else if(i !== 0 && i>52 && i<=78){
+    }  else if(i !== 0 && i>52 && i<=78){
       const span = document.createElement("span");
       span.contentEditable = true;
       span.innerHTML = `B${(i-43).toString(36).toUpperCase()}`;
@@ -137,21 +113,143 @@ createHeaderRow = () => {
       //   </div>`;
       th.appendChild(span);
       // th.appendChild(dropDownDiv);
-    } else if(i !== 0 && i>78){
+    } else if(i !== 0 && i>78 && i<=104){
       const span = document.createElement("span");
       span.contentEditable = true;
       span.innerHTML = `C${(i-69).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
-      // dropDownDiv.setAttribute("class", "dropdown");
-      // dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
-      //   <div id="col-dropdown-${i}" class="dropdown-content">
-      //     <p class="col-insert-left">Insert 1 column left</p>
-      //     <p class="col-insert-right">Insert 1 column right</p>
-      //     <p class="col-delete">Delete column</p>
-      //   </div>`;
       th.appendChild(span);
       // th.appendChild(dropDownDiv);
+
+    } else if(i !== 0 && i>104 && i<=130){
+
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `D${(i-95).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if (i !== 0 && i>130 && i<=156) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `E${(i-121).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>156 && i<=182){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `F${(i-147).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>182 && i<=208){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `G${(i-173).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>208 && i<=234){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `H${(i-199).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>234 && i<=260){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `I${(i-225).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if (i !== 0 && i>260 && i<=286) {
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `J${(i-251).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>286 && i<=312){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `K${(i-277).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>312 && i<=338){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `L${(i-303).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>338 && i<=364){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `M${(i-329).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>364 && i<=390){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `N${(i-355).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>390 && i<=416){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `O${(i-381).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>416 && i<=442){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `P${(i-407).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>442 && i<=468){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    }else if(i !== 0 && i>468 && i<=494){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `R${(i-459).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
+
+    } else if(i !== 0 && i>494){
+      const span = document.createElement("span");
+      span.contentEditable = true;
+      span.innerHTML = `S${(i-485).toString(36).toUpperCase()}`;
+      span.setAttribute("class", "column-header-span");
+      const dropDownDiv = document.createElement("div");
+      th.appendChild(span);
 
     }
     tr.appendChild(th);
@@ -850,8 +948,9 @@ function swaptext2(){
     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
+      var x = document.getElementById(`r-${j}-${res_id}`)
   // var row = document.getElementById("r-8-1");
-    var x = row.insertCell(res_id);
+    // var x = row.insertCell(res_id);
     var button = document.createElement('input');
     button.setAttribute('placeholder',' ');
     button.setAttribute('class','form-control');
@@ -891,7 +990,8 @@ function swaptext3(){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
-    var x = row.insertCell(res_id);
+  var x = document.getElementById(`r-${j}-${res_id}`)
+    // var x = row.insertCell(res_id);
     var button = document.createElement('input');
        button.setAttribute('placeholder',' ');
     button.setAttribute('class','form-control');
@@ -911,6 +1011,118 @@ function swaptext3(){
 
   }
   el.innerHTML = "To"
+}
+
+function removeSpecial(){
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  // var el = document.getElementById(`h-0-${res_id}`);
+  // el.innerText = `${(res_id+9).toString(36).toUpperCase()}`;
+    for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+      console.log("res sds",`r-${j}-${res_id}`);
+      var x = document.getElementById(`r-${j}-${res_id}`)
+      // var x = document.getElementById(`r-${j}-${res_id}`)
+  // var row = document.getElementById("r-8-1");
+    // var x = row.insertCell(res_id);
+    var element = document.getElementById('date');
+    // button.setAttribute('id', 'date');
+     // button.setAttribute('data-placeholder',' ');
+     // button.setAttribute('aria-required','true')
+     // button.setAttribute('value', 'raj')
+     if(element){
+      x.removeChild(element);
+     }
+     
+  }
+
+   var el = document.getElementById(`h-0-${res_id}`);
+   var el_id = parseInt(res_id);
+
+    if (el_id !== 0 && el_id<=26 ) {
+      
+      el.innerText = `${(el_id+9).toString(36).toUpperCase()}`;
+    } else if(el_id !== 0 && el_id>26 && el_id<=52 ) {
+      
+      el.innerHTML = `A${(el_id-17).toString(36).toUpperCase()}`;
+    
+    } else if(el_id !== 0 && el_id>52 && el_id<=78){
+    
+      el.innerHTML = `B${(el_id-43).toString(36).toUpperCase()}`;
+    
+    } else if(el_id !== 0 && el_id>78 && el_id<=104){
+      
+      el.innerHTML = `C${(el_id-69).toString(36).toUpperCase()}`;
+      
+
+    } else if(el_id !== 0 && el_id>104 && el_id<=130){
+
+      el.innerHTML = `D${(el_id-95).toString(36).toUpperCase()}`;
+    
+    }else if (el_id !== 0 && el_id>130 && el_id<=156) {
+      
+      el.innerHTML = `E${(el_id-121).toString(36).toUpperCase()}`;
+    
+    }else if(el_id !== 0 && el_id>156 && el_id<=182){
+      
+      el.innerHTML = `F${(el_id-147).toString(36).toUpperCase()}`;
+    
+    }else if(el_id !== 0 && el_id>182 && el_id<=208){
+      
+      el.innerHTML = `G${(el_id-173).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>208 && el_id<=234){
+      
+      el.innerHTML = `H${(el_id-199).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>234 && el_id<=260){
+
+      el.innerHTML = `I${(el_id-225).toString(36).toUpperCase()}`;
+
+    }else if (el_id !== 0 && el_id>260 && el_id<=286) {
+    
+      el.innerHTML = `J${(el_id-251).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>286 && el_id<=312){
+     
+      el.innerHTML = `K${(el_id-277).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>312 && el_id<=338){
+    
+      el.innerHTML = `L${(el_id-303).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>338 && el_id<=364){
+    
+      el.innerHTML = `M${(el_id-329).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>364 && el_id<=390){
+      
+      el.innerHTML = `N${(el_id-355).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>390 && el_id<=416){
+
+      el.innerHTML = `O${(el_id-381).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>416 && el_id<=442){
+
+      el.innerHTML = `P${(el_id-407).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>442 && el_id<=468){
+    
+      el.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>468 && el_id<=494){
+      
+      el.innerHTML = `R${(el_id-459).toString(36).toUpperCase()}`;
+
+    } else if(el_id !== 0 && el_id>494){
+      
+      el.innerHTML = `S${(el_id-485).toString(36).toUpperCase()}`;
+    }
 }
 
 function Addcoloms(){
@@ -1007,4 +1219,37 @@ function deletecell(){
     
      // button.setAttribute('value', 'raj')
      // x.appendChild(button);
+}
+
+function appendRow() {
+    var tbl = document.getElementById('table-main'), // table reference
+        row = tbl.insertRow(tbl.rows.length),      // append table row
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+        createCell(row.insertCell(i), ' ');
+        row.contentEditable =true;
+    }
+}
+// create DIV element and append to the table cell
+function createCell(cell, text, style) {
+    var div = document.createElement('div'), // create DIV element
+        txt = document.createTextNode(text); // create text node
+    div.appendChild(txt);                    // append text node to the DIV
+    div.setAttribute('class', style);        // set DIV class attribute
+    div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+    cell.appendChild(div);                   // append DIV to the table cell
+}
+
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function myFunction2() {
+    document.getElementById("my-Dropdown").classList.toggle("show");
+}
+
+function myFunction3() {
+    document.getElementById("my-Dropdown1").classList.toggle("show");
 }

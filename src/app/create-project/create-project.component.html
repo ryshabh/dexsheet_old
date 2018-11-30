@@ -80,7 +80,7 @@
                 <td class="space">
                     <button class="file" onclick="document.execCommand('undo',false,null);"><span class="tooltiptext">Undo</span><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
                     <button class="file" onclick="document.execCommand('redo',false,null);"><span class="tooltiptext">Redo</span><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
-                    <button class="file"><span class="tooltiptext">Paint</span><img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px;"></button>
+                    <button class="file" onclick="formatPrinter()"><span class="tooltiptext">Paint</span><img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px;"></button>
                 </td>
                 <td class="space">
                     <button class="file" onclick="document.execCommand('justifyRight',false,null);"><span class="tooltiptext">Left Indent</span><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
@@ -156,10 +156,10 @@
                     <div class="drop1">
                       <button class="dr-btn1 file" onclick="myFunction3()"><img src="../../assets/img/arrow_2.svg"> </button>&nbsp;&nbsp;&nbsp;&nbsp; 
                       <div id="my-Dropdown1" class="drop1-content" >
-                         <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
-                        <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-hori.png"></span></button>
-                        <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-to.png"></span></button>
-                        <button><span  style="color: grey height:15px;"><img src="../../assets/img/border-verti.png"></span></button>
+                         <button onclick="paintMatrix2();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
+                        <button onclick="paintMatrix4();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-hori.png"></span></button>
+                        <button onclick="paintMatrix();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-to.png"></span></button>
+                        <button onclick="paintMatrix3();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-verti.png"></span></button>
                       </div>
                     </div> 
                    <!--  <img src="../../assets/img/arrow_2.svg">   -->
@@ -177,14 +177,20 @@
           </div>
 
           <!-- <img src="img/arrow_2.svg"> -->
-          <button class="file"><span class="tooltiptext">Text wrap</span><img src="../../assets/img/Text Warp.svg" style="height:15px;"></button>
-          <img src="../../assets/img/arrow_2.svg">
+          <button class="file" onclick="textwrap();"><span class="tooltiptext">Text wrap</span><img src="../../assets/img/Text Warp.svg" style="height:15px;"></button>
+          <div class="drop2">
+                      <button class="dr-btn2 file" onclick="myFunction4()"><img src="../../assets/img/arrow_2.svg"> </button>&nbsp;&nbsp;&nbsp;&nbsp; 
+                      <div id="my-Dropdown2" class="drop2-content" >
+                         <button onclick="overflow();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
+                      </div>
+                    </div>
+          
         </td>
         <td>
-          <button class="file"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg"></button>
+          <button class="file" onclick="add()"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg"></button>
         </td>
         <td>
-          <button class="file"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg"></button>
+          <button class="file" id="filter"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg"></button>
         </td>
         <!-- <div id="img"></div> -->
         <td style="width: 100%"></td>
@@ -195,6 +201,7 @@
        
   <div style="height:815px;width:100%;overflow:auto;">
     <section class="spreadsheet" id="spreadsheethide">
+      <input class="form-control" id="myInput" type="text" placeholder="Search..">
         <table class="spreadsheet__table"
             id="table-main">
             <thead class="spreadsheet__table--headers"

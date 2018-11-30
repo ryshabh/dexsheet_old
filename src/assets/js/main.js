@@ -33,8 +33,16 @@ $(document).ready(function(){
  });
 });
 
-let defaultRowCount = 500; // No of rows
-let defaultColCount = 500; // No of cols
+let defaultRowCount = 40; // No of rows
+let defaultColCount = 40; // No of cols
+let st_row=0;
+let end_row=0;
+let st_col=0;
+let end_col=0;
+let color = "";
+let cell_clr = false;
+let cell_sum =false;
+
 
 initializeData = () => {
   // console.log("initializeData");
@@ -873,18 +881,23 @@ var tbl = document.getElementById("table-main");
 
             for (var i = 0; i < tbl.rows.length; i++) {
 
-                for (var j = 0; j < tbl.rows[i].cells.length; j++)
+                for (var j = 0; j < tbl.rows[i].cells.length; j++){
 
                     tbl.rows[i].cells[j].onmousedown = function (event) { 
                       if (event.which == 3){
 
                       getval(this); 
-                      }
-                      else if(event.which == 1) {
-                          getval(this); 
-
+                      } else if(event.which == 1) {
+                          getCellVal(this); 
                       } 
                     };
+
+                    tbl.rows[i].cells[j].onfocusout = function (event) { 
+                      
+                          addsum(this); 
+                      
+                    };
+                }
 
             }
 
@@ -893,8 +906,59 @@ var tbl = document.getElementById("table-main");
         function getval(cel) {
             console.log("test",cel.id)
             localStorage.setItem("cell",cel.id);
+            if(cell_clr ==true){
+
+            }
             // document.getElementById("demo").innerHTML = cel.id;
         }
+
+        function getCellVal(cel) {
+            console.log("getCellVal()",cel.id)
+            localStorage.setItem("cell",cel.id);
+            if(cell_clr==true){
+              console.log("getCellVal() cell_clr",color)
+              cell_clr = false;
+              document.getElementById(cel.id).style.backgroundColor=color;
+
+            }
+            
+           
+            // document.getElementById("demo").innerHTML = cel.id;
+        }
+
+        function addsum(){
+          var sum = 0;
+          console.log("addsum")
+          if(cell_sum==true){
+              var sum_id = localStorage.getItem("sum_cell");
+              var sum_value = document.getElementById(sum_id).innerText;
+              console.log("summ",sum_value)
+              var res = sum_value.split("(");
+              console.log("value",res[1])
+              var a = res[1];
+              a= a.split(")");
+              console.log("a",a)
+              b= a[0].split(",");
+              console.log("spli",b)
+
+              for (i=0;i<b.length;i++){
+                console.log("bb",b[i])
+                if(b[i] && b[i]!=' ' && b[i]!=null){
+                  console.log("bbb",b[i])
+                  b[i]= parseInt(b[i])
+                  sum += b[i];
+                }
+                
+              }
+
+              console.log("summ",sum)
+              document.getElementById(sum_id).innerText= sum;
+              cell_sum=false;
+              // res = res[]
+              // console.log("valye",res)
+            }
+        }
+
 
 
         function Fillcolor() {
@@ -1021,7 +1085,10 @@ function removeSpecial(){
   console.log("res",res[2]);
   // var el = document.getElementById(`h-0-${res_id}`);
   // el.innerText = `${(res_id+9).toString(36).toUpperCase()}`;
-    for (var j = 1; j  <=defaultRowCount; j++){
+  const data = this.getData();
+  if (data === undefined || data === null) {
+      console.log("removeSpecial() if")
+      for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
       console.log("res sds",`r-${j}-${res_id}`);
@@ -1039,6 +1106,26 @@ function removeSpecial(){
      }
      
   }
+
+  }
+  else{
+    console.log("removeSpecial() else")
+    for (let i = 1; i < data.length; i++) {
+      var row = document.getElementById(`r-${j}`);
+    for (let j = 1; j < data[i].length; j++) {
+      var x = document.getElementById(`r-${j}-${res_id}`)
+      var element = document.getElementById('date');
+    // button.setAttribute('id', 'date');
+     // button.setAttribute('data-placeholder',' ');
+     // button.setAttribute('aria-required','true')
+     // button.setAttribute('value', 'raj')
+     if(element){
+      x.removeChild(element);
+     }
+    }
+  }
+  }
+  
 
    var el = document.getElementById(`h-0-${res_id}`);
    var el_id = parseInt(res_id);
@@ -1141,10 +1228,95 @@ function Addcoloms(){
     // var button = document.createElement('button');
     // button.setAttribute('class','file');
     x.contentEditable = true;
+  }
+
+    const data = this.getData();
+    console.log("data ",data)
+   var el = document.getElementById(`h-0-${res_id}`);
+    var el_id = parseInt(res_id);
+
+    if (el_id !== 0 && el_id<=26 ) {
+      
+      el.innerText = `${(el_id+9).toString(36).toUpperCase()}`;
+    } else if(el_id !== 0 && el_id>26 && el_id<=52 ) {
+      
+      el.innerHTML = `A${(el_id-17).toString(36).toUpperCase()}`;
     
-     // button.setAttribute('value', 'raj')
-     // x.appendChild(button);
-   }
+    } else if(el_id !== 0 && el_id>52 && el_id<=78){
+    
+      el.innerHTML = `B${(el_id-43).toString(36).toUpperCase()}`;
+    
+    } else if(el_id !== 0 && el_id>78 && el_id<=104){
+      
+      el.innerHTML = `C${(el_id-69).toString(36).toUpperCase()}`;
+      
+
+    } else if(el_id !== 0 && el_id>104 && el_id<=130){
+
+      el.innerHTML = `D${(el_id-95).toString(36).toUpperCase()}`;
+    
+    }else if (el_id !== 0 && el_id>130 && el_id<=156) {
+      
+      el.innerHTML = `E${(el_id-121).toString(36).toUpperCase()}`;
+    
+    }else if(el_id !== 0 && el_id>156 && el_id<=182){
+      
+      el.innerHTML = `F${(el_id-147).toString(36).toUpperCase()}`;
+    
+    }else if(el_id !== 0 && el_id>182 && el_id<=208){
+      
+      el.innerHTML = `G${(el_id-173).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>208 && el_id<=234){
+      
+      el.innerHTML = `H${(el_id-199).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>234 && el_id<=260){
+
+      el.innerHTML = `I${(el_id-225).toString(36).toUpperCase()}`;
+
+    }else if (el_id !== 0 && el_id>260 && el_id<=286) {
+    
+      el.innerHTML = `J${(el_id-251).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>286 && el_id<=312){
+     
+      el.innerHTML = `K${(el_id-277).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>312 && el_id<=338){
+    
+      el.innerHTML = `L${(el_id-303).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>338 && el_id<=364){
+    
+      el.innerHTML = `M${(el_id-329).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>364 && el_id<=390){
+      
+      el.innerHTML = `N${(el_id-355).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>390 && el_id<=416){
+
+      el.innerHTML = `O${(el_id-381).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>416 && el_id<=442){
+
+      el.innerHTML = `P${(el_id-407).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>442 && el_id<=468){
+    
+      el.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
+
+    }else if(el_id !== 0 && el_id>468 && el_id<=494){
+      
+      el.innerHTML = `R${(el_id-459).toString(36).toUpperCase()}`;
+
+    } else if(el_id !== 0 && el_id>494){
+      
+      el.innerHTML = `S${(el_id-485).toString(36).toUpperCase()}`;
+    }
+
+
  
 }
 
@@ -1252,4 +1424,216 @@ function myFunction2() {
 
 function myFunction3() {
     document.getElementById("my-Dropdown1").classList.toggle("show");
+}
+function myFunction4() {
+    document.getElementById("my-Dropdown2").classList.toggle("show");
+}
+
+
+function paintMatrix() {
+for (var i = st_row; i <= end_row; i++) {
+      var result = "";
+      for (var j = st_col; j <= end_col; j++) {
+        console.log("r-",j+1,"-",i);
+        var res_id = j+1;
+        var res_id2 = i;
+        var border = document.getElementById(`r-${res_id}-${res_id2}`);
+        // document.getElementById("myDiv").style.borderTop ="thick solid #000000";
+
+        border.style.borderTop ="thick solid #000000";
+        // document.getElementById().style.borderTop = "";
+      }
+      
+    }
+
+
+}
+
+function paintMatrix2() {
+for (var i = st_row; i <= end_row; i++) {
+      var result = "";
+      for (var j = st_col; j <= end_col; j++) {
+        console.log("r-",j+1,"-",i);
+        var res_id = j+1;
+        var res_id2 = i;
+        var border = document.getElementById(`r-${res_id}-${res_id2}`);
+        border.style.borderBottom ="thick solid #000000";
+
+    
+      }
+      
+    }
+
+
+}
+
+function paintMatrix3() {
+for (var i = st_row; i <= end_row; i++) {
+      var result = "";
+      for (var j = st_col; j <= end_col; j++) {
+        console.log("r-",j+1,"-",i);
+        var res_id = j+1;
+        var res_id2 = i;
+        var border = document.getElementById(`r-${res_id}-${res_id2}`);
+        border.style.borderRight ="thick solid #000000";
+
+    
+      }
+      
+    }
+}
+
+function paintMatrix4() {
+for (var i = st_row; i <= end_row; i++) {
+      var result = "";
+      for (var j = st_col; j <= end_col; j++) {
+        console.log("r-",j+1,"-",i);
+        var res_id = j+1;
+        var res_id2 = i;
+        var border = document.getElementById(`r-${res_id}-${res_id2}`);
+        border.style.borderLeft ="thick solid #000000";
+
+    
+      }
+      
+    }
+
+
+}
+
+function sortNumbers(a, b) {
+  return a - b ;
+}
+
+let isDragging = false;
+let selection = {};
+
+$("#table-main").on("mousedown", "td", function() {
+  // Start dragging
+  isDragging = true;
+
+  const $this = $(this);
+  selection["x"] = [$this.index(), $this.index()];
+  selection["y"] = [$this.parent("tr").index(), $this.parent("tr").index()];
+  console.log("chekc mousedown",$this.index(), $this.parent("tr").index());
+  st_row=$this.index();
+  st_col=  $this.parent("tr").index();
+  markSelection(selection);
+}).on("mouseover", "td", function() {
+  if (isDragging) {
+    const $this = $(this);
+    selection["x"][1] = $this.index();
+    selection["y"][1] = $this.parent("tr").index();
+    console.log("check index",$this.index(),$this.parent("tr").index());
+    markSelection(selection);
+    end_row=$this.index();
+    end_col=  $this.parent("tr").index();
+  }
+}).on("mouseup", "td", function() {
+  // End dragging
+  isDragging = false;
+
+  const $this = $(this);
+  selection["x"][1] = $this.index();
+  selection["y"][1] = $this.parent("tr").index();
+  markSelection(selection);
+}).on("mouseleave", function() {
+  // End dragging
+  isDragging = false;
+});
+
+function markSelection(selection) {
+  // make copies before sorting
+  const coords = {
+    x: selection["x"].slice().sort(sortNumbers),
+    y: selection["y"].slice().sort(sortNumbers)
+  }
+  // Only get relevant rows within range
+  const rows = $("#table-main>tbody tr").slice(coords["y"][0], coords["y"][1]+1 );
+  $("#table-main>tbody tr td").removeClass("selected");
+  let cells = $();
+  // In each relevant row, get the relevant cells
+  rows.each(function(i, el) {
+    cells = cells.add($(el).children("td").slice(coords["x"][0]-1, coords["x"][1]));
+
+  });
+  cells.addClass("selected");
+  // console.log("check selected",(coords["x"][0]-1));
+  // console.log("check selected",(coords["y"][1]+1));
+}
+
+document.getElementById("myInput").style.display = "none";
+
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#table-main tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
+ $(document).ready(function(){
+    $("#filter").click(function(){
+      $("#myInput").toggle();
+    });
+ });
+
+function textwrap(){
+  var a = localStorage.getItem("cell");
+  console.log("checktextwrap",textwrap);
+  document.getElementById(a).style.wordWrap ="break-all";
+  document.getElementById(a).style.maxWidth = "0";
+}
+
+function overflow(){
+  var a = localStorage.getItem("cell");
+  console.log("checktextwrap",textwrap);
+  document.getElementById(a).style.wordWrap ="break-all";
+  document.getElementById(a).style.whiteSpace = "nowrap";
+  document.getElementById(a).style.overflow = "hidden";
+  document.getElementById(a).style.textoverflow = "clip";
+  document.getElementById(a).style.maxWidth = "0";
+}
+
+function formatPrinter(){
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  color = document.getElementById(a).style.backgroundColor;
+  console.log("colorrr ",color);
+  cell_clr = true;
+  console.log("color ",cell_clr)
+}
+
+function add(){
+  var a = localStorage.getItem("cell");
+  localStorage.setItem('sum_cell',a);
+  console.log("abc",a);
+  console.log("abc",a);
+  // var res = a.split("-");
+  // var res_id = res[1];
+  // var res_id2 = res[2]
+  // var x = document.getElementById(a);
+  // var button = document.createElement('input');
+  // button.setAttribute('class','form-control');
+  // button.setAttribute('type','text');
+  // button.setAttribute('value', '=sum(,)');
+  document.getElementById(a).innerText= '=sum( , )';
+  // document.getElementById(a).addEventListener("focusout", sum());
+  // button.setAttribute('id', 'sum');
+  // x.appendChild(button);
+  cell_sum=true;
+}
+
+function sum(){
+  if(cell_sum==true){
+    console.log("summ");
+    var elem = localStorage.getItem('sum_cell');
+    var val = document.getElementById('elem').innerText;
+    val=val.toString();
+    console.log("sumnnmm",val)
+    // var res = val.split("=");
+    console.log("valye",val)
+
+  }  
 }

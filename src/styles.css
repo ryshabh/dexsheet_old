@@ -726,3 +726,10 @@ overflow-x: scroll;
     background-color: lightblue;
     border: 1px solid black;
   }
+
+.datepicker{
+  width: 100px;
+  border: 0;
+}
+
+

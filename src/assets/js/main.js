@@ -33,8 +33,8 @@ $(document).ready(function(){
  });
 });
 
-let defaultRowCount = 40; // No of rows
-let defaultColCount = 40; // No of cols
+let defaultRowCount = 20; // No of rows
+let defaultColCount = 20; // No of cols
 let st_row=0;
 let end_row=0;
 let st_col=0;
@@ -86,14 +86,14 @@ createHeaderRow = () => {
     
     if (i !== 0 && i<=26 ) {
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `${(i+9).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
      
       th.appendChild(span);
     } else if(i !== 0 && i>26 && i<=52 ) {
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `A${(i-17).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -108,7 +108,7 @@ createHeaderRow = () => {
       // th.appendChild(dropDownDiv);
     }  else if(i !== 0 && i>52 && i<=78){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `B${(i-43).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -123,7 +123,7 @@ createHeaderRow = () => {
       // th.appendChild(dropDownDiv);
     } else if(i !== 0 && i>78 && i<=104){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `C${(i-69).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -133,7 +133,7 @@ createHeaderRow = () => {
     } else if(i !== 0 && i>104 && i<=130){
 
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `D${(i-95).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -141,7 +141,7 @@ createHeaderRow = () => {
 
     }else if (i !== 0 && i>130 && i<=156) {
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `E${(i-121).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -149,7 +149,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>156 && i<=182){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `F${(i-147).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -157,7 +157,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>182 && i<=208){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `G${(i-173).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -165,7 +165,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>208 && i<=234){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `H${(i-199).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -173,7 +173,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>234 && i<=260){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `I${(i-225).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -181,7 +181,7 @@ createHeaderRow = () => {
 
     }else if (i !== 0 && i>260 && i<=286) {
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `J${(i-251).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -189,7 +189,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>286 && i<=312){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `K${(i-277).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -197,7 +197,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>312 && i<=338){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `L${(i-303).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -205,7 +205,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>338 && i<=364){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `M${(i-329).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -213,7 +213,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>364 && i<=390){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `N${(i-355).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -221,7 +221,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>390 && i<=416){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `O${(i-381).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -229,7 +229,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>416 && i<=442){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `P${(i-407).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -237,7 +237,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>442 && i<=468){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -245,7 +245,7 @@ createHeaderRow = () => {
 
     }else if(i !== 0 && i>468 && i<=494){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `R${(i-459).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -253,7 +253,7 @@ createHeaderRow = () => {
 
     } else if(i !== 0 && i>494){
       const span = document.createElement("span");
-      span.contentEditable = true;
+      span.contentEditable = false;
       span.innerHTML = `S${(i-485).toString(36).toUpperCase()}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
@@ -340,7 +340,9 @@ populateTable = () => {
   for (let i = 1; i < data.length; i++) {
     for (let j = 1; j < data[i].length; j++) {
       const cell = document.getElementById(`r-${i}-${j}`);
-      cell.innerHTML = data[i][j];
+      if(cell){
+        cell.innerHTML = data[i][j];
+      }
     }
   }
 };
@@ -903,6 +905,36 @@ var tbl = document.getElementById("table-main");
 
         }
 
+function addEvents(){
+  var tbl = document.getElementById("table-main");
+
+        if (tbl != null) {
+
+            for (var i = 0; i < tbl.rows.length; i++) {
+                console.log("cell lenght",tbl.rows[i].cells.length) 
+                for (var j = 0; j < tbl.rows[i].cells.length; j++){
+
+                    tbl.rows[i].cells[j].onmousedown = function (event) {
+
+                      if (event.which == 3){
+
+                      getval(this); 
+                      } else if(event.which == 1) {
+                          getCellVal(this); 
+                      } 
+                    };
+
+                    tbl.rows[i].cells[j].onfocusout = function (event) { 
+                      
+                          addsum(this); 
+                      
+                    };
+                }
+
+            }
+
+        }
+}
         function getval(cel) {
             console.log("test",cel.id)
             localStorage.setItem("cell",cel.id);
@@ -1016,17 +1048,23 @@ function swaptext2(){
   // var row = document.getElementById("r-8-1");
     // var x = row.insertCell(res_id);
     var button = document.createElement('input');
-    button.setAttribute('placeholder',' ');
-    button.setAttribute('class','form-control');
     button.setAttribute('type','text');
-    button.setAttribute('onfocus',"(this.type='date')");
-    button.setAttribute('onblur',"(this.type='text')")
+    // button.setAttribute('onfocus',"(this.type='datepicker')");
+    // button.setAttribute('onblur',"(this.type='text')");
+    button.setAttribute('class', 'datepicker ');
     button.setAttribute('id', 'date');
+    
      // button.setAttribute('data-placeholder',' ');
      // button.setAttribute('aria-required','true')
      // button.setAttribute('value', 'raj')
+
+     // button.setAttribute('value', 'raj')
      x.appendChild(button);
-}
+   }
+
+   $(function() {
+     $(".datepicker").datepicker();
+   });
   
   // }
   for (let m = 0; m< defaultColCount.length; m++){
@@ -1058,14 +1096,23 @@ function swaptext3(){
     // var x = row.insertCell(res_id);
     var button = document.createElement('input');
        button.setAttribute('placeholder',' ');
-    button.setAttribute('class','form-control');
     button.setAttribute('type','text');
-    button.setAttribute('onfocus',"(this.type='date')");
-    button.setAttribute('onblur',"(this.type='text')")
-     button.setAttribute('id', 'date');
+    // button.setAttribute('onfocus',"(this.type='datepicker')");
+    // button.setAttribute('onblur',"(this.type='text')");
+    button.setAttribute('class', 'datepicker ');
+    button.setAttribute('id', 'date');
+    
+     // button.setAttribute('data-placeholder',' ');
+     // button.setAttribute('aria-required','true')
+     // button.setAttribute('value', 'raj')
+
      // button.setAttribute('value', 'raj')
      x.appendChild(button);
    }
+
+   $(function() {
+     $(".datepicker").datepicker();
+   });
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
@@ -1200,7 +1247,7 @@ function removeSpecial(){
 
     }else if(el_id !== 0 && el_id>442 && el_id<=468){
     
-      el.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
+      el.innerHTML = `Q${(el_id-433).toString(36).toUpperCase()}`;
 
     }else if(el_id !== 0 && el_id>468 && el_id<=494){
       
@@ -1212,6 +1259,112 @@ function removeSpecial(){
     }
 }
 
+// function Addcoloms(){
+//   let count = 0;
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var res_id = res[2];
+//   console.log("res",res[2]);
+//   var el = document.getElementById(`h-0-${res_id}`);
+//    for (var j = 1; j  <=defaultRowCount; j++){
+//       console.log("testloop",i);
+//       var row = document.getElementById(`r-${j}`);
+//   // var row = document.getElementById("r-8-1");
+//     var x = row.insertCell(res_id);
+//     // var button = document.createElement('button');
+//     // button.setAttribute('class','file');
+//     x.contentEditable = true;
+//   }
+
+//     const data = this.getData();
+//     console.log("data ",data)
+//    var el = document.getElementById(`h-0-${res_id}`);
+//     var el_id = parseInt(res_id);
+
+//     if (el_id !== 0 && el_id<=26 ) {
+      
+//       el.innerText = `${(el_id+9).toString(36).toUpperCase()}`;
+//     } else if(el_id !== 0 && el_id>26 && el_id<=52 ) {
+      
+//       el.innerHTML = `A${(el_id-17).toString(36).toUpperCase()}`;
+    
+//     } else if(el_id !== 0 && el_id>52 && el_id<=78){
+    
+//       el.innerHTML = `B${(el_id-43).toString(36).toUpperCase()}`;
+    
+//     } else if(el_id !== 0 && el_id>78 && el_id<=104){
+      
+//       el.innerHTML = `C${(el_id-69).toString(36).toUpperCase()}`;
+      
+
+//     } else if(el_id !== 0 && el_id>104 && el_id<=130){
+
+//       el.innerHTML = `D${(el_id-95).toString(36).toUpperCase()}`;
+    
+//     }else if (el_id !== 0 && el_id>130 && el_id<=156) {
+      
+//       el.innerHTML = `E${(el_id-121).toString(36).toUpperCase()}`;
+    
+//     }else if(el_id !== 0 && el_id>156 && el_id<=182){
+      
+//       el.innerHTML = `F${(el_id-147).toString(36).toUpperCase()}`;
+    
+//     }else if(el_id !== 0 && el_id>182 && el_id<=208){
+      
+//       el.innerHTML = `G${(el_id-173).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>208 && el_id<=234){
+      
+//       el.innerHTML = `H${(el_id-199).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>234 && el_id<=260){
+
+//       el.innerHTML = `I${(el_id-225).toString(36).toUpperCase()}`;
+
+//     }else if (el_id !== 0 && el_id>260 && el_id<=286) {
+    
+//       el.innerHTML = `J${(el_id-251).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>286 && el_id<=312){
+     
+//       el.innerHTML = `K${(el_id-277).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>312 && el_id<=338){
+    
+//       el.innerHTML = `L${(el_id-303).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>338 && el_id<=364){
+    
+//       el.innerHTML = `M${(el_id-329).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>364 && el_id<=390){
+      
+//       el.innerHTML = `N${(el_id-355).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>390 && el_id<=416){
+
+//       el.innerHTML = `O${(el_id-381).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>416 && el_id<=442){
+
+//       el.innerHTML = `P${(el_id-407).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>442 && el_id<=468){
+    
+//       el.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
+
+//     }else if(el_id !== 0 && el_id>468 && el_id<=494){
+      
+//       el.innerHTML = `R${(el_id-459).toString(36).toUpperCase()}`;
+
+//     } else if(el_id !== 0 && el_id>494){
+      
+//       el.innerHTML = `S${(el_id-485).toString(36).toUpperCase()}`;
+//     }
+
+// }
+
 function Addcoloms(){
   let count = 0;
   var a = localStorage.getItem("cell");
@@ -1220,104 +1373,166 @@ function Addcoloms(){
   var res_id = res[2];
   console.log("res",res[2]);
   var el = document.getElementById(`h-0-${res_id}`);
-   for (var j = 1; j  <=defaultRowCount; j++){
-      console.log("testloop",i);
+  let data = this.getData();
+  for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",j);
+      
       var row = document.getElementById(`r-${j}`);
-  // var row = document.getElementById("r-8-1");
-    var x = row.insertCell(res_id);
-    // var button = document.createElement('button');
-    // button.setAttribute('class','file');
-    x.contentEditable = true;
-  }
-
-    const data = this.getData();
-    console.log("data ",data)
-   var el = document.getElementById(`h-0-${res_id}`);
-    var el_id = parseInt(res_id);
-
-    if (el_id !== 0 && el_id<=26 ) {
+      var x = row.insertCell(res_id);
+      x.contentEditable= true;
+      x.setAttribute("id",`r-${j}-${res_id}`)
+      addEvents();
+      // data[j].splice(res_id, 0, "");
+      // saveData(data);
       
-      el.innerText = `${(el_id+9).toString(36).toUpperCase()}`;
-    } else if(el_id !== 0 && el_id>26 && el_id<=52 ) {
-      
-      el.innerHTML = `A${(el_id-17).toString(36).toUpperCase()}`;
-    
-    } else if(el_id !== 0 && el_id>52 && el_id<=78){
-    
-      el.innerHTML = `B${(el_id-43).toString(36).toUpperCase()}`;
-    
-    } else if(el_id !== 0 && el_id>78 && el_id<=104){
-      
-      el.innerHTML = `C${(el_id-69).toString(36).toUpperCase()}`;
-      
-
-    } else if(el_id !== 0 && el_id>104 && el_id<=130){
-
-      el.innerHTML = `D${(el_id-95).toString(36).toUpperCase()}`;
-    
-    }else if (el_id !== 0 && el_id>130 && el_id<=156) {
-      
-      el.innerHTML = `E${(el_id-121).toString(36).toUpperCase()}`;
-    
-    }else if(el_id !== 0 && el_id>156 && el_id<=182){
-      
-      el.innerHTML = `F${(el_id-147).toString(36).toUpperCase()}`;
-    
-    }else if(el_id !== 0 && el_id>182 && el_id<=208){
-      
-      el.innerHTML = `G${(el_id-173).toString(36).toUpperCase()}`;
-
-    }else if(el_id !== 0 && el_id>208 && el_id<=234){
-      
-      el.innerHTML = `H${(el_id-199).toString(36).toUpperCase()}`;
-
-    }else if(el_id !== 0 && el_id>234 && el_id<=260){
-
-      el.innerHTML = `I${(el_id-225).toString(36).toUpperCase()}`;
-
-    }else if (el_id !== 0 && el_id>260 && el_id<=286) {
-    
-      el.innerHTML = `J${(el_id-251).toString(36).toUpperCase()}`;
-
-    }else if(el_id !== 0 && el_id>286 && el_id<=312){
+    // var row = document.getElementById("r-8-1");
      
-      el.innerHTML = `K${(el_id-277).toString(36).toUpperCase()}`;
-
-    }else if(el_id !== 0 && el_id>312 && el_id<=338){
-    
-      el.innerHTML = `L${(el_id-303).toString(36).toUpperCase()}`;
-
-    }else if(el_id !== 0 && el_id>338 && el_id<=364){
-    
-      el.innerHTML = `M${(el_id-329).toString(36).toUpperCase()}`;
-
-    }else if(el_id !== 0 && el_id>364 && el_id<=390){
+      // var x = row.insertCell(res_id);
+      // const data = this.getData();
+      // console.log("data ",data)
+      // var button = document.createElement('button');
+      // button.setAttribute('class','file');
+      // x.contentEditable = true;
       
-      el.innerHTML = `N${(el_id-355).toString(36).toUpperCase()}`;
+       // button.setAttribute('value', 'raj')
+       // x.appendChild(button);
+   }
+   defaultColCount++;
 
-    }else if(el_id !== 0 && el_id>390 && el_id<=416){
 
-      el.innerHTML = `O${(el_id-381).toString(36).toUpperCase()}`;
+    var el_id = '';
+    var sp_res = '';
+    var sp_res_id ='';
+    var el_value = '';
+    res_id = parseInt(res_id)
+    var next_col = res_id+1;
+   // console.log("next_col ",next_col)
+   for (var k = next_col; k<=defaultColCount; k++){
+    console.log("defaultColCount ",defaultColCount);
+    for(var l = 0; l<defaultRowCount; l++){
+      if(l ==0){
+        if(k==defaultColCount){
+          var row = document.getElementById('h-0');
+          var x = row.insertCell(k);
+          x.setAttribute("id", `h-0-${k}`);
+          // let data = this.getData();
+          // data[0].splice(defaultColCount, 0, "");
+          // saveData(data);
+          // x.innerText ="A"
+          if (k !== 0 && k<=26 ) {
+            x.innerText = `${(k+9).toString(36).toUpperCase()}`;
+          } else if(k !== 0 && k>26 && k<=52 ) {
+            
+            x.innerHTML = `A${(k-17).toString(36).toUpperCase()}`;
+          
+          } else if(k !== 0 && k>52 && k<=78){
+          
+            x.innerHTML = `B${(k-43).toString(36).toUpperCase()}`;
+          
+          } else if(k !== 0 && k>78 && k<=104){
+            
+            x.innerHTML = `C${(k-69).toString(36).toUpperCase()}`;
+            
 
-    }else if(el_id !== 0 && el_id>416 && el_id<=442){
+          } else if(k !== 0 && k>104 && k<=130){
 
-      el.innerHTML = `P${(el_id-407).toString(36).toUpperCase()}`;
+            x.innerHTML = `D${(k-95).toString(36).toUpperCase()}`;
+          
+          }else if (k !== 0 && k>130 && k<=156) {
+            
+            el.innerHTML = `E${(k-121).toString(36).toUpperCase()}`;
+          
+          }else if(k !== 0 && k>156 && k<=182){
+            
+            el.innerHTML = `F${(k-147).toString(36).toUpperCase()}`;
+          
+          }else if(k !== 0 && k>182 && k<=208){
+            
+            x.innerHTML = `G${(k-173).toString(36).toUpperCase()}`;
 
-    }else if(el_id !== 0 && el_id>442 && el_id<=468){
-    
-      el.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
+          }else if(k !== 0 && k>208 && k<=234){
+            
+            x.innerHTML = `H${(k-199).toString(36).toUpperCase()}`;
 
-    }else if(el_id !== 0 && el_id>468 && el_id<=494){
-      
-      el.innerHTML = `R${(el_id-459).toString(36).toUpperCase()}`;
+          }else if(k !== 0 && k>234 && k<=260){
 
-    } else if(el_id !== 0 && el_id>494){
-      
-      el.innerHTML = `S${(el_id-485).toString(36).toUpperCase()}`;
+            x.innerHTML = `I${(k-225).toString(36).toUpperCase()}`;
+
+          }else if (k !== 0 && k>260 && k<=286) {
+          
+            x.innerHTML = `J${(k-251).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>286 && k<=312){
+           
+            x.innerHTML = `K${(k-277).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>312 && k<=338){
+          
+            x.innerHTML = `L${(k-303).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>338 && k<=364){
+          
+            x.innerHTML = `M${(k-329).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>364 && k<=390){
+            
+            x.innerHTML = `N${(k-355).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>390 && k<=416){
+
+            x.innerHTML = `O${(k-381).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>416 && k<=442){
+
+            x.innerHTML = `P${(k-407).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>442 && k<=468){
+          
+            x.innerHTML = `Q${(k-433).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>468 && k<=494){
+            
+            x.innerHTML = `R${(k-459).toString(36).toUpperCase()}`;
+
+          } else if(k !== 0 && k>494){
+            
+            x.innerHTML = `S${(k-485).toString(36).toUpperCase()}`;
+          }
+        }
+        else{
+           el_id = document.getElementById('table-main').rows[l].cells[k];
+          // el_id = document.getElementsByTagName('td')
+          el_value = `h-0-${k}`;
+          console.log("el_value ",el_value)
+          sp_res = el_value.split("-");
+          console.log("sp_res ",sp_res)
+          sp_res_id = sp_res[2];
+          console.log("sp_res_id ",sp_res)
+          sp_res_id = parseInt(sp_res_id)
+          // sp_res_id = sp_res_id+1;
+          console.log("res",sp_res_id);
+          el_id.setAttribute("id", `h-0-${sp_res_id}`);
+          // el_id.setAttribute("id",`h-0-${sp_res_id}`)
+        }
+       
+      }
+      else{
+        el_id = document.getElementById('table-main').rows[l].cells[k];
+        // el_id = document.getElementsByTagName('tr')
+        el_value = `r-${l}-${k}`
+        console.log("el_value ",el_value)
+        sp_res = el_value.split("-");
+        console.log("sp_res ",sp_res)
+        sp_res_id = sp_res[2];
+        console.log("sp_res_id ",sp_res)
+        sp_res_id = parseInt(sp_res_id)
+        // sp_res_id = sp_res_id+1;
+        console.log("res",sp_res_id);
+        el_id.setAttribute("id", `r-${l}-${sp_res_id}`);
+        // el_id.setAttribute("id",`r-${l}-${sp_res_id}`);
+      }
     }
-
-
- 
+   }
 }
 
 function deletecolmn(){
@@ -1328,11 +1543,20 @@ function deletecolmn(){
   var res_id = res[2];
   console.log("res",res[2]);
   var el = document.getElementById(`h-0-${res_id}`);
-   for (var j = 1; j  <=defaultRowCount; j++){
+   for (var j = 0; j  <=defaultRowCount; j++){
       console.log("testloop",i);
-      var row = document.getElementById(`r-${j}`);
-  // var row = document.getElementById("r-8-1");
-    var x = row.deleteCell(res_id);
+      if(j==0){
+        var row = document.getElementById('h-0');
+        // var row = document.getElementById("r-8-1");
+        var x = row.deleteCell(res_id);
+      }
+      else{
+        var row = document.getElementById(`r-${j}`);
+        // var row = document.getElementById("r-8-1");
+        var x = row.deleteCell(res_id);
+      }
+      // defaultRowCount--;
+      
     // var button = document.createElement('button');
     // button.setAttribute('class','file');
     // button.setAttribute('value','read');
@@ -1342,7 +1566,134 @@ function deletecolmn(){
      // x.appendChild(button);
    }
  
-}
+  defaultColCount--;
+
+
+    var el_id = '';
+    var sp_res = '';
+    var sp_res_id ='';
+    var el_value = '';
+    res_id = parseInt(res_id)
+    var next_col = res_id;
+   // console.log("next_col ",next_col)
+   for (var k = next_col; k<=defaultColCount; k++){
+    console.log("defaultColCount ",defaultColCount);
+    for(var l = 1; l<defaultRowCount; l++){
+      
+       
+      
+        el_id = document.getElementById('table-main').rows[l].cells[k];
+        // el_id = document.getElementsByTagName('tr')
+        el_value = `r-${l}-${k}`
+        console.log("el_value ",el_value)
+        sp_res = el_value.split("-");
+        console.log("sp_res ",sp_res)
+        sp_res_id = sp_res[2];
+        console.log("sp_res_id ",sp_res)
+        sp_res_id = parseInt(sp_res_id)
+        // sp_res_id = sp_res_id+1;
+        console.log("res",sp_res_id);
+        el_id.setAttribute("id", `r-${l}-${sp_res_id}`);
+        // el_id.setAttribute("id",`r-${l}-${sp_res_id}`);
+      
+    }
+   }
+
+   for (var k = next_col; k<=defaultColCount; k++){
+    console.log("defaultColCount ",defaultColCount);
+    for(var l = 0; l<defaultRowCount; l++){
+      if(l ==0){
+       
+          var row = document.getElementById('h-0');
+          var x =  el_id = document.getElementById('table-main').rows[l].cells[k];
+          x.setAttribute("id", `h-0-${k}`);
+          // let data = this.getData();
+          // data[0].splice(defaultColCount, 0, "");
+          // saveData(data);
+          // x.innerText ="A"
+          if (k !== 0 && k<=26 ) {
+            x.innerText = `${(k+9).toString(36).toUpperCase()}`;
+          } else if(k !== 0 && k>26 && k<=52 ) {
+            
+            x.innerHTML = `A${(k-17).toString(36).toUpperCase()}`;
+          
+          } else if(k !== 0 && k>52 && k<=78){
+          
+            x.innerHTML = `B${(k-43).toString(36).toUpperCase()}`;
+          
+          } else if(k !== 0 && k>78 && k<=104){
+            
+            x.innerHTML = `C${(k-69).toString(36).toUpperCase()}`;
+            
+
+          } else if(k !== 0 && k>104 && k<=130){
+
+            x.innerHTML = `D${(k-95).toString(36).toUpperCase()}`;
+          
+          }else if (k !== 0 && k>130 && k<=156) {
+            
+            el.innerHTML = `E${(k-121).toString(36).toUpperCase()}`;
+          
+          }else if(k !== 0 && k>156 && k<=182){
+            
+            el.innerHTML = `F${(k-147).toString(36).toUpperCase()}`;
+          
+          }else if(k !== 0 && k>182 && k<=208){
+            
+            x.innerHTML = `G${(k-173).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>208 && k<=234){
+            
+            x.innerHTML = `H${(k-199).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>234 && k<=260){
+
+            x.innerHTML = `I${(k-225).toString(36).toUpperCase()}`;
+
+          }else if (k !== 0 && k>260 && k<=286) {
+          
+            x.innerHTML = `J${(k-251).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>286 && k<=312){
+           
+            x.innerHTML = `K${(k-277).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>312 && k<=338){
+          
+            x.innerHTML = `L${(k-303).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>338 && k<=364){
+          
+            x.innerHTML = `M${(k-329).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>364 && k<=390){
+            
+            x.innerHTML = `N${(k-355).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>390 && k<=416){
+
+            x.innerHTML = `O${(k-381).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>416 && k<=442){
+
+            x.innerHTML = `P${(k-407).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>442 && k<=468){
+          
+            x.innerHTML = `Q${(k-433).toString(36).toUpperCase()}`;
+
+          }else if(k !== 0 && k>468 && k<=494){
+            
+            x.innerHTML = `R${(k-459).toString(36).toUpperCase()}`;
+
+          } else if(k !== 0 && k>494){
+            
+            x.innerHTML = `S${(k-485).toString(36).toUpperCase()}`;
+          }
+        }
+      }
+  }
+ }
 
 function Addcell(){
   let count = 0;

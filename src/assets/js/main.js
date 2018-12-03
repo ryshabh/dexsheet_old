@@ -303,18 +303,21 @@ createTableBodyRow = rowNum => {
     const cell = document.createElement(`${i === 0 ? "th" : "td"}`);
     if (i === 0) {
       cell.contentEditable = false;
+
       const span = document.createElement("span");
-      const dropDownDiv = document.createElement("div");
-      span.innerHTML = rowNum;
-      // dropDownDiv.setAttribute("class", "dropdown");
-      // dropDownDiv.innerHTML = `<button class="dropbtn" id="row-dropbtn-${rowNum}">+</button>
-      //   <div id="row-dropdown-${rowNum}" class="dropdown-content">
-      //     <p class="row-insert-top">Insert 1 row above</p>
-      //     <p class="row-insert-bottom">Insert 1 row below</p>
-      //     <p class="row-delete">Delete row</p>
-      //   </div>`;
-      cell.appendChild(span);
-      cell.appendChild(dropDownDiv);
+      // var img = document.createElement("img");
+ 
+      // img.src = "assets/img/attachment.svg";
+      // img.width = "12";
+      // img.height = "12";
+      // img.setAttribute('onclick', 'alert(test()')
+      // span.appendChild(img);
+      // cell.appendChild(span);
+      const s = document.createElement("span");
+      s.innerHTML = rowNum;
+      cell.appendChild(s)
+
+      // cell.appendChild(dropDownDiv);
       cell.setAttribute("class", "row-header");
     } else {
       cell.contentEditable = true;
@@ -738,35 +741,7 @@ $(document).ready(function(){
   }
 })
 
-var CapsNum;
 
-window.onload = function() {
-  //var CapsNum = localStorage.getItem("CapsNum");
-
-  if (CapsNum == null) {
-    CapsNum = "0";
-  } else {
-    document.getElementById("caps").value = CapsNum;
-  }
-}
-window.onbeforeunload = function() {
-  localStorage.setItem("CapsNum", document.getElementById("caps").value);
-}
-
-function PlusCaps() {
-  var nextValue = parseInt(document.getElementById("caps").value) + 1;
-  setNextValue(nextValue);
-}
-
-function MinusCaps() {
-  var nextValue = parseInt(document.getElementById("caps").value) - 1;
-  setNextValue(nextValue);
-}
-
-function setNextValue(nextValue) {
-  //localStorage.setItem("CapsNum", nextValue);
-  document.getElementById("caps").value = nextValue;
-}
 
   var theInput = document.getElementById("favcolor");
       var theColor = theInput.value;
@@ -871,10 +846,32 @@ document.getElementById("spreadsheethide").addEventListener('contextmenu', funct
 
 function rightclick() {
   var e = window.event;
-  var cantThinkOfAName = document.getElementById("rightclicked");
-  cantThinkOfAName.style.display = "block";
-  cantThinkOfAName.style.left = e.clientX + "px";
-  cantThinkOfAName.style.top = e.clientY + "px";
+  
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id1 = res[1]
+  var res_id2 = res[2]
+  res_id2 = parseInt(res_id2)
+  console.log("res",res[2]);
+  if(res_id2 ==0){
+    document.getElementById("insert_col").style.display="none";
+    document.getElementById("del_col").style.display="none";
+    document.getElementById("insert_cell").style.display="none";
+    document.getElementById("del_cell").style.display="none";
+  }
+  if(res_id1 ==0 && res_id2 ==0){
+    var cantThinkOfAName = document.getElementById("rightclicked");
+    cantThinkOfAName.style.display = "none";
+    // cantThinkOfAName.style.left = e.clientX + "px";
+    // cantThinkOfAName.style.top = e.clientY + "px";
+  }
+  else{
+    var cantThinkOfAName = document.getElementById("rightclicked");
+    cantThinkOfAName.style.display = "block";
+    cantThinkOfAName.style.left = e.clientX + "px";
+    cantThinkOfAName.style.top = e.clientY + "px";
+  }
 }
 
 var tbl = document.getElementById("table-main");
@@ -992,26 +989,6 @@ function addEvents(){
         }
 
 
-
-        function Fillcolor() {
-          var theInput1 = document.getElementById("favcolor1");
-          var theColor1 = theInput1.value;
-          var a = localStorage.getItem("cell");
-          var s = document.getElementById(a);
-          document.getElementById(a).style.backgroundColor = theInput1.value;
-            }
-
-            function addborder(){
-              var a = localStorage.getItem("cell");
-             document.getElementById(a).style.border = "thick solid ";
-            }
-
-        function changeSize(n) {
-          var a = localStorage.getItem("cell");
-        var s = document.getElementById(a);
-        s.style.fontSize = n.value + 'px'
-        }
-
 function swaptext(){
   // document.getElementById("demo").innerHTML = "Hello World";
 let count = 0;
@@ -1045,21 +1022,18 @@ function swaptext2(){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
       var x = document.getElementById(`r-${j}-${res_id}`)
-  // var row = document.getElementById("r-8-1");
-    // var x = row.insertCell(res_id);
-    var button = document.createElement('input');
-    button.setAttribute('type','text');
-    // button.setAttribute('onfocus',"(this.type='datepicker')");
-    // button.setAttribute('onblur',"(this.type='text')");
-    button.setAttribute('class', 'datepicker ');
-    button.setAttribute('id', 'date');
-    
-     // button.setAttribute('data-placeholder',' ');
-     // button.setAttribute('aria-required','true')
-     // button.setAttribute('value', 'raj')
+  var div = document.createElement('div');
+    div.setAttribute('id','input_container');
+     var button = document.createElement('input');
+     button.setAttribute('type','text');
+     button.setAttribute('class', 'datepicker ');
+     var img_tag = document.createElement('img');
+     img_tag.src = "https://cdn4.iconfinder.com/data/icons/36-slim-icons/87/calender.png";
+     img_tag.setAttribute('id','input_img');
 
-     // button.setAttribute('value', 'raj')
-     x.appendChild(button);
+     x.appendChild(div);
+     div.appendChild(button);
+     div.appendChild(img_tag);
    }
 
    $(function() {
@@ -1093,21 +1067,18 @@ function swaptext3(){
       var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
   var x = document.getElementById(`r-${j}-${res_id}`)
-    // var x = row.insertCell(res_id);
-    var button = document.createElement('input');
-       button.setAttribute('placeholder',' ');
-    button.setAttribute('type','text');
-    // button.setAttribute('onfocus',"(this.type='datepicker')");
-    // button.setAttribute('onblur',"(this.type='text')");
-    button.setAttribute('class', 'datepicker ');
-    button.setAttribute('id', 'date');
-    
-     // button.setAttribute('data-placeholder',' ');
-     // button.setAttribute('aria-required','true')
-     // button.setAttribute('value', 'raj')
+    var div = document.createElement('div');
+    div.setAttribute('id','input_container');
+     var button = document.createElement('input');
+     button.setAttribute('type','text');
+     button.setAttribute('class', 'datepicker ');
+     var img_tag = document.createElement('img');
+     img_tag.src = "https://cdn4.iconfinder.com/data/icons/36-slim-icons/87/calender.png";
+     img_tag.setAttribute('id','input_img');
 
-     // button.setAttribute('value', 'raj')
-     x.appendChild(button);
+     x.appendChild(div);
+     div.appendChild(button);
+     div.appendChild(img_tag);
    }
 
    $(function() {
@@ -1259,111 +1230,7 @@ function removeSpecial(){
     }
 }
 
-// function Addcoloms(){
-//   let count = 0;
-//   var a = localStorage.getItem("cell");
-//   console.log("abc",a);
-//   var res = a.split("-");
-//   var res_id = res[2];
-//   console.log("res",res[2]);
-//   var el = document.getElementById(`h-0-${res_id}`);
-//    for (var j = 1; j  <=defaultRowCount; j++){
-//       console.log("testloop",i);
-//       var row = document.getElementById(`r-${j}`);
-//   // var row = document.getElementById("r-8-1");
-//     var x = row.insertCell(res_id);
-//     // var button = document.createElement('button');
-//     // button.setAttribute('class','file');
-//     x.contentEditable = true;
-//   }
 
-//     const data = this.getData();
-//     console.log("data ",data)
-//    var el = document.getElementById(`h-0-${res_id}`);
-//     var el_id = parseInt(res_id);
-
-//     if (el_id !== 0 && el_id<=26 ) {
-      
-//       el.innerText = `${(el_id+9).toString(36).toUpperCase()}`;
-//     } else if(el_id !== 0 && el_id>26 && el_id<=52 ) {
-      
-//       el.innerHTML = `A${(el_id-17).toString(36).toUpperCase()}`;
-    
-//     } else if(el_id !== 0 && el_id>52 && el_id<=78){
-    
-//       el.innerHTML = `B${(el_id-43).toString(36).toUpperCase()}`;
-    
-//     } else if(el_id !== 0 && el_id>78 && el_id<=104){
-      
-//       el.innerHTML = `C${(el_id-69).toString(36).toUpperCase()}`;
-      
-
-//     } else if(el_id !== 0 && el_id>104 && el_id<=130){
-
-//       el.innerHTML = `D${(el_id-95).toString(36).toUpperCase()}`;
-    
-//     }else if (el_id !== 0 && el_id>130 && el_id<=156) {
-      
-//       el.innerHTML = `E${(el_id-121).toString(36).toUpperCase()}`;
-    
-//     }else if(el_id !== 0 && el_id>156 && el_id<=182){
-      
-//       el.innerHTML = `F${(el_id-147).toString(36).toUpperCase()}`;
-    
-//     }else if(el_id !== 0 && el_id>182 && el_id<=208){
-      
-//       el.innerHTML = `G${(el_id-173).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>208 && el_id<=234){
-      
-//       el.innerHTML = `H${(el_id-199).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>234 && el_id<=260){
-
-//       el.innerHTML = `I${(el_id-225).toString(36).toUpperCase()}`;
-
-//     }else if (el_id !== 0 && el_id>260 && el_id<=286) {
-    
-//       el.innerHTML = `J${(el_id-251).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>286 && el_id<=312){
-     
-//       el.innerHTML = `K${(el_id-277).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>312 && el_id<=338){
-    
-//       el.innerHTML = `L${(el_id-303).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>338 && el_id<=364){
-    
-//       el.innerHTML = `M${(el_id-329).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>364 && el_id<=390){
-      
-//       el.innerHTML = `N${(el_id-355).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>390 && el_id<=416){
-
-//       el.innerHTML = `O${(el_id-381).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>416 && el_id<=442){
-
-//       el.innerHTML = `P${(el_id-407).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>442 && el_id<=468){
-    
-//       el.innerHTML = `Q${(i-433).toString(36).toUpperCase()}`;
-
-//     }else if(el_id !== 0 && el_id>468 && el_id<=494){
-      
-//       el.innerHTML = `R${(el_id-459).toString(36).toUpperCase()}`;
-
-//     } else if(el_id !== 0 && el_id>494){
-      
-//       el.innerHTML = `S${(el_id-485).toString(36).toUpperCase()}`;
-//     }
-
-// }
 
 function Addcoloms(){
   let count = 0;
@@ -1374,6 +1241,7 @@ function Addcoloms(){
   console.log("res",res[2]);
   var el = document.getElementById(`h-0-${res_id}`);
   let data = this.getData();
+  data[0].splice(res_id, 0, "");
   for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",j);
       
@@ -1382,6 +1250,8 @@ function Addcoloms(){
       x.contentEditable= true;
       x.setAttribute("id",`r-${j}-${res_id}`)
       addEvents();
+      data[j].splice(res_id, 0, "");
+      saveData(data)
       // data[j].splice(res_id, 0, "");
       // saveData(data);
       
@@ -1498,9 +1368,11 @@ function Addcoloms(){
             
             x.innerHTML = `S${(k-485).toString(36).toUpperCase()}`;
           }
+
+          
         }
         else{
-           el_id = document.getElementById('table-main').rows[l].cells[k];
+          el_id = document.getElementById('table-main').rows[l].cells[k];
           // el_id = document.getElementsByTagName('td')
           el_value = `h-0-${k}`;
           console.log("el_value ",el_value)
@@ -1745,14 +1617,87 @@ function deletecell(){
 }
 
 function appendRow() {
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[1];
+  var r_id = parseInt(res_id)-1;
     var tbl = document.getElementById('table-main'), // table reference
-        row = tbl.insertRow(tbl.rows.length),      // append table row
-        i;
+        row = tbl.insertRow(res_id); 
+        row.setAttribute("id",`r-${res_id}`)    // append table row
     // insert table cells to the new row
-    for (i = 0; i < tbl.rows[0].cells.length; i++) {
-        createCell(row.insertCell(i), ' ');
-        row.contentEditable =true;
+    
+      for(let j=0;j<=defaultColCount; j++){
+        console.log("defaultColCount",defaultColCount)
+        if(j==0){
+          var cell = row.insertCell(j);
+          cell.contentEditable = false;
+
+          
+          const span = document.createElement("span");
+          var img = document.createElement("img");
+     
+          // img.src = "assets/img/attachment.svg";
+          // img.width = "12";
+          // img.height = "12";
+          // img.setAttribute('onclick', 'alert(test()')
+          // span.appendChild(img);
+          // cell.appendChild(span);
+          const s = document.createElement("span");
+          s.innerHTML = res_id;
+          cell.appendChild(s)
+          cell.setAttribute("class", "row-header");
+          cell.setAttribute("id",`r-${res_id}-${j}`)
+         
+        }
+        else{
+          var x = row.insertCell(j);
+          x.contentEditable =true;
+          x.setAttribute("id",`r-${res_id}-${j}`)
+        }
     }
+    defaultRowCount++;
+    console.log("rows ,",defaultRowCount)
+
+
+    res_id = parseInt(res_id);
+    var def_row = res_id+1;
+    for (let i=def_row;i<=defaultRowCount;i++){
+      for(let j=0;j<defaultColCount; j++){
+        var row  = document.getElementById('table-main').rows[i];
+        row.setAttribute("id",`r-${i}`)
+        if(j==0){
+          var cell  = document.getElementById('table-main').rows[i].cells[j];
+          cell.innerHTML = '';
+          
+          // const span = document.createElement("span");
+          // var img = document.createElement("img");
+     
+          // img.src = "assets/img/attachment.svg";
+          // img.width = "12";
+          // img.height = "12";
+          // img.setAttribute('onclick', 'alert(test()')
+          // span.appendChild(img);
+          // cell.appendChild(span);
+          const s = document.createElement("span");
+          s.innerHTML = i;
+          cell.appendChild(s)
+          cell.setAttribute("class", "row-header");
+        }
+        else{
+          var cell  = document.getElementById('table-main').rows[i].cells[j];
+          cell.setAttribute("id",`r-${i}-${j}`)
+        }
+      }
+      
+    }
+    addEvents();
+    let data = this.getData();
+    const colCount = data[0].length;
+    const newRow = new Array(colCount).fill("");
+    data.splice(res_id, 0, newRow);
+    saveData(data);
+
 }
 // create DIV element and append to the table cell
 function createCell(cell, text, style) {
@@ -1930,22 +1875,178 @@ document.getElementById("myInput").style.display = "none";
     });
  });
 
-function textwrap(){
-  var a = localStorage.getItem("cell");
-  console.log("checktextwrap",textwrap);
-  document.getElementById(a).style.wordWrap ="break-all";
-  document.getElementById(a).style.maxWidth = "0";
-}
+function bold(){
+          var a = localStorage.getItem("cell");
+          // document.getElementById(a).style.fontWeight = "normal ";
 
-function overflow(){
-  var a = localStorage.getItem("cell");
-  console.log("checktextwrap",textwrap);
-  document.getElementById(a).style.wordWrap ="break-all";
-  document.getElementById(a).style.whiteSpace = "nowrap";
-  document.getElementById(a).style.overflow = "hidden";
-  document.getElementById(a).style.textoverflow = "clip";
-  document.getElementById(a).style.maxWidth = "0";
-}
+           var  ban =document.getElementById(a).style.fontWeight  ;
+           console.log("banvalue",ban);
+ 
+         if(ban == 'normal')
+            {
+                document.getElementById(a).style.fontWeight = 'bold';
+            }
+         else if(ban == 'bold')
+            {
+                document.getElementById(a).style.fontWeight = 'normal';
+            }
+            else 
+            {
+                document.getElementById(a).style.fontWeight = 'bold';
+            }
+
+        }
+
+           function italic(){
+          var a = localStorage.getItem("cell");
+          // document.getElementById(a).style.fontWeight = "normal ";
+
+           var  ban =document.getElementById(a).style.fontStyle  ;
+           console.log("banvalue",ban);
+ 
+         if(ban == 'normal')
+            {
+                document.getElementById(a).style.fontStyle = 'italic';
+            }
+         else if(ban == 'italic')
+            {
+                document.getElementById(a).style.fontStyle = 'normal';
+            }
+            else 
+            {
+                document.getElementById(a).style.fontStyle = 'italic';
+            }
+
+        }
+         // text-decoration: line-through;
+          
+          function strikethrough(){
+          var a = localStorage.getItem("cell");
+          // document.getElementById(a).style.fontWeight = "normal ";
+
+           var  ban =document.getElementById(a).style.textDecoration  ;
+           console.log("banvalue",ban);
+ 
+         if(ban == 'none')
+            {
+                document.getElementById(a).style.textDecoration = 'line-through';
+            }
+         else if(ban == 'line-through')
+            {
+                document.getElementById(a).style.textDecoration = 'none';
+            }
+            else 
+            {
+                document.getElementById(a).style.textDecoration = 'line-through';
+            }
+
+        }
+           
+        function textcolor(){
+           var theInput1 = document.getElementById("favcolor");
+          var theColor1 = theInput1.value;
+          var a = localStorage.getItem("cell");
+          var s = document.getElementById(a);
+    document.getElementById(a).style.color = theInput1.value;
+        }
+
+        
+        function Fillcolor() {
+          var theInput1 = document.getElementById("favcolor1");
+          var theColor1 = theInput1.value;
+          var a = localStorage.getItem("cell");
+          var s = document.getElementById(a);
+    document.getElementById(a).style.backgroundColor = theInput1.value;
+            }
+
+            function addborder(){
+              var a = localStorage.getItem("cell");
+             document.getElementById(a).style.border = "thin solid ";
+            }
+
+        function changeSize(n) {
+          var a = localStorage.getItem("cell");
+        var s = document.getElementById(a);
+        s.style.fontSize = n.value + 'px'
+
+        }
+
+        function textwrap(){
+          var a = localStorage.getItem("cell");
+          // console.log("checktextwrap",textwrap);
+          var  ban = document.getElementById(a).style.wordBreak;
+          var ban1 = document.getElementById(a).style.whiteSpace;
+           console.log("banvalue",ban);
+           console.log("ban1value",ban1)
+ 
+         if(ban == 'normal')
+            {
+                 document.getElementById(a).style.wordBreak= "break-all";
+                 // document.getElementById(a).style.maxWidth = "0";
+            }
+         else if(ban == 'break-all')
+            {
+                 document.getElementById(a).style.wordBreak= "normal";
+                  // document.getElementById(a).style.maxWidth = "20px";
+               }
+            if(ban1 == 'nowrap')
+            {
+                 document.getElementById(a).style.whiteSpace="normal";
+                 // document.getElementById(a).style.maxWidth = "0";
+            }
+            else {
+              document.getElementById(a).style.wordBreak="break-all";
+            }
+
+        }
+
+       
+        function overflow(){
+          var a = localStorage.getItem("cell");
+          // console.log("checktextwrap",textwrap);
+          var  ban = document.getElementById(a).style.whiteSpace;
+          // var ban1 = document.getElementById(a).style.whiteSpace;
+           console.log("banvalue",ban);
+ 
+         if(ban == 'normal')
+            {
+                 document.getElementById(a).style.whiteSpace = "nowrap";
+                 document.getElementById(a).style.overflow = "hidden";
+                 document.getElementById(a).style.maxWidth = "0";
+                 // document.getElementById(a).style.maxWidth = "0";
+            }
+         else if(ban == 'nowrap')
+            {
+                 document.getElementById(a).style.whiteSpace = "normal";
+                  // document.getElementById(a).style.maxWidth = "200px";
+               }
+            else 
+            {
+                  document.getElementById(a).style.whiteSpace = "nowrap";
+                 document.getElementById(a).style.overflow = "hidden";
+                 document.getElementById(a).style.maxWidth = "0";
+                 // document.getElementById(a).style.maxWidth = "0";
+            }
+        
+        }
+        
+
+        $('.spreadsheet__table').keydown(function (e) {
+          console.log("testenter");
+      if (e.which === 13) {
+        let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          res_id = parseInt(res_id)+1; 
+          var res_id2 = res[2];
+        //$(this).next('.inputs').focus();
+            $(`#r-${res_id}-${res_id2}`).focus()
+            localStorage.setItem("cell",`r-${res_id}-${res_id2}`);
+
+      }
+     });
 
 function formatPrinter(){
   var a = localStorage.getItem("cell");

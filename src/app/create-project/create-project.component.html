@@ -10,9 +10,9 @@
         <td>
           <img src="../../assets/img/dots.svg">
         </td>
-        <td>
+       <!--  <td>
           <span>New Project</span>
-        </td>
+        </td> -->
         <!-- <td>
           <span id="demo1">Weekly Sales</span>
         </td>
@@ -103,10 +103,10 @@
                     </select>
                 </td>
         <td>
-          <button class="file" id="jBold"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Bold</span></button>&nbsp;
-          <button class="file" onclick="document.execCommand('italic',false,null);"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
-          <button class="file" onclick="document.execCommand('strikethrough',false,null);"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
-           <button id="change_color" onclick="setcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;" list="reds">
+          <button class="file" id="jBold" onclick="bold();"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Bold</span></button>&nbsp;
+          <button class="file" onclick="italic();"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
+          <button class="file" onclick="strikethrough;"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
+           <button id="change_color" onclick="textcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;" list="reds">
                     <datalist id="reds">
               <option>#000000</option>
                       <option>#434343</option>
@@ -296,10 +296,10 @@
                     <div class="drop1">
                       <button class="dr-btn1 file" onclick="myFunction3()"><img src="../../assets/img/arrow_2.svg"> </button>&nbsp;&nbsp;&nbsp;&nbsp; 
                       <div id="my-Dropdown1" class="drop1-content" >
-                         <button onclick="paintMatrix2();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
-                        <button onclick="paintMatrix4();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-hori.png"></span></button>
-                        <button onclick="paintMatrix();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-to.png"></span></button>
-                        <button onclick="paintMatrix3();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-verti.png"></span></button>
+                         <button onclick="paintMatrix();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-to.png"></span></button>
+                        <button onclick="paintMatrix2();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
+                        <button onclick="paintMatrix3();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-right.png"></span></button>
+                        <button onclick="paintMatrix4();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-left.png"></span></button>
                       </div>
                     </div> 
                    <!--  <img src="../../assets/img/arrow_2.svg">   -->
@@ -386,19 +386,19 @@
           <li class="w3-bar-item w3-button" onclick="appendRow()">
             Insert row 
           </li>
-          <li class="w3-bar-item w3-button" onclick="Addcoloms();">
+          <li class="w3-bar-item w3-button"  id="insert_col" onclick="Addcoloms();">
             Insert Column
           </li>
-          <li class="w3-bar-item w3-button" onclick="Addcell()">
+          <li class="w3-bar-item w3-button" id="insert_cell" onclick="Addcell()">
             Insert Cell
           </li>
           <li class="w3-bar-item w3-button">
             Delete row
           </li>
-          <li class="w3-bar-item w3-button" onclick="deletecolmn()">
+          <li class="w3-bar-item w3-button" id="del_col" onclick="deletecolmn()">
             Delete Column
           </li >
-          <li class="w3-bar-item w3-button" onclick="deletecell()">
+          <li class="w3-bar-item w3-button" id="del_cell" onclick="deletecell()">
             Delete Cell
           </li>
           <li class="dropdown-submenu">

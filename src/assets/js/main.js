@@ -1731,12 +1731,12 @@ for (var i = st_row; i <= end_row; i++) {
       var result = "";
       for (var j = st_col; j <= end_col; j++) {
         console.log("r-",j+1,"-",i);
-        var res_id = j+1;
-        var res_id2 = i;
+        var res_id = i+1;
+        var res_id2 = j;
         var border = document.getElementById(`r-${res_id}-${res_id2}`);
         // document.getElementById("myDiv").style.borderTop ="thick solid #000000";
 
-        border.style.borderTop ="thick solid #000000";
+        border.style.borderTop ="2px solid #000000";
         // document.getElementById().style.borderTop = "";
       }
       
@@ -1750,10 +1750,10 @@ for (var i = st_row; i <= end_row; i++) {
       var result = "";
       for (var j = st_col; j <= end_col; j++) {
         console.log("r-",j+1,"-",i);
-        var res_id = j+1;
-        var res_id2 = i;
+        var res_id = i+1;
+        var res_id2 = j;
         var border = document.getElementById(`r-${res_id}-${res_id2}`);
-        border.style.borderBottom ="thick solid #000000";
+        border.style.borderBottom ="2px solid #000000";
 
     
       }
@@ -1768,10 +1768,10 @@ for (var i = st_row; i <= end_row; i++) {
       var result = "";
       for (var j = st_col; j <= end_col; j++) {
         console.log("r-",j+1,"-",i);
-        var res_id = j+1;
-        var res_id2 = i;
+        var res_id = i+1;
+        var res_id2 = j;
         var border = document.getElementById(`r-${res_id}-${res_id2}`);
-        border.style.borderRight ="thick solid #000000";
+        border.style.borderRight ="2px solid #000000";
 
     
       }
@@ -1784,18 +1784,100 @@ for (var i = st_row; i <= end_row; i++) {
       var result = "";
       for (var j = st_col; j <= end_col; j++) {
         console.log("r-",j+1,"-",i);
-        var res_id = j+1;
-        var res_id2 = i;
+        var res_id = i+1;
+        var res_id2 = j;
         var border = document.getElementById(`r-${res_id}-${res_id2}`);
-        border.style.borderLeft ="thick solid #000000";
+        border.style.borderLeft ="2px solid #000000";
 
     
       }
       
     }
-
-
 }
+
+function paintMatrix5() {
+  for (var i = st_row; i <= end_row; i++) {
+    var result = "";
+    for (var j = st_col; j <= end_col; j++) {
+      console.log("r-",j+1,"-",i);
+      var res_id = i+1;
+      var res_id2 = j;
+      var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+      elem.style.border ="2px solid #000000";
+    }
+  }
+}
+
+function paintMatrix6() {
+  for (var i = st_row; i <= end_row; i++) {
+    var result = "";
+    for (var j = st_col; j <= end_col; j++) {
+      console.log("paintMatrix6 r-",j+1,"-",i);
+      if(i==st_row && j==st_col){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderLeft ="2px solid #000000";
+        elem.style.borderTop ="2px solid #000000";
+      }
+      if(i==st_row && j==end_col){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderRight ="2px solid #000000";
+        elem.style.borderTop ="2px solid #000000";
+      }
+      if(i==end_row && j==st_col){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderLeft ="2px solid #000000";
+        elem.style.borderBottom ="2px solid #000000";
+      }
+      if(i==end_row && j==end_col){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderRight ="2px solid #000000";
+        elem.style.borderBottom ="2px solid #000000";
+      }
+      else if(i==st_row){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderTop ="2px solid #000000";
+      }
+      else if(j==st_col){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderLeft ="2px solid #000000";
+      }
+      else if(i==end_row){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderBottom ="2px solid #000000";
+      }
+      else if(j==end_col){
+        var res_id = i+1;
+        var res_id2 = j;
+        var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+        elem.style.borderRight ="2px solid #000000";
+      }
+      // else if(i==st_row ){
+      //   var res_id = j+1;
+      //   var res_id2 = i;
+      //   var elem = document.getElementById(`r-${res_id}-${res_id2}`);
+      //   elem.style.borderTop ="thick solid #000000";
+      // }
+      
+    }
+  }
+}
+
+
+
 
 function sortNumbers(a, b) {
   return a - b ;
@@ -1812,8 +1894,8 @@ $("#table-main").on("mousedown", "td", function() {
   selection["x"] = [$this.index(), $this.index()];
   selection["y"] = [$this.parent("tr").index(), $this.parent("tr").index()];
   console.log("chekc mousedown",$this.index(), $this.parent("tr").index());
-  st_row=$this.index();
-  st_col=  $this.parent("tr").index();
+  st_col=$this.index();
+  st_row=  $this.parent("tr").index();
   markSelection(selection);
 }).on("mouseover", "td", function() {
   if (isDragging) {
@@ -1822,8 +1904,8 @@ $("#table-main").on("mousedown", "td", function() {
     selection["y"][1] = $this.parent("tr").index();
     console.log("check index",$this.index(),$this.parent("tr").index());
     markSelection(selection);
-    end_row=$this.index();
-    end_col=  $this.parent("tr").index();
+    end_col=$this.index();
+    end_row=  $this.parent("tr").index();
   }
 }).on("mouseup", "td", function() {
   // End dragging
@@ -1947,7 +2029,7 @@ function bold(){
           var theColor1 = theInput1.value;
           var a = localStorage.getItem("cell");
           var s = document.getElementById(a);
-    document.getElementById(a).style.color = theInput1.value;
+          document.getElementById(a).style.color = theInput1.value;
         }
 
         
@@ -1956,13 +2038,13 @@ function bold(){
           var theColor1 = theInput1.value;
           var a = localStorage.getItem("cell");
           var s = document.getElementById(a);
-    document.getElementById(a).style.backgroundColor = theInput1.value;
-            }
+          document.getElementById(a).style.backgroundColor = theInput1.value;
+        }
 
-            function addborder(){
-              var a = localStorage.getItem("cell");
-             document.getElementById(a).style.border = "thin solid ";
-            }
+        function addborder(){
+            var a = localStorage.getItem("cell");
+            document.getElementById(a).style.border = "thin solid ";
+        }
 
         function changeSize(n) {
           var a = localStorage.getItem("cell");

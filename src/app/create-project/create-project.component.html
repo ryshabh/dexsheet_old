@@ -333,7 +333,7 @@
           <button class="file" onclick="add()"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg"></button>
         </td>
         <td>
-          <button class="file" id="filter"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg"></button>
+          <button class="file" id="filter" onclick="addfilter();"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg"></button>
         </td>
         <!-- <div id="img"></div> -->
         <td style="width: 100%"></td>
@@ -392,16 +392,23 @@
           <li class="w3-bar-item w3-button"  id="insert_col" onclick="Addcoloms();">
             Insert Column
           </li>
-          <li class="w3-bar-item w3-button" id="insert_cell" onclick="Addcell()">
+          <!-- <li class="w3-bar-item w3-button" id="insert_cell" onclick="Addcell()">
             Insert Cell
-          </li>
-          <li class="w3-bar-item w3-button">
+          </li> -->
+          <li class="w3-bar-item w3-button" onclick="deleterow()">
             Delete row
           </li>
           <li class="w3-bar-item w3-button" id="del_col" onclick="deletecolmn()">
             Delete Column
           </li >
-          <li class="w3-bar-item w3-button" id="del_cell" onclick="deletecell()">
+          <li class="dropdown-submenu">
+                <a class="test w3-button w3-white" tabindex="-1" href="#">Insert Cell<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="shiftDown();">Shift down</a></li>
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="shiftRight();">Shift right</a></li>
+                      </ul>
+          </li>
+          <li class="w3-bar-item w3-button" id="del_cell" onclick="deleteRight()">
             Delete Cell
           </li>
           <li class="dropdown-submenu">

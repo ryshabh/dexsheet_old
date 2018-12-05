@@ -33,8 +33,8 @@ $(document).ready(function(){
  });
 });
 
-let defaultRowCount = 20; // No of rows
-let defaultColCount = 20; // No of cols
+let defaultRowCount = 10; // No of rows
+let defaultColCount = 10; // No of cols
 let st_row=0;
 let end_row=0;
 let st_col=0;
@@ -411,7 +411,12 @@ deleteColumn = currentCol => {
 const sortingHistory = new Map();
 
 // Utility function to sort columns
-sortColumn = currentCol => {
+sortColumn = () => {
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  currentCol = res_id;
   let spreadSheetData = this.getData();
   let data = spreadSheetData.slice(1);
   if (!data.some(a => a[currentCol] !== "")) return;
@@ -434,6 +439,7 @@ sortColumn = currentCol => {
   data.splice(0, 0, new Array(data[0].length).fill(""));
   saveData(data);
   this.createSpreadsheet();
+  addEvents();
 };
 
 // Compare Functions for sorting - ascending
@@ -670,8 +676,12 @@ function changeFont1() {
     }
 }
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function dropFunction() {
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+    document.getElementById(`myDropdown-${res_id}`).classList.toggle("show");
 }
 
 function myFunction2() {
@@ -854,18 +864,23 @@ function rightclick() {
   var res_id2 = res[2]
   res_id2 = parseInt(res_id2)
   console.log("res",res[2]);
-  if(res_id2 ==0){
-    document.getElementById("insert_col").style.display="none";
-    document.getElementById("del_col").style.display="none";
-    document.getElementById("insert_cell").style.display="none";
-    document.getElementById("del_cell").style.display="none";
-  }
-  if(res_id1 ==0 && res_id2 ==0){
+  // if(res_id2 ==0){
+  //   document.getElementById("insert_col").style.display="none";
+  //   document.getElementById("del_col").style.display="none";
+  //   document.getElementById("insert_cell").style.display="none";
+  //   document.getElementById("del_cell").style.display="none";
+  // }
+  // if(res_id1 ==0 && res_id2 ==0){
+  //   var cantThinkOfAName = document.getElementById("rightclicked");
+  //   cantThinkOfAName.style.display = "none";
+  //   // cantThinkOfAName.style.left = e.clientX + "px";
+  //   // cantThinkOfAName.style.top = e.clientY + "px";
+  // }
+  if(res_id1 ==0 || res_id2 ==0){
     var cantThinkOfAName = document.getElementById("rightclicked");
     cantThinkOfAName.style.display = "none";
-    // cantThinkOfAName.style.left = e.clientX + "px";
-    // cantThinkOfAName.style.top = e.clientY + "px";
   }
+
   else{
     var cantThinkOfAName = document.getElementById("rightclicked");
     cantThinkOfAName.style.display = "block";
@@ -957,7 +972,7 @@ function addEvents(){
 
         function addsum(){
           var sum = 0;
-          console.log("addsum")
+          // console.log("addsum")
           if(cell_sum==true){
               var sum_id = localStorage.getItem("sum_cell");
               var sum_value = document.getElementById(sum_id).innerText;
@@ -980,7 +995,7 @@ function addEvents(){
                 
               }
 
-              console.log("summ",sum)
+              // console.log("summ",sum)
               document.getElementById(sum_id).innerText= sum;
               cell_sum=false;
               // res = res[]
@@ -1407,6 +1422,22 @@ function Addcoloms(){
    }
 }
 
+function deleterow(){
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  var c_1 = res[2];
+
+  for(let i=0; i<defaultColCount;i++){
+    var row = document.getElementById(`r-${r_1}`)
+    row.deleteCell(i);
+
+  }
+
+}
+
+
 function deletecolmn(){
   let count = 0;
   var a = localStorage.getItem("cell");
@@ -1592,28 +1623,108 @@ function Addcell(){
    
 }
 
-function deletecell(){
-   let count = 0;
+function deleterow () {
   var a = localStorage.getItem("cell");
   console.log("abc",a);
   var res = a.split("-");
-  var res_id = res[1];
-  var res_id2 = res[2]
-  console.log("res",res[2]);
-  var el = document.getElementById(`r-${res_id}-${res_id2}`);
-  // el.innerHTML = "To"
-   // for (var j = 1; j  <=defaultRowCount; j++){
-      console.log("testloop",i);
-      var row = document.getElementById(`r-${res_id}`);
-  // var row = document.getElementById("r-8-1");
-    var x = row.deleteCell(res_id2);
-    // var button = document.createElement('button');
-    // button.setAttribute('class','file');
-    // button.setAttribute('value','read');
-    // x.contentEditable = true;
+  var r_1 = res[1];
+  let data = this.getData();
+  data.splice(r_1, 1);
+  defaultRowCount++;
+  saveData(data);
+  this.createSpreadsheet();
+  addEvents();
+};
+
+function shiftDown(){
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var a_val = document.getElementById(a).innerHTML;
+  var rows = defaultRowCount;
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  var r_2 = res[2];
+  var r = r_1+1
+  if(r_1==defaultRowCount){
+    let data = this.getData();
+    const colCount = data[0].length;
+    const newRow = new Array(colCount).fill("");
+    newRow.splice(r_2, 0, a_val);
+    data.splice( r, 0, newRow);
+    data[r_1].splice( r_2, 0, '');
     
-     // button.setAttribute('value', 'raj')
-     // x.appendChild(button);
+    defaultRowCount++;
+    saveData(data);
+    this.createSpreadsheet();
+    addEvents();
+  }
+  else{
+    r_1 = parseInt(r_1)+1;
+    var val = document.getElementById(a).innerHTML;
+    document.getElementById(`r-${r_1}-${r_2}`).innerHTML=val;
+    document.getElementById(a).innerHTML='';
+    addEvents();
+  }
+}
+
+
+function shiftRight(){
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  console.log("r_1",r_1)
+  var r_2 = res[2];
+  r_2 = parseInt(r_2);
+  let data = this.getData();
+  if(r_2==defaultColCount){
+    
+    for (let i = 0; i <= defaultRowCount; i++) {
+      console.log("r_1",r_1,"i ",i)
+      if(i==r_1){
+        var  val = document.getElementById(a).value;
+        console.log("val ",val)
+        data[i].splice(r_2, 0, "");
+        data[i].splice(r_2 + 1, 0, val);
+      }
+      else{
+        data[i].splice(r_2 + 1, 0, "");
+      }
+    }
+    
+    
+    defaultColCount++;
+    saveData(data);
+    this.createSpreadsheet();
+    addEvents();
+  }
+  else{
+    var val = document.getElementById(a).innerHTML;
+    data[r_1].splice(r_2, 0, "");
+    data[r_1].splice(r_2 + 1, 0, val);
+    saveData(data);
+    this.createSpreadsheet();
+    addEvents();
+  }
+
+}
+
+
+function deleteRight(){
+  let data = this.getData();
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  var r_2 = res[2];
+
+  data[r_1].splice(r_2, 1,'');
+  // data[r_1].splice(r_2, 1,'');
+  // defaultColCount++;
+  saveData(data);
+  this.createSpreadsheet();
+  addEvents();
 }
 
 function appendRow() {
@@ -1893,7 +2004,7 @@ $("#table-main").on("mousedown", "td", function() {
   const $this = $(this);
   selection["x"] = [$this.index(), $this.index()];
   selection["y"] = [$this.parent("tr").index(), $this.parent("tr").index()];
-  console.log("chekc mousedown",$this.index(), $this.parent("tr").index());
+  // console.log("chekc mousedown",$this.index(), $this.parent("tr").index());
   st_col=$this.index();
   st_row=  $this.parent("tr").index();
   markSelection(selection);
@@ -1902,7 +2013,7 @@ $("#table-main").on("mousedown", "td", function() {
     const $this = $(this);
     selection["x"][1] = $this.index();
     selection["y"][1] = $this.parent("tr").index();
-    console.log("check index",$this.index(),$this.parent("tr").index());
+    // console.log("check index",$this.index(),$this.parent("tr").index());
     markSelection(selection);
     end_col=$this.index();
     end_row=  $this.parent("tr").index();
@@ -1951,11 +2062,12 @@ document.getElementById("myInput").style.display = "none";
       });
     });
 
- $(document).ready(function(){
-    $("#filter").click(function(){
-      $("#myInput").toggle();
-    });
- });
+// code for find/search
+ // $(document).ready(function(){
+ //    $("#filter").click(function(){
+ //      $("#myInput").toggle();
+ //    });
+ // });
 
 function bold(){
           var a = localStorage.getItem("cell");
@@ -2171,3 +2283,169 @@ function sum(){
 
   }  
 }
+
+
+ function addfilter(){
+ 
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+  var el2 = document.getElementById(`r-${res_id}`)
+  // var img = document.createElement('img');
+  // img.src = 'img/calendar.svg';
+  // img.setAttribute('id','filters');
+
+  
+
+   const dropDownDiv1 = document.createElement("div");
+      dropDownDiv1.setAttribute("class", "dropdown");
+      dropDownDiv1.innerHTML = `<button onclick="dropFunction()" class="dropbtn"><img src="assets/img/filter.svg"></button>
+  <div id="myDropdown-${res_id}" class="dropdown-content">
+   <button class="sortingclass" id="sorta" onClick="sortColumn(); ">A->Z</button>
+   <button id="sortz" onclick="sortColumn(); ">Z->A</button>
+   
+   <input type="text" placeholder="Search.." id="filterInput" onkeyup="filterFunction()">
+ </div>`;
+  el.appendChild(dropDownDiv1);
+  // document.getElementById('sortz').style.display = 'none';
+  
+  let no_of_rows= defaultRowCount;
+  let values =[];
+  for(let i =1; i<= defaultRowCount; i++){
+    let count =0;
+    var value = document.getElementById(`r-${i}-${res_id}`).innerHTML;
+    console.log("value ",value,);
+    // for(let j =i; j<= no_of_rows; j++){
+    //   var value2 = document.getElementById(`r-${j}-${res_id}`).innerText;
+    //   console.log("values ",j, " ",value2);
+    //   if(value.length>1 && value2.length>1  && value==value2){
+    //     console.log("similar values ",value2," ",value);
+    //     count++;
+    //     console.log("count",count)
+       
+
+    //   }
+       
+    // }
+  
+    var div = document.getElementById(`myDropdown-${res_id}`);
+    var b = div.getElementsByTagName("a");
+    if(b.length==0){
+      console.log("b length 0")
+      if(value.length>1){
+        
+        var ele = document.createElement('a');
+        var check_box = document.createElement("input");
+        check_box.setAttribute("type","checkbox")
+        check_box.checked=true;
+        check_box.setAttribute("id",`c-${i}-${res_id}`)
+        check_box.addEventListener("change", checkboxchange);
+        ele.appendChild(check_box)
+        var label = document.createElement("label")
+        label.innerHTML = value
+        label.setAttribute("id",`l-${i}-${res_id}`)
+        ele.appendChild(label);
+
+        document.getElementById(`myDropdown-${res_id}`).appendChild(ele);
+      }
+    }
+    else{
+      let count=0;
+      b = div.getElementsByTagName("a");
+      console.log("length ",b.length)
+      for (let m = 0; m < b.length; m++) {
+        console.log("check loop ", b[m].innerHTML);
+        if ( b[m].innerHTML.indexOf(value) > -1) {
+            console.log("matched value",b[m].innerHTML, " ",value)
+            count++;
+        } 
+      }
+      if(value.length>1 &&  count==0){
+            console.log("else ", value);
+            var ele = document.createElement('a');
+            var check_box = document.createElement("input");
+            check_box.setAttribute("type","checkbox")
+            check_box.checked=true;
+            check_box.setAttribute("id",`c-${i}-${res_id}`)
+            check_box.addEventListener("change", checkboxchange);
+            ele.appendChild(check_box)
+            var label = document.createElement("label")
+            label.innerHTML = value
+            label.setAttribute("id",`l-${i}-${res_id}`)
+            ele.appendChild(label);
+            
+
+            document.getElementById(`myDropdown-${res_id}`).appendChild(ele);
+        }
+
+    }
+        
+  }
+
+
+}
+
+function checkboxchange(){
+  console.log("checkboxchange ",this.id);
+  var c_id = this.id;
+  var res = c_id.split("-");
+  var c_id_1 = res[1];
+  var c_id_2 = res[2];
+  var val = document.getElementById(`l-${c_id_1}-${c_id_2}`).innerHTML;
+  console.log("val ",val)
+  if(this.checked){
+    console.log("checked")
+    for(let i=1;i<=defaultRowCount;i++){
+      var r_val = document.getElementById(`r-${i}-${c_id_2}`).innerHTML;
+      console.log("r_val",r_val,val)
+      if(r_val.indexOf(val) >-1 ){
+        console.log("r_val , val ",r_val, " ",val)
+        document.getElementById(`r-${i}-${c_id_2}`).style.display=""
+      }
+      
+    }
+  }
+  else{
+    console.log("not  checked")
+    for(let i=1;i<=defaultRowCount;i++){
+      var r_val = document.getElementById(`r-${i}-${c_id_2}`).innerHTML;
+      console.log("r_val",r_val, val)
+      if(r_val.indexOf(val)>-1){
+        console.log("r_val , val ",r_val, " ",val)
+        document.getElementById(`r-${i}-${c_id_2}`).style.display="none"
+      }
+      
+    }
+  }
+}
+
+function filterFunction() {
+
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("filterInput");
+    filter = input.value.toUpperCase();
+    console.log("filter",filter)
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      console.log("check loop ", a[i].innerHTML.toUpperCase());
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+// function sortingbutton(){
+//   document.getElementById("sorta").style.display = 'none';
+//   document.getElementById("sortz").style.display = 'block';
+// }
+
+// function sortingbutton2(){
+//    document.getElementById('sortz').style.display = 'none';
+//    document.getElementById('sorta').style.display = 'block';
+// }

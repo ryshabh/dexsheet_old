@@ -340,16 +340,28 @@ populateTable = () => {
   const data = this.getData();
   if (data === undefined || data === null) return;
 
-  for (let i = 1; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     for (let j = 1; j < data[i].length; j++) {
-      const cell = document.getElementById(`r-${i}-${j}`);
-      if(cell){
-        cell.innerHTML = data[i][j];
+      if(i==0){
+        const h_cell = document.getElementById(`h-${i}-${j}`);
+        if(data[i][j]){
+          h_cell.innerHTML = data[i][j];
+        }
       }
+      // console.log("populateTable() i= ",i," j= ",j )
+      else{
+        const cell = document.getElementById(`r-${i}-${j}`);
+        if(cell){
+          cell.innerHTML = data[i][j];
+        }
+      }
+      
+      
     }
   }
+  datechange();
+  datechange1();
 };
-
 //bold
 $(document).ready(function() {
   $('#jBold').click(function() {
@@ -358,18 +370,35 @@ $(document).ready(function() {
 });
 
 // Utility function to add row
-addRow = (currentRow, direction) => {
+// addRow = (currentRow, direction) => {
+//   let data = this.getData();
+//   const colCount = data[0].length;
+//   const newRow = new Array(colCount).fill("");
+//   if (direction === "top") {
+//     data.splice(currentRow, 0, newRow);
+//   } else if (direction === "bottom") {
+//     data.splice(currentRow + 1, 0, newRow);
+//   }
+//   defaultRowCount++;
+//   saveData(data);
+//   this.createSpreadsheet();
+// };
+
+addRow = () => {
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[1];
   let data = this.getData();
   const colCount = data[0].length;
   const newRow = new Array(colCount).fill("");
-  if (direction === "top") {
-    data.splice(currentRow, 0, newRow);
-  } else if (direction === "bottom") {
-    data.splice(currentRow + 1, 0, newRow);
-  }
+ 
+  data.splice(res_id + 1, 0, newRow);
+  
   defaultRowCount++;
   saveData(data);
   this.createSpreadsheet();
+  addEvents();
 };
 
 // Utility function to delete row
@@ -382,14 +411,16 @@ deleteRow = currentRow => {
 };
 
 // Utility function to add columns
-addColumn = (currentCol, direction) => {
+addColumn = () => {
   let data = this.getData();
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
   for (let i = 0; i <= defaultRowCount; i++) {
-    if (direction === "left") {
-      data[i].splice(currentCol, 0, "");
-    } else if (direction === "right") {
-      data[i].splice(currentCol + 1, 0, "");
-    }
+    
+      data[i].splice(res_id , 0, "");
+    
   }
   defaultColCount++;
   saveData(data);
@@ -1022,7 +1053,79 @@ let count = 0;
 
   }
   el.innerHTML = "Task"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+  saveData(spreadsheetData);
 }
+// function swaptext2(){
+//   var tbl = document.getElementById("table-main");
+//   let count = 0;
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var res_id = res[2];
+//   var res_id1 = res[1];
+//   console.log("res",res[2]);
+//   var el = document.getElementById(`h-0-${res_id}`);
+//     for (var j = 1; j  <=defaultRowCount; j++){
+//       console.log("testloop",i);
+//       var row = document.getElementById(`r-${j}`);
+//   // var row = document.getElementById("r-8-1");
+//     // var x = row.insertCell(res_id);
+//     var x = document.getElementById(`r-${j}-${res_id}`);
+
+//     var div = document.createElement('div');
+//     div.setAttribute('id',`input_container-${res_id}`);
+//     div.setAttribute('class','input_containr')
+//      var button = document.createElement('input');
+//      // var button.setAttribute('id','inputid');
+//      // button.setAttribute('onClick','calendarfun();');
+//      // button.onClick = inputfunction();
+//      button.setAttribute('type','text');
+//      button.setAttribute('class', `datepicker`);
+//      button.setAttribute('id', `datepicker1-${j}`);
+
+//      var img_tag = document.createElement('img');
+//      img_tag.src = "assets/img/calendar.svg";
+//      img_tag.setAttribute('id',`input_img-${j}`);
+
+//      img_tag.setAttribute('class',`img_class`);
+//      // button.addEventListener("click", showimage);
+//      img_tag.style.display = 'none';
+     
+//     div.appendChild(img_tag);
+//      div.appendChild(button);
+//      x.appendChild(div);
+     
+    
+//     button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
+//      button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
+//     let spreadsheetData = getData();
+//     spreadsheetData[j][res_id] = x.innerHTML;
+//     saveData(spreadsheetData);
+//    }
+
+// $(function() {
+//      $(".datepicker").datepicker();
+
+//    });
+
+//   for (let m = 0; m< defaultColCount.length; m++){
+//     console.log("count",count)
+//     if(document.getElementById(`h-0-${m}`).innerHTML=="From"){
+//       count= count+1;
+//       console.log("count",count)
+//     }
+    
+    
+
+//   }
+//   el.innerHTML = "From"
+//   let spreadsheetData = getData();
+//   spreadsheetData[0][res_id] = el.innerHTML;
+//   saveData(spreadsheetData);
+// }
+
 
 function swaptext2(){
   var tbl = document.getElementById("table-main");
@@ -1035,25 +1138,47 @@ function swaptext2(){
   var el = document.getElementById(`h-0-${res_id}`);
     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
-      var row = document.getElementById(`r-${j}`);
-      var x = document.getElementById(`r-${j}-${res_id}`)
-  var div = document.createElement('div');
-    div.setAttribute('id','input_container');
+var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    // var x = row.insertCell(res_id);
+    var x = document.getElementById(`r-${j}-${res_id}`);
+
+    var div = document.createElement('div');
+    div.setAttribute('id',`input_container-${res_id}`);
+    div.setAttribute('class','input_containr')
      var button = document.createElement('input');
+     // var button.setAttribute('id','inputid');
+     // button.setAttribute('onClick','calendarfun();');
+     // button.onClick = inputfunction();
      button.setAttribute('type','text');
-     button.setAttribute('class', 'datepicker ');
+     button.setAttribute('class', `datepicker`);
+     button.setAttribute('id', `datepicker1-${j}`);
+     button.addEventListener("click", datechange);
+
      var img_tag = document.createElement('img');
-     img_tag.src = "https://cdn4.iconfinder.com/data/icons/36-slim-icons/87/calender.png";
-     img_tag.setAttribute('id','input_img');
+     img_tag.src = "assets/img/calendar.svg";
+     img_tag.setAttribute('id',`input_img-${j}`);
 
-     x.appendChild(div);
+     img_tag.setAttribute('class',`img_class`);
+     // button.addEventListener("click", showimage);
+     img_tag.style.display = 'none';
+     
+    div.appendChild(img_tag);
      div.appendChild(button);
-     div.appendChild(img_tag);
-   }
+     x.appendChild(div);
+     
+    
+    button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
+     
+    let spreadsheetData = getData();
+    spreadsheetData[j][res_id] = x.innerHTML;
+    saveData(spreadsheetData);
+}
 
-   $(function() {
-     $(".datepicker").datepicker();
-   });
+// $(function() {
+//      $(".datepicker").datepicker();
+//    });
   
   // }
   for (let m = 0; m< defaultColCount.length; m++){
@@ -1067,7 +1192,88 @@ function swaptext2(){
 
   }
   el.innerHTML = "From"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+  saveData(spreadsheetData);
 }
+
+function datechange(){
+  console.log("datechange",this)
+  $(function() {
+     $(".datepicker").datepicker();
+   });
+
+
+}
+function datechange1(){
+  console.log("datechange",this)
+  $(function() {
+     $(".datepicker").datepicker();
+   });
+
+
+}
+
+
+
+// function swaptext3(){
+//  var tbl = document.getElementById("table-main");
+//   let count = 0;
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var res_id = res[2];
+//   var res_id1 = res[1];
+//   console.log("res",res[2]);
+//   var el = document.getElementById(`h-0-${res_id}`);
+//     for (var j = 1; j  <=defaultRowCount; j++){
+//       console.log("testloop",i);
+//       var row = document.getElementById(`r-${j}`);
+//   // var row = document.getElementById("r-8-1");
+//     // var x = row.insertCell(res_id);
+//     var x = document.getElementById(`r-${j}-${res_id}`);
+
+//     var div = document.createElement('div');
+//     div.setAttribute('id',`input_container-${res_id}`);
+//     div.setAttribute('class','input_containr1');
+//      var button = document.createElement('input');
+//      // var button.setAttribute('id','inputid');
+//      // button.setAttribute('onClick','calendarfun();');
+//      // button.onClick = inputfunction();
+//      button.setAttribute('type','text');
+//      button.setAttribute('class', `datepicker1`);
+//      button.setAttribute('id', `datepicker11-${j}`);
+
+//      var img_tag = document.createElement('img');
+//      img_tag.src = "assets/img/calendar.svg";
+//      img_tag.setAttribute('id',`input_img1-${j}`);
+
+//      img_tag.setAttribute('class',`img_class`);
+//      // button.addEventListener("click", showimage);
+//      img_tag.style.display = 'none';
+     
+//     div.appendChild(img_tag);
+//      div.appendChild(button);
+//      x.appendChild(div);
+     
+    
+//     button.setAttribute('onfocus',`document.getElementById('input_img1-${j}').style.display='block';`);
+//      button.setAttribute('onblur',`document.getElementById('input_img1-${j}').style.display='none';`);
+//     let spreadsheetData = getData();
+//     spreadsheetData[j][res_id] = el.innerHTML;
+//     saveData(spreadsheetData);
+//    }
+
+// $(function() {
+//      $(".datepicker1").datepicker();
+
+//    });
+  
+//   el.innerHTML = "To"
+//   let spreadsheetData = getData();
+//   spreadsheetData[0][res_id] = x.innerHTML;
+//   saveData(spreadsheetData);
+// }
 
 function swaptext3(){
   let count = 0;
@@ -1081,23 +1287,43 @@ function swaptext3(){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
-  var x = document.getElementById(`r-${j}-${res_id}`)
-    var div = document.createElement('div');
-    div.setAttribute('id','input_container');
-     var button = document.createElement('input');
-     button.setAttribute('type','text');
-     button.setAttribute('class', 'datepicker ');
-     var img_tag = document.createElement('img');
-     img_tag.src = "https://cdn4.iconfinder.com/data/icons/36-slim-icons/87/calender.png";
-     img_tag.setAttribute('id','input_img');
+    // var x = row.insertCell(res_id);
+    var x = document.getElementById(`r-${j}-${res_id}`);
 
-     x.appendChild(div);
+    var div = document.createElement('div');
+    div.setAttribute('id',`input_container-${res_id}`);
+    div.setAttribute('class','input_containr1');
+     var button = document.createElement('input');
+     // var button.setAttribute('id','inputid');
+     // button.setAttribute('onClick','calendarfun();');
+     // button.onClick = inputfunction();
+     button.setAttribute('type','text');
+     button.setAttribute('class', `datepicker1`);
+     button.setAttribute('id', `datepicker11-${j}`);
+     button.addEventListener("click", datechange1);
+
+     var img_tag = document.createElement('img');
+     img_tag.src = "assets/img/calendar.svg";
+     img_tag.setAttribute('id',`input_img1-${j}`);
+
+     img_tag.setAttribute('class',`img_class`);
+     // button.addEventListener("click", showimage);
+     img_tag.style.display = 'none';
+     
+    div.appendChild(img_tag);
      div.appendChild(button);
-     div.appendChild(img_tag);
+     x.appendChild(div);
+     
+    
+    button.setAttribute('onfocus',`document.getElementById('input_img1-${j}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('input_img1-${j}').style.display='none';`);
+    let spreadsheetData = getData();
+    spreadsheetData[j][res_id] = el.innerHTML;
+    saveData(spreadsheetData);
    }
 
    $(function() {
-     $(".datepicker").datepicker();
+     $(".datepicker1").datepicker();
    });
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
@@ -1108,7 +1334,11 @@ function swaptext3(){
 
   }
   el.innerHTML = "To"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = x.innerHTML;
+  saveData(spreadsheetData);
 }
+
 
 function removeSpecial(){
   var a = localStorage.getItem("cell");
@@ -1118,10 +1348,10 @@ function removeSpecial(){
   console.log("res",res[2]);
   // var el = document.getElementById(`h-0-${res_id}`);
   // el.innerText = `${(res_id+9).toString(36).toUpperCase()}`;
-  const data = this.getData();
-  if (data === undefined || data === null) {
-      console.log("removeSpecial() if")
-      for (var j = 1; j  <=defaultRowCount; j++){
+ 
+ 
+    console.log("removeSpecial() else")
+     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
       console.log("res sds",`r-${j}-${res_id}`);
@@ -1129,7 +1359,7 @@ function removeSpecial(){
       // var x = document.getElementById(`r-${j}-${res_id}`)
   // var row = document.getElementById("r-8-1");
     // var x = row.insertCell(res_id);
-    var element = document.getElementById('date');
+    var element = document.getElementById(`input_container-${res_id}`);
     // button.setAttribute('id', 'date');
      // button.setAttribute('data-placeholder',' ');
      // button.setAttribute('aria-required','true')
@@ -1138,25 +1368,6 @@ function removeSpecial(){
       x.removeChild(element);
      }
      
-  }
-
-  }
-  else{
-    console.log("removeSpecial() else")
-    for (let i = 1; i < data.length; i++) {
-      var row = document.getElementById(`r-${j}`);
-    for (let j = 1; j < data[i].length; j++) {
-      var x = document.getElementById(`r-${j}-${res_id}`)
-      var element = document.getElementById('date');
-    // button.setAttribute('id', 'date');
-     // button.setAttribute('data-placeholder',' ');
-     // button.setAttribute('aria-required','true')
-     // button.setAttribute('value', 'raj')
-     if(element){
-      x.removeChild(element);
-     }
-    }
-  }
   }
   
 
@@ -1296,7 +1507,7 @@ function Addcoloms(){
     console.log("defaultColCount ",defaultColCount);
     for(var l = 0; l<defaultRowCount; l++){
       if(l ==0){
-        if(k==defaultColCount){
+        if(k==defaultColCount ||  k==res_id){
           var row = document.getElementById('h-0');
           var x = row.insertCell(k);
           x.setAttribute("id", `h-0-${k}`);
@@ -1422,24 +1633,52 @@ function Addcoloms(){
    }
 }
 
-function deleterow(){
+// function deleterow(){
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var r_1 = res[1];
+//   var c_1 = res[2];
+
+//   for(let i=0; i<defaultColCount;i++){
+//     var row = document.getElementById(`r-${r_1}`)
+//     row.deleteCell(i);
+
+//   }
+
+// }
+
+// function deletecolmn(){
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var currentCol = res[2];
+
+//   let data = this.getData();
+//   for (let i = 0; i <= defaultRowCount; i++) {
+//     data[i].splice(currentCol, 1);
+//   }
+//   defaultColCount--;
+//   saveData(data);
+//   this.createSpreadsheet();
+// }
+
+function deleterow () {
   var a = localStorage.getItem("cell");
   console.log("abc",a);
   var res = a.split("-");
   var r_1 = res[1];
-  var c_1 = res[2];
-
-  for(let i=0; i<defaultColCount;i++){
-    var row = document.getElementById(`r-${r_1}`)
-    row.deleteCell(i);
-
-  }
-
-}
-
+  let data = this.getData();
+  data.splice(r_1, 1);
+  defaultRowCount--;
+  saveData(data);
+  this.createSpreadsheet();
+  addEvents();
+};
 
 function deletecolmn(){
   let count = 0;
+  let data = this.getData();
   var a = localStorage.getItem("cell");
   console.log("abc",a);
   var res = a.split("-");
@@ -1452,11 +1691,16 @@ function deletecolmn(){
         var row = document.getElementById('h-0');
         // var row = document.getElementById("r-8-1");
         var x = row.deleteCell(res_id);
+        data[j].splice(res_id, 1);
+        saveData(data);
+
       }
       else{
         var row = document.getElementById(`r-${j}`);
         // var row = document.getElementById("r-8-1");
         var x = row.deleteCell(res_id);
+        data[j].splice(res_id, 1);
+        saveData(data);
       }
       // defaultRowCount--;
       
@@ -1623,18 +1867,7 @@ function Addcell(){
    
 }
 
-function deleterow () {
-  var a = localStorage.getItem("cell");
-  console.log("abc",a);
-  var res = a.split("-");
-  var r_1 = res[1];
-  let data = this.getData();
-  data.splice(r_1, 1);
-  defaultRowCount++;
-  saveData(data);
-  this.createSpreadsheet();
-  addEvents();
-};
+
 
 function shiftDown(){
   var a = localStorage.getItem("cell");
@@ -1645,7 +1878,7 @@ function shiftDown(){
   var res = a.split("-");
   var r_1 = res[1];
   var r_2 = res[2];
-  var r = r_1+1
+  var r = parseInt(r_1)+1;
   if(r_1==defaultRowCount){
     let data = this.getData();
     const colCount = data[0].length;
@@ -1669,49 +1902,97 @@ function shiftDown(){
 }
 
 
+// function shiftRight(){
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var a_val = document.getElementById(a).innerHTML;
+//   var rows = defaultRowCount;
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var r_1 = res[1];
+//   var r_2 = res[2];
+//   var r  = parseInt(r_2)+1;
+//   if(r_2==defaultColCount){
+//     let data = this.getData();
+//     const colCount = data[0].length;
+//     for (let i = 0; i <= defaultRowCount; i++) {
+//       data[i].splice(r, 0, "");
+
+//     }
+    
+
+//     defaultColCount++;
+//     saveData(data);
+//     this.createSpreadsheet();
+//     addEvents();
+//     var val = document.getElementById(a).innerHTML;
+//     document.getElementById(`r-${r_1}-${r}`).innerHTML=val;
+//     document.getElementById(a).innerHTML='';
+//   }
+//   else{
+    
+//     var val = document.getElementById(a).innerHTML;
+//     document.getElementById(`r-${r_1}-${r}`).innerHTML=val;
+//     document.getElementById(a).innerHTML='';
+//     addEvents();
+//   }
+// }
+
+// function shiftRight(){
+//  const data = this.getData();
+//   if (data === undefined || data === null) return;
+
+//   for (let i = 0; i < data.length; i++) {
+//     for (let j = 1; j < data[i].length; j++) {
+//       if(i==0){
+//         const h_cell = document.getElementById(`h-${i}-${j}`);
+//         if(data[i][j]){
+//           h_cell.innerHTML = data[i][j];
+//         }
+//       }
+//       // console.log("populateTable() i= ",i," j= ",j )
+//       const cell = document.getElementById(`r-${i}-${j}`);
+//       if(cell){
+//         cell.innerHTML = data[i][j];
+//       }
+      
+//     }
+//   }
+// }
+
+
+// function deleteLeft(){
+//   let data = this.getData();
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var r_1 = res[1];
+//   var r_2 = res[2];
+
+//   data[r_1].splice(r_2, 1,'');
+//   // data[r_1].splice(r_2, 1,'');
+//   // defaultColCount++;
+//   saveData(data);
+//   this.createSpreadsheet();
+//   addEvents();
+// }
+
+// function deleteRight(){
+//   let data = this.getData();
+//   var a = localStorage.getItem("cell");
+//   console.log("abc",a);
+//   var res = a.split("-");
+//   var r_1 = res[1];
+//   var r_2 = res[2];
+
+//   data[r_1].splice(r_2, 1,'');
+//   // data[r_1].splice(r_2, 1,'');
+//   // defaultColCount++;
+//   saveData(data);
+//   this.createSpreadsheet();
+//   addEvents();
+// }
 function shiftRight(){
-  var a = localStorage.getItem("cell");
-  console.log("abc",a);
-  var res = a.split("-");
-  var r_1 = res[1];
-  console.log("r_1",r_1)
-  var r_2 = res[2];
-  r_2 = parseInt(r_2);
-  let data = this.getData();
-  if(r_2==defaultColCount){
-    
-    for (let i = 0; i <= defaultRowCount; i++) {
-      console.log("r_1",r_1,"i ",i)
-      if(i==r_1){
-        var  val = document.getElementById(a).value;
-        console.log("val ",val)
-        data[i].splice(r_2, 0, "");
-        data[i].splice(r_2 + 1, 0, val);
-      }
-      else{
-        data[i].splice(r_2 + 1, 0, "");
-      }
-    }
-    
-    
-    defaultColCount++;
-    saveData(data);
-    this.createSpreadsheet();
-    addEvents();
-  }
-  else{
-    var val = document.getElementById(a).innerHTML;
-    data[r_1].splice(r_2, 0, "");
-    data[r_1].splice(r_2 + 1, 0, val);
-    saveData(data);
-    this.createSpreadsheet();
-    addEvents();
-  }
-
-}
-
-
-function deleteRight(){
   let data = this.getData();
   var a = localStorage.getItem("cell");
   console.log("abc",a);
@@ -1719,13 +2000,158 @@ function deleteRight(){
   var r_1 = res[1];
   var r_2 = res[2];
 
-  data[r_1].splice(r_2, 1,'');
-  // data[r_1].splice(r_2, 1,'');
-  // defaultColCount++;
+   // document.execCommand('cut',false,null);
+  data[r_1].splice(r_2, 0, " ");
+  defaultColCount++;
   saveData(data);
   this.createSpreadsheet();
   addEvents();
 }
+
+function shiftDown(){
+  let data = this.getData();
+  let data2 = this.getData();
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  var r_2 = res[2];
+  r_1 = parseInt(r_1)
+  // document.execCommand('cut',false,null);
+  for (let i=r_1; i<data2.length;i++){
+      
+      // if(i==r_1){
+      //   console.log("i ",i)
+      //   data[i][r_2] = '';
+      // }
+      if(i==data2.length-1){
+        var a = data2[i][r_2]
+        console.log("a ",a)
+        if(a){
+          console.log("a exist")
+          const newRow = new Array(defaultColCount).fill("");
+ 
+          data.splice(i + 1, 0, newRow);
+          data[i+1][r_2]= data2[i-1][r_2]
+
+
+        }
+        else{
+          console.log("a does not exist ")
+        }
+      }
+      // else{
+        // console.log("i ",i+1,"j ",j)
+        data[i][r_2]= data2[i-1][r_2]
+      // }
+      
+    
+  }
+  // data[r_1].splice(r_2, 0, "12 ");
+  defaultRowCount++;
+  saveData(data);
+  this.createSpreadsheet();
+  addEvents();
+}
+
+
+function deleteLeft(){
+  let data = this.getData();
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  var r_2 = res[2];
+
+  document.execCommand('cut',false,null);
+  data[r_1].splice(r_2, 1,);
+  defaultColCount++;
+  saveData(data);
+  this.createSpreadsheet();
+  addEvents();
+}
+
+function deleteUp(){
+  let data = this.getData();
+  let data2 = this.getData();
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var r_1 = res[1];
+  var r_2 = res[2];
+  r_1 = parseInt(r_1)
+  // document.execCommand('cut',false,null);
+  for (let i=r_1; i<data2.length;i++){
+      
+      if(i==data2.length-1){
+        console.log("i ",i)
+        data[i][r_2] = '';
+      }
+      else{
+        console.log("i ",i+1,"j ",j)
+        data[i][r_2]= data2[i+1][r_2]
+      }
+      
+    
+  }
+  // data[r_1].splice(r_2, 0, "12 ");
+  defaultRowCount++;
+  saveData(data);
+  this.createSpreadsheet();
+  addEvents();
+}
+
+        function cutText(){
+          let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+          var copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
+           // var row = document.getElementById(`r-${res_id}-${res_id2}`);
+          // var row = document.getElementById("r-8-1");
+          // console.log("chedck copytext",row);
+          
+          // var fullLink = document.createElement('input');
+          // document.body.appendChild(fullLink);
+          // fullLink.value = copyText;
+          // copyText.select();
+          document.execCommand("cut", false);
+          // fullLink.remove();
+          // alert("Copied the text: " + fullLink.value);
+        }
+
+        function copytext(){
+          let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+          var copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
+           // var row = document.getElementById(`r-${res_id}-${res_id2}`);
+          // var row = document.getElementById("r-8-1");
+          // console.log("chedck copytext",row);
+          
+          var fullLink = document.createElement('input');
+          document.body.appendChild(fullLink);
+          fullLink.value = copyText;
+          fullLink.select();
+          document.execCommand("copy", true);
+          fullLink.remove();
+          // alert("Copied the text: " + fullLink.value);
+    
+
+        }
+
+      function pasteText(){
+        var str = document.execCommand('paste',true);
+        console.log("paste ",str)
+      }
+
 
 function appendRow() {
   var a = localStorage.getItem("cell");
@@ -2015,16 +2441,17 @@ $("#table-main").on("mousedown", "td", function() {
     selection["y"][1] = $this.parent("tr").index();
     // console.log("check index",$this.index(),$this.parent("tr").index());
     markSelection(selection);
-    end_col=$this.index();
-    end_row=  $this.parent("tr").index();
+    
   }
 }).on("mouseup", "td", function() {
   // End dragging
   isDragging = false;
-
+  
   const $this = $(this);
   selection["x"][1] = $this.index();
   selection["y"][1] = $this.parent("tr").index();
+  end_col=$this.index();
+  end_row=  $this.parent("tr").index();
   markSelection(selection);
 }).on("mouseleave", function() {
   // End dragging

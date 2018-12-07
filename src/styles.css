@@ -788,3 +788,43 @@ overflow-x: scroll;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+.input_containr{
+  position:relative;
+    /*padding:0 0 0 20px;*/
+    /*margin:0 20px;*/
+    /*background:#ddd;*/
+    /*direction: rtl;*/
+    width: 100px;
+}
+
+.input_containr1{
+      position:relative;
+    /*padding:0 0 0 20px;*/
+    /*margin:0 20px;*/
+    /*background:#ddd;*/
+    /*direction: rtl;*/
+    width: 100px;
+}
+
+
+.datepicker{
+   /*height:20px;*/
+    /*margin:0;*/
+    /*padding-right: 30px;*/
+    width: 100%;
+    border: 0;
+}
+.datepicker1{
+   /*height:20px;*/
+    /*margin:0;*/
+    /*padding-right: 30px;*/
+    width: 100%;
+    border: 0;
+}
+.img_class {
+    position:absolute;
+    bottom:4px;
+    right:5px;
+    width:14px;
+    height:14px;
+}

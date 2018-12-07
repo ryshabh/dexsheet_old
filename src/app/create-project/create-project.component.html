@@ -105,7 +105,7 @@
         <td>
           <button class="file" id="jBold" onclick="bold();"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Bold</span></button>&nbsp;
           <button class="file" onclick="italic();"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
-          <button class="file" onclick="strikethrough;"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
+          <button class="file" onclick="strikethrough();"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
            <button id="change_color" onclick="textcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;" list="reds">
                     <datalist id="reds">
               <option>#000000</option>
@@ -373,23 +373,19 @@
    <div id="rightclicked">
       <ul id="content" class="w3-bar-block w3-border">
        <!--  <a href="#"> -->
-          <li class="w3-bar-item w3-button" onclick="document.execCommand('cut',false,null);"  style="border-top: none; margin-top: -1px; ">
+           <li class="w3-bar-item w3-button" onclick="cutText()" style="border-top: none; margin-top: -1px; ">
             Cut
           </li>
-        <!-- </a> -->
-        <!-- <a href="#"> -->
-          <li class="w3-bar-item w3-button">
+          <li class="w3-bar-item w3-button" onclick="copytext();">
             Copy
           </li>
-        <!-- </a> -->
-        <!-- <a href="#"> -->
-          <li class="w3-bar-item w3-button">
+          <li class="w3-bar-item w3-button" onclick="pasteText();">
             Paste
           </li>
-          <li class="w3-bar-item w3-button" onclick="appendRow()">
+          <li class="w3-bar-item w3-button" onclick="addRow()">
             Insert row 
           </li>
-          <li class="w3-bar-item w3-button"  id="insert_col" onclick="Addcoloms();">
+          <li class="w3-bar-item w3-button"  id="insert_col" onclick="addColumn();">
             Insert Column
           </li>
           <!-- <li class="w3-bar-item w3-button" id="insert_cell" onclick="Addcell()">
@@ -401,15 +397,21 @@
           <li class="w3-bar-item w3-button" id="del_col" onclick="deletecolmn()">
             Delete Column
           </li >
-          <li class="dropdown-submenu">
+         <li class="dropdown-submenu">
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Insert Cell<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="shiftDown();">Shift down</a></li>
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="shiftRight();">Shift right</a></li>
                       </ul>
           </li>
-          <li class="w3-bar-item w3-button" id="del_cell" onclick="deleteRight()">
-            Delete Cell
+          <li class="dropdown-submenu">
+                <a class="test w3-button w3-white" tabindex="-1" href="#">Delete Cell<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="deleteUp();">Shift Up</a></li>
+                        <li class="w3-bar-item w3-button" id="del_cell" onclick="deleteLeft(); ">
+                          Shift left
+                        </li>
+                      </ul>
           </li>
           <li class="dropdown-submenu">
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Special<span class="caret"></span></a>

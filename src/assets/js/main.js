@@ -42,6 +42,7 @@ let end_col=0;
 let color = "";
 let cell_clr = false;
 let cell_sum =false;
+var copyText;
 
 
 initializeData = () => {
@@ -314,6 +315,7 @@ createTableBodyRow = rowNum => {
       // span.appendChild(img);
       // cell.appendChild(span);
       const s = document.createElement("span");
+
       s.innerHTML = rowNum;
       cell.appendChild(s)
 
@@ -321,6 +323,7 @@ createTableBodyRow = rowNum => {
       cell.setAttribute("class", "row-header");
     } else {
       cell.contentEditable = true;
+      cell.unselectable = "on";
     }
     cell.setAttribute("id", `r-${rowNum}-${i}`);
     // cell.id = `${rowNum}-${i}`;
@@ -340,21 +343,21 @@ populateTable = () => {
   const data = this.getData();
   if (data === undefined || data === null) return;
 
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 1; i < data.length; i++) {
     for (let j = 1; j < data[i].length; j++) {
-      if(i==0){
-        const h_cell = document.getElementById(`h-${i}-${j}`);
-        if(data[i][j]){
-          h_cell.innerHTML = data[i][j];
-        }
-      }
-      // console.log("populateTable() i= ",i," j= ",j )
-      else{
+      // if(i==0){
+      //   const h_cell = document.getElementById(`h-${i}-${j}`);
+      //   if(data[i][j]){
+      //     h_cell.innerHTML = data[i][j];
+      //   }
+      // }
+      // // console.log("populateTable() i= ",i," j= ",j )
+      // else{
         const cell = document.getElementById(`r-${i}-${j}`);
         if(cell){
           cell.innerHTML = data[i][j];
         }
-      }
+      // }
       
       
     }
@@ -389,11 +392,12 @@ addRow = () => {
   console.log("abc",a);
   var res = a.split("-");
   var res_id = res[1];
+  res_id = parseInt(res_id)
   let data = this.getData();
   const colCount = data[0].length;
   const newRow = new Array(colCount).fill("");
- 
-  data.splice(res_id + 1, 0, newRow);
+ console.log("addRow", res_id)
+  data.splice(res_id , 0, newRow);
   
   defaultRowCount++;
   saveData(data);
@@ -408,6 +412,7 @@ deleteRow = currentRow => {
   defaultRowCount++;
   saveData(data);
   this.createSpreadsheet();
+  addEvents();
 };
 
 // Utility function to add columns
@@ -425,6 +430,7 @@ addColumn = () => {
   defaultColCount++;
   saveData(data);
   this.createSpreadsheet();
+  addEvents();
 };
 
 // Utility function to delete column
@@ -436,6 +442,7 @@ deleteColumn = currentCol => {
   defaultColCount++;
   saveData(data);
   this.createSpreadsheet();
+  addEvents();
 };
 
 // Map for storing the sorting history of every column;
@@ -1144,7 +1151,7 @@ var row = document.getElementById(`r-${j}`);
     var x = document.getElementById(`r-${j}-${res_id}`);
 
     var div = document.createElement('div');
-    div.setAttribute('id',`input_container-${res_id}`);
+    div.setAttribute('id',`input_container-${j}-${res_id}`);
     div.setAttribute('class','input_containr')
      var button = document.createElement('input');
      // var button.setAttribute('id','inputid');
@@ -1152,12 +1159,12 @@ var row = document.getElementById(`r-${j}`);
      // button.onClick = inputfunction();
      button.setAttribute('type','text');
      button.setAttribute('class', `datepicker`);
-     button.setAttribute('id', `datepicker1-${j}`);
+     button.setAttribute('id', `datepicker1-${j}-${res_id}`);
      button.addEventListener("click", datechange);
 
      var img_tag = document.createElement('img');
-     img_tag.src = "assets/img/calendar.svg";
-     img_tag.setAttribute('id',`input_img-${j}`);
+     img_tag.src = "img/calendar.svg";
+     img_tag.setAttribute('id',`input_img-${j}-${res_id}`);
 
      img_tag.setAttribute('class',`img_class`);
      // button.addEventListener("click", showimage);
@@ -1168,12 +1175,13 @@ var row = document.getElementById(`r-${j}`);
      x.appendChild(div);
      
     
-    button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
-     button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
+    button.setAttribute('onfocus',`document.getElementById('input_img-${j}-${res_id}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('input_img-${j}-${res_id}').style.display='none';`);
      
-    let spreadsheetData = getData();
-    spreadsheetData[j][res_id] = x.innerHTML;
-    saveData(spreadsheetData);
+    // code for saving the calender data in localstorage
+    // let spreadsheetData = getData();
+    // spreadsheetData[j][res_id] = x.innerHTML;
+    // saveData(spreadsheetData);
 }
 
 // $(function() {
@@ -1291,7 +1299,7 @@ function swaptext3(){
     var x = document.getElementById(`r-${j}-${res_id}`);
 
     var div = document.createElement('div');
-    div.setAttribute('id',`input_container-${res_id}`);
+    div.setAttribute('id',`input_container-${j}-${res_id}`);
     div.setAttribute('class','input_containr1');
      var button = document.createElement('input');
      // var button.setAttribute('id','inputid');
@@ -1299,12 +1307,12 @@ function swaptext3(){
      // button.onClick = inputfunction();
      button.setAttribute('type','text');
      button.setAttribute('class', `datepicker1`);
-     button.setAttribute('id', `datepicker11-${j}`);
+     button.setAttribute('id', `datepicker11-${j}-${res_id}`);
      button.addEventListener("click", datechange1);
 
      var img_tag = document.createElement('img');
-     img_tag.src = "assets/img/calendar.svg";
-     img_tag.setAttribute('id',`input_img1-${j}`);
+     img_tag.src = "img/calendar.svg";
+     img_tag.setAttribute('id',`input_img1-${j}-${res_id}`);
 
      img_tag.setAttribute('class',`img_class`);
      // button.addEventListener("click", showimage);
@@ -1315,11 +1323,12 @@ function swaptext3(){
      x.appendChild(div);
      
     
-    button.setAttribute('onfocus',`document.getElementById('input_img1-${j}').style.display='block';`);
-     button.setAttribute('onblur',`document.getElementById('input_img1-${j}').style.display='none';`);
-    let spreadsheetData = getData();
-    spreadsheetData[j][res_id] = el.innerHTML;
-    saveData(spreadsheetData);
+    button.setAttribute('onfocus',`document.getElementById('input_img1-${j}-${res_id}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('input_img1-${j}-${res_id}').style.display='none';`);
+    // code for saving the calender data in localstorage
+    // let spreadsheetData = getData();
+    // spreadsheetData[j][res_id] = el.innerHTML;
+    // saveData(spreadsheetData);
    }
 
    $(function() {
@@ -2109,16 +2118,19 @@ function deleteUp(){
           var res_id = res[1];
           var res_id2 = res[2]
           console.log("res",res[2]);
-          var copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
+          copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
+          // var  ban =document.getElementById(a).style.fontWeight  ;
            // var row = document.getElementById(`r-${res_id}-${res_id2}`);
           // var row = document.getElementById("r-8-1");
           // console.log("chedck copytext",row);
+          // alert(copyText);
           
           // var fullLink = document.createElement('input');
           // document.body.appendChild(fullLink);
           // fullLink.value = copyText;
           // copyText.select();
           document.execCommand("cut", false);
+          document.getElementById(`r-${res_id}-${res_id2}`).innerHTML = "";
           // fullLink.remove();
           // alert("Copied the text: " + fullLink.value);
         }
@@ -2131,14 +2143,15 @@ function deleteUp(){
           var res_id = res[1];
           var res_id2 = res[2]
           console.log("res",res[2]);
-          var copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
+          copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
            // var row = document.getElementById(`r-${res_id}-${res_id2}`);
           // var row = document.getElementById("r-8-1");
           // console.log("chedck copytext",row);
-          
+          console.log(copyText);
           var fullLink = document.createElement('input');
           document.body.appendChild(fullLink);
           fullLink.value = copyText;
+          // console.log(copyText);
           fullLink.select();
           document.execCommand("copy", true);
           fullLink.remove();
@@ -2147,10 +2160,24 @@ function deleteUp(){
 
         }
 
-      function pasteText(){
-        var str = document.execCommand('paste',true);
-        console.log("paste ",str)
-      }
+        function pastetext(){
+          let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+
+          var pasteText = document.getElementById(`r-${res_id}-${res_id2}`);
+          pasteText.innerHTML = copyText;
+
+          console.log(copyText);
+        }
+
+     
+   
+      
 
 
 function appendRow() {
@@ -2652,9 +2679,9 @@ function bold(){
         }
         
 
-        $('.spreadsheet__table').keydown(function (e) {
+        $('.spreadsheet__table--body').keydown(function (e) {
           console.log("testenter");
-      if (e.which === 13) {
+      if (e.which == 13) {
         let count = 0;
           var a = localStorage.getItem("cell");
           console.log("abc",a);
@@ -2664,10 +2691,100 @@ function bold(){
           var res_id2 = res[2];
         //$(this).next('.inputs').focus();
             $(`#r-${res_id}-${res_id2}`).focus()
+
             localStorage.setItem("cell",`r-${res_id}-${res_id2}`);
+            return false;
 
       }
      });
+
+        // $('.spreadsheet__table').click(function () {
+        //   let count = 0;
+        //   var a = localStorage.getItem("cell");
+        //   console.log("abc",a);
+        //   var res = a.split("-");
+        //   var res_id = res[1];
+        //   var res_id2 = res[2]
+        //   console.log("res",res[2]);
+        //   copyText = document.getElementById(`r-${res_id}-${res_id2}`);
+        //    // var row = document.getElementById(`r-${res_id}-${res_id2}`);
+        //   // var row = document.getElementById("r-8-1");
+        //   // console.log("chedck copytext",row);
+        //   console.log("test this works or not");
+        //   var fullLink = document.createElement('input');
+        //   fullLink.setAttribute('type','text')
+        //   fullLink.setAttribute('id','input_focuss')
+        //   document.body.appendChild(fullLink);
+        //   fullLink.value = copyText;
+          
+          // alert("Copied the text: " + fullLink.value);
+    
+
+        // });
+
+
+//         $('input[type="text"]').on({
+//     focus: function() {
+//         if (!$(this).data('disabled')) this.blur()
+//     },
+//     dblclick: function() {
+//         $(this).data('disabled', true);
+//         this.focus()
+//     },
+//     blur: function() {
+//         $(this).data('disabled', false);
+//     }
+// });
+
+// $(document).ready(function(){
+//   $('#table-main').on('click',function(){
+    // $('#table-main').off('click');var a = localStorage.getItem("cell");
+  //   var a = localStorage.getItem("cell");
+  //     console.log("abc",a);
+  //     var res = a.split("-");
+  //     var res_id = res[2];
+  //     var res_id2 = res[1];
+  //     console.log("res",res[2]);
+  //     var el = document.getElementById(`r-${res_id2}-${res_id}`);
+
+  //   el.style.color = "transparent";
+  //   el.style.textShadow = "0px 0px 0px #2196f3";
+  // });
+  //  });
+
+$(function () {
+    $("#table-main td").dblclick(function () {
+        newInput(this);
+    });
+});
+
+function closeInput(elm) {
+    var value = $(elm).find('input').val();
+    $(elm).empty().text(value);
+
+    $(elm).bind("dblclick", function () {
+        newInput(elm);
+    });
+}  
+        
+function newInput(elm) {
+    $(elm).unbind('dblclick');
+
+    var value = $(elm).text();
+    $(elm).empty();
+    
+    $("<input>")
+        .attr('type', 'text')
+        .attr('id','input_created')
+        .val(value)
+        .blur(function() {
+            closeInput(elm);
+        })
+        .appendTo($(elm))
+        .focus();
+}
+
+
 
 function formatPrinter(){
   var a = localStorage.getItem("cell");
@@ -2729,7 +2846,7 @@ function sum(){
 
    const dropDownDiv1 = document.createElement("div");
       dropDownDiv1.setAttribute("class", "dropdown");
-      dropDownDiv1.innerHTML = `<button onclick="dropFunction()" class="dropbtn"><img src="assets/img/filter.svg"></button>
+      dropDownDiv1.innerHTML = `<button onclick="dropFunction()" class="dropbtn"><img src="img/filter.svg"></button>
   <div id="myDropdown-${res_id}" class="dropdown-content">
    <button class="sortingclass" id="sorta" onClick="sortColumn(); ">A->Z</button>
    <button id="sortz" onclick="sortColumn(); ">Z->A</button>

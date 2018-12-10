@@ -67,12 +67,84 @@ html {
 
 .spreadsheet table,
 .spreadsheet td,
-.spreadsheet th,
+/*.spreadsheet th,*/
 .spreadsheet tr {
   border: 0.05rem solid rgba(197, 197, 197, 0.486);
   font-size: 1.4rem;
   height: 2.5rem;
+  table-layout: fixed;
   border-spacing: 0rem;
+}
+
+#table-body
+{
+    table-layout: fixed;
+
+}
+
+#input_created{
+  width: 98px;
+  border: 0;
+    color: #000000;
+  text-shadow: none;
+  outline: none;
+
+}
+
+#table-main td {
+      color: transparent;
+  text-shadow: 0 0 0 #000000;
+
+}
+
+.spreadsheet__table--headers{
+  border: 0.05rem solid rgba(197, 197, 197, 0.486);
+  font-size: 1.4rem;
+  height: 2.5rem;
+  table-layout: fixed;
+  border-spacing: 0rem;
+  overflow: auto;
+}
+
+
+
+
+.column-header-span {
+  resize: horizontal;
+  overflow: auto;
+  text-align: center;
+  position: relative;
+  /*width: 120px;
+  height: 120px;
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid black;*/
+  display:block;
+
+}
+
+.column-header-span:after  {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: white;
+  width: 8px;
+  height: 100%;
+}
+
+.column-header-span:hover:after {
+  cursor: col-resize;
+}
+
+
+.spreadsheet__table--headers .column-header-span{
+  border: 0;
+  width: auto;
+  height: auto;
+  min-height: 20px;
+  min-width: 20px;
 }
 
 /*th {
@@ -125,6 +197,7 @@ html {
   min-width: 10rem;
   padding: 0.2rem 0.5rem;
   margin-top: 6px;
+  table-layout: fixed;
   margin-bottom: 6px;
 }
 
@@ -391,6 +464,11 @@ tbody #h {
   width: 15px
 }
 
+/*.calender{
+  background: url(assets/img/calendar.svg) no-repeat;
+
+}*/
+
 #li{
   margin-left:20px;
 }
@@ -643,11 +721,55 @@ height:100vh;
 overflow-x: scroll;
 }*/
 
-#date{
-  width: 100px;
-  border: 0;
+
+.input_containr{
+  position:relative;
+    /*padding:0 0 0 20px;*/
+    /*margin:0 20px;*/
+    /*background:#ddd;*/
+    /*direction: rtl;*/
+    width: 100px;
 }
 
+.input_containr1{
+      position:relative;
+    /*padding:0 0 0 20px;*/
+    /*margin:0 20px;*/
+    /*background:#ddd;*/
+    /*direction: rtl;*/
+    width: 100px;
+}
+
+
+.datepicker{
+   /*height:20px;*/
+    /*margin:0;*/
+    /*padding-right: 30px;*/
+     color: #000000;
+  text-shadow: none;
+  outline: none;
+    width: 98px;
+    border: 0;
+}
+.datepicker1{
+   /*height:20px;*/
+    /*margin:0;*/
+    /*padding-right: 30px;*/
+    color: #000000;
+  text-shadow: none;
+  outline: none;
+    width: 98px;
+    width: 100%;
+    border: 0;
+}
+
+.img_class {
+    position:absolute;
+    bottom:4px;
+    right:5px;
+    width:14px;
+    height:14px;
+}
 .form-control::-webkit-calendar-picker-indicator {
   opacity:0;
 }
@@ -727,41 +849,30 @@ overflow-x: scroll;
     border: 1px solid black;
   }
 
-#input_container {
-    position:relative;
-    /*padding:0 0 0 20px;*/
-    /*margin:0 20px;*/
-    /*background:#ddd;*/
-    /*direction: rtl;*/
-    width: 100px;
-}
-.datepicker{
-   /*height:20px;*/
-    /*margin:0;*/
-    /*padding-right: 30px;*/
-    width: 100%;
-    border: 0;
+.dropbtn {
+    background-color: grey;
+    color: white;
+   
+    border: none;
+    cursor: pointer;
 }
 
-#input_img {
-    position:absolute;
-    bottom:-2px;
-    right:5px;
-    width:24px;
-    height:24px;
-}
+/*.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}*/
 
-#filterInput {
+#myInput {
     border-box: box-sizing;
+    /*background-image: url('searchicon.png');*/
     background-position: 14px 12px;
     background-repeat: no-repeat;
     font-size: 16px;
-    padding: 10px 15px 8px 30px;
+    padding: 14px 20px 12px 45px;
     border: none;
     border-bottom: 1px solid #ddd;
 }
 
-#filterInput:focus {outline: 3px solid #ddd;}
+#myInput:focus {outline: 3px solid #ddd;}
 
 .dropdown {
     position: relative;
@@ -788,43 +899,26 @@ overflow-x: scroll;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
-.input_containr{
-  position:relative;
-    /*padding:0 0 0 20px;*/
-    /*margin:0 20px;*/
-    /*background:#ddd;*/
-    /*direction: rtl;*/
-    width: 100px;
+
+#right{
+  margin-top: 50px;
+}
+#right2{
+  float: right;
 }
 
-.input_containr1{
-      position:relative;
-    /*padding:0 0 0 20px;*/
-    /*margin:0 20px;*/
-    /*background:#ddd;*/
-    /*direction: rtl;*/
-    width: 100px;
+#right3{
+  float: left;
 }
 
+/*table
+{
+    table-layout: fixed;
+    height: 100px;
+}
 
-.datepicker{
-   /*height:20px;*/
-    /*margin:0;*/
-    /*padding-right: 30px;*/
-    width: 100%;
-    border: 0;
-}
-.datepicker1{
-   /*height:20px;*/
-    /*margin:0;*/
-    /*padding-right: 30px;*/
-    width: 100%;
-    border: 0;
-}
-.img_class {
-    position:absolute;
-    bottom:4px;
-    right:5px;
-    width:14px;
-    height:14px;
-}
+td
+{
+    border: 1px solid green;
+    overflow: hidden;
+}*/

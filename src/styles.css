@@ -17,11 +17,88 @@ html {
 
 .topnav td {
   text-align: center;
+  /*width: 50px;*/
 }
 .topnav span{
   font-size: 14px;
   color: grey;
   }
+  .topper{
+    display: block;
+    border: 1px solid #d9d9d9;
+  }
+
+     .top {
+  display: table;
+}
+.top-row {
+  display: table-row;
+}
+.top-cell {
+  display: table-cell;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #d9d9d9;
+  /*width: 10px;*/
+}
+
+.top-cell1 {
+  display: table-cell;
+ 
+  border: 1px solid #d9d9d9;
+  padding-left: 15px;
+  padding-right: 7px;
+  /*width: 10px;*/
+}
+
+.top-cell2{
+  display: table-cell;
+ 
+  border: 1px solid #d9d9d9;
+  padding-left: 25px;
+  width: 1015px;
+  height: 5px;
+}
+
+     .down {
+  display: table;
+}
+.down-row {
+  display: table-row;
+  border: 1px solid #d9d9d9;
+}
+.down-cell {
+  display: table-cell;
+  padding: 5px 10px 5px 10px;
+  border: 0px solid #d9d9d9;
+  background-color: #F8FAFF;
+  /*width: 10px;*/
+}
+
+
+
+.down-cell1 {
+  display: table-cell;
+  background-color: #F8FAFF;
+  border: 0px solid #d9d9d9;
+  padding-left: 1000px;
+  padding-right: 7px;
+  /*width: 10px;*/
+}
+
+.down-cell:hover{
+  background: white;
+}
+.down-cell1:hover{
+  background: white;
+}
+
+#mainfile{
+  border: none;
+  height: 15px;
+  margin-top: -25px;
+ /*padding-bottom: 25px;*/
+}
+
 
 .mainnav td{
   border: 0px;
@@ -29,11 +106,57 @@ html {
   color: grey;
   text-align: center;
 }
+   .mid {
+  display: table;
+}
+.mid-row {
+  display: table-row;
+}
+
+.mid-cell1 {
+  display: table-cell;
+  padding: 5px;
+  border: 1px solid #d9d9d9;
+  height: 5px;
+  padding-left: 25px;
+  word-spacing: 5px;
+}
+.mid-cell {
+  display: table-cell;
+  /*padding-top: 0px;*/
+  padding: 0px 5px 4px 5px;
+  /*padding-bottom: 8px;*/
+  border: 1px solid  #d9d9d9;
+  height: 5px;
+
+  /*width: 10px;*/
+}
+
 
 .midnav td{
-  text-align: center;
-  width: 5px;  
+  /*text-align: center;*/
+  width: 5px; 
 }
+
+.savebutton{
+  height: 14px;
+  width: auto;
+  /*width: 5px;  */
+  /*word-spacing: 4px;*/
+}
+
+
+.space1{
+  text-align: left;
+  word-spacing: 9px;
+}
+.space2 {
+  text-align: left;
+  word-spacing: 3px;
+  /*margin-left: 10px;*/
+}
+
+
 .title {
   display: flex;
   flex-direction: row;
@@ -104,6 +227,8 @@ html {
   table-layout: fixed;
   border-spacing: 0rem;
   overflow: auto;
+    border: 1px;
+
 }
 
 
@@ -111,6 +236,7 @@ html {
 
 .column-header-span {
   resize: horizontal;
+  border: 1px;
   overflow: auto;
   text-align: center;
   position: relative;
@@ -328,10 +454,29 @@ tbody #h {
 .file{
   background: transparent;
   border: 0px;
+
+}
+
+.file :hover{
+  /*background:   #262626;*/
+   border-radius: 5px;
+   height: 20px;
+  width: auto;
+}
+
+#sel1{
+  outline: none;
+  border: 0px;
 }
 
 .file1{
   border: 0px;
+}
+
+.file2{
+  background: transparent;
+  border: 0px;
+
 }
 
 .image{
@@ -464,10 +609,7 @@ tbody #h {
   width: 15px
 }
 
-/*.calender{
-  background: url(assets/img/calendar.svg) no-repeat;
 
-}*/
 
 #li{
   margin-left:20px;

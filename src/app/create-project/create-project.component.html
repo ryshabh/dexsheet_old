@@ -1,36 +1,67 @@
-<section >
+<div class="topper">
+  
+        <span style="float: right; padding: 5px;">
+            <button  style=" margin-top:5px ; margin-right: 40px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
+            <img src="../../assets/img/notification.svg">
+            <img src="../../assets/img/google-sheets-logo-.png" style="height: 15px; width: auto; border-radius: 25px; margin-right: 30px;">
+          </span>
+  </div>
+  <section >
   <div>    
-    <table class="topnav">
-      <tr id="myRow">
-        <td>
-          <img src="../../assets/img/logo.png" alt="sheets" class="title__logo">
-          <span>ALL</span>  
-        </td>
-        
-        <td>
-          <img src="../../assets/img/dots.svg">
-        </td>
-       <!--  <td>
-          <span>New Project</span>
-        </td> -->
-        <!-- <td>
-          <span id="demo1">Weekly Sales</span>
-        </td>
-        <td>
-          <span>Regular Work</span>
-        </td> -->
-        <td>
-          <img src="../../assets/img/menu.svg">
-        </td>
-        <td>
-         <!--  <img src="../../assets/img/Group 3.svg"> -->
-         <button class="file" type="submit" onclick="getValue();"><img src="../../assets/img/Group 3.svg"></button>
-        </td>
-        <td style="width: 100%"></td>
-      </tr>
-    </table>   
+    <div class="top">
+            <div class="top-row" >
+              <div id="myRow">
+              <div class="top-cell1">
+                <img src="../../assets/img/logo.png" style="height:20px; width:20px;"
+                  alt="sheets"
+            class="title__logo">
+                 <span>ALL</span> 
+              </div>
+              <div class="top-cell">
+                 <img src="../../assets/img/dots.svg">
+              </div>
+              <div class="top-cell" >
+                  <span>New Project</span>
+              </div>
+            </div>
+
+              <!-- <div id="myRow"></div> -->
+              <div class="top-cell">
+                
+                 <button class="file2" type="submit" onclick="getValue();"><img src="../../assets/img/Group 3.svg"></button>
+              </div>
+              <div class="top-cell">
+                 <img src="../../assets/img/menu.svg">
+              </div>
+              <!-- <div class="top-cell2"></div> -->
+            </div>
+          </div>  
+          <div class="down">
+            <div class="down-row">
+              <div class="down-cell">
+                 <span style="margin-left: 15px;">File</span>
+              </div>
+              <div class="down-cell">
+                 <button class="file" id="home">Home</button>
+              </div>
+              <div class="down-cell">
+                  <span>Lorem</span>
+              </div>
+              <div class="down-cell">
+                  <span>Lorem</span>
+              </div>
+              <div class="down-cell">
+                  <span>Lorem</span>
+              </div>
+              <div class="down-cell1">
+                  
+              </div>
+
+              
+            </div>
+          </div>
           
-    <table class="mainnav">
+<!--     <table class="mainnav">
       <tr>
         <td style="width: 70px">
           <div class="dropdown">
@@ -59,35 +90,34 @@
         <td>Home</td>
         <td style="width: 100%"></td>
       </tr>
-    </table>
-        
-    <table border="1" class="midnav" id="middle">
-      <tr style="margin-top:6px; margin-bottom:2px;">
-                <td style=" margin-top:10px; margin-bottom:2px; " class="space">
-                    <button class="file" id="save" onclick="saveit(); "><span class="tooltiptext">Save</span><img src="../../assets/img/save.svg">  </button>
-                    <button class="file" id="print" onclick="myprint();"><span class="tooltiptext">Print</span><img src="../../assets/img/print.svg"><!-- <p class="text">Print</p> --></button>
-                </td>
-                <td>
-                    <!-- <input  class="file" type="image"  src="img/sheet.svg" > -->
-                    <button class="file"><span class="tooltiptext">Sheet</span><img src="../../assets/img/sheet.svg"  ></button>
-                    <button class="file"><span class="tooltiptext">Planner</span><img src="../../assets/img/planner.svg "></button>
-                    <button class="file"><span class="tooltiptext">Gantt</span><img src="../../assets/img/gantt.svg"></button>
-                    <button class="file"><span class="tooltiptext">Calender</span><img src="../../assets/img/calendar.svg" ></button>
+    </table> -->
+    <div class="mid-row">
+   
+    <div class="mid-cell1">
+       <button class="file" id="save" onclick="saveit(); "><span class="tooltiptext">Save</span><img src="../../assets/img/save.svg" class="savebutton">  </button>
+       <button class="file" id="print" onclick="myprint();"><span class="tooltiptext">Print</span><img src="../../assets/img/print.svg" class="savebutton"></button>
+    </div>
+     <div class="mid-cell">
+     <!-- <input  class="file" type="image"  src="img/sheet.svg" > -->
+                    <button class="file"><span class="tooltiptext">Sheet</span><img src="../../assets/img/sheet.svg" class="savebutton" ></button>
+                    <button class="file"><span class="tooltiptext">Planner</span><img src="../../assets/img/planner.svg " class="savebutton"></button>
+                    <button class="file"><span class="tooltiptext">Gantt</span><img src="../../assets/img/gantt.svg" class="savebutton"></button>
+                    <button class="file"><span class="tooltiptext">Calender</span><img src="../../assets/img/calendar.svg" class="savebutton" ></button>
                     <!-- <input class="file" type="image" src="img/planner.svg" onclick="planner();" >
                     <input class="file" type="image" src="img/gantt.svg" >
-                    <button class="file" id="button"><img src="img/calendar.svg"></button>     -->                      
-                </td>
-                <td class="space">
-                    <button class="file" onclick="document.execCommand('undo',false,null);"><span class="tooltiptext">Undo</span><img src="../../assets/img/backward.svg" style="margin-top:6px; margin-bottom:2px;"></button>
-                    <button class="file" onclick="document.execCommand('redo',false,null);"><span class="tooltiptext">Redo</span><img src="../../assets/img/forward.svg" style="margin-top:6px; margin-bottom:2px;"></button>&nbsp;&nbsp;&nbsp;
-                    <button class="file" onclick="formatPrinter()"><span class="tooltiptext">Paint</span><img src="../../assets/img/paint.svg" style="margin-top:6px; margin-bottom:2px;"></button>
-                </td>
-                <td class="space">
-                    <button class="file" onclick="document.execCommand('justifyRight',false,null);"><span class="tooltiptext">Left Indent</span><img src="../../assets/img/Left Indent.svg" style="margin-top:6px; margin-bottom:2px;height:16px;"></button>&nbsp;&nbsp;&nbsp;
-                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><span class="tooltiptext">Right Indent</span><img src="../../assets/img/Right Indent.svg" style="margin-top:6px; margin-bottom:2px; height:16px;"></button>
-                </td>
-                <td class="space">
-                    <select  id="sel1" onchange="changeSize(this);">
+                    <button class="file" id="button"><img src="img/calendar.svg"></button>     -->
+    </div>
+    <div class="mid-cell">
+      <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" ></button>
+                    <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" ></button>&nbsp;
+                    <img src="../../assets/img/paint.svg" class="savebutton">
+    </div>
+     <div class="mid-cell">
+        <button class="file" onclick="document.execCommand('justifyRight',false,null);"><img src="../../assets/img/Left Indent.svg" class="savebutton"></button>&nbsp;
+                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" class="savebutton"></button>
+    </div>
+    <div class="mid-cell">
+       <select  id="sel1" onchange="changeSize(this);">
                       <option>6</option>
                       <option>7</option>
                       <option>8</option>
@@ -101,104 +131,18 @@
                       <option>24</option>
                       <option>36</option>
                     </select>
-                </td>
-        <td>
-          <button class="file" id="jBold" onclick="bold();"><img src="../../assets/img/bold.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Bold</span></button>&nbsp;
-          <button class="file" onclick="italic();"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" style="margin-top:2px; margin-bottom:2px;"></button>&nbsp;
-          <button class="file" onclick="strikethrough();"><img src="../../assets/img/strikethrough.svg" style="margin-top:2px; margin-bottom:2px;"><span class="tooltiptext">Strikethrough</span></button>&nbsp;
-           <button id="change_color" onclick="textcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px;"></span><input type="color" value=" " id="favcolor" style="height: 7px; width: 16px;" list="reds">
-                    <datalist id="reds">
-              <option>#000000</option>
-                      <option>#434343</option>
-                      <option>#666666</option>
-                      <option>#999999</option>
-                      <option>#B7B7B7</option>
-                      <option>#CCCCCC</option>
-                      <option>#D9D9D9</option>
-                      <option>#EFEFEF</option>
-                      <option>#F3F3F3</option>
-                      <option>#FFFFFF</option>
-                      <!--Second Row-->
-                      <option>#980000</option>
-                      <option>#FF0000</option>
-                      <option>#FF9900</option>
-                      <option>#FFFF00</option>
-                      <option>#00FF00</option>
-                      <option>#00FFFF</option>
-                      <option>#4A86E8</option>
-                      <option>#0000FF</option>
-                      <option>#9900FF</option>
-                      <option>#FF00FF</option>
-                      <!--Third Row-->
-                      <option>#E6D8AF</option>
-                      <option>#F4CCCC</option>
-                      <option>#FCE5CD</option>
-                      <option>#FFF2CC</option>
-                      <option>#D9EAD3</option>
-                      <option>#D0E0E3</option>
-                      <option>#C9DAF8</option>
-                      <option>#cfe2F3</option>
-                      <option>#D9D2E9</option>
-                      <option>#EADIDC</option>
-                      <!--Fourth Row-->
-                      <option>#DD7E68</option>
-                      <option>#EA9999</option>
-                      <option>#F9CB9C</option>
-                      <option>#FFE599</option>
-                      <option>#B6D7A8</option>
-                      <option>#A2C4C9</option>
-                      <option>#A4C2F4</option>
-                      <option>#9Fc5E8</option>
-                      <option>#B4A7D6</option>
-                      <option>#D5A6BD</option>
-                      <!--Fifth Row-->
-                      <option>#CC4125</option>
-                      <option>#E06666</option>
-                      <option>#F6B26B</option>
-                      <option>#FFD966</option>
-                      <option>#93C47D</option>
-                      <option>#76A5AF</option>
-                      <option>#6D9EEB</option>
-                      <option>#6FA8DC</option>
-                      <option>#8E7CC3</option>
-                      <option>#C27BA0</option>
-                      <!--Sixth Row-->
-                      <option>#A61C00</option>
-                      <option>#CC0000</option>
-                      <option>#E69138</option>
-                      <option>#F1C232</option>
-                      <option>#6AA84F</option>
-                      <option>#45818E</option>
-                      <option>#3C78D8</option>
-                      <option>#3D85C6</option>
-                      <option>#674EA7</option>
-                      <option>#A64D79</option>
-                      <!--7th Row-->
-                      <option>#85200C</option>
-                      <option>#990000</option>
-                      <option>#B45F06</option>
-                      <option>#BF9000</option>
-                      <option>#38761D</option>
-                      <option>#134F5C</option>
-                      <option>#1155CC</option>
-                      <option>#0B5394</option>
-                      <option>#351C75</option>
-                      <option>#741B47</option>
-                      <!--8th Row-->
-                      <option>#5B0F00</option>
-                      <option>#660000</option>
-                      <option>#783F04</option>
-                      <option>#7F6000</option>
-                      <option>#274E13</option>
-                      <option>#0C34£D</option>
-                      <option>#1C4587</option>
-                      <option>#073763</option>
-                      <option>#20124D</option>
-                      <option>#4C1130</option>
-            </datalist></button>&nbsp;
-                </td>
-                <td>
-                    <img src="../../assets/img/text fill.svg" onclick="Fillcolor()">
+                
+    </div>
+    <div class="mid-cell">
+      <button class="file" id="jBold" onclick="bold();"><img src="../../assets/img/bold.svg" class="savebutton"><!-- <p class="text">Bold</p> --></button>&nbsp;
+                    <button class="file" onclick="italic();"><img src="../../assets/img/italic.svg" class="savebutton"></button>&nbsp;
+                    <button class="file" onclick="strikethrough();"><img src="../../assets/img/strikethrough.svg" class="savebutton"></button>&nbsp;
+                    <button id="change_color" onclick="textcolor()" class="file"><span class="glyphicon glyphicon-font" style="color: grey; margin-top:6px; margin-bottom: 2px; "></span><input type="color"  id="favcolor" class ="favcolor" style="height: 7px; width: 16px; ">
+                   </button>&nbsp;
+                   
+    </div>
+    <div class="mid-cell">
+      <img src="../../assets/img/text fill.svg" class="savebutton" onclick="Fillcolor()">
                         <input type="color" value=" " id="favcolor1"  style="height: 7px; width: 16px;" list="reds1">
                         <datalist id="reds1">
               <option>#000000</option>
@@ -288,57 +232,62 @@
                       <option>#073763</option>
                       <option>#20124D</option>
                       <option>#4C1130</option>
+
+
             </datalist>
-                    
-                    <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
+                <img src="../../assets/img/arrow_2.svg">&nbsp;&nbsp;&nbsp;
                     <button class="file" ><span class="tooltiptext">Table</span><img src="../../assets/img/table.svg"></button>
 
                     <div class="drop1">
                       <button class="dr-btn1 file" onclick="myFunction3()"><img src="../../assets/img/arrow_2.svg"> </button>&nbsp;&nbsp;&nbsp;&nbsp; 
                       <div id="my-Dropdown1" class="drop1-content" >
-                          <button onclick="paintMatrix5();"><span  style="color: grey height:15px;"><img src="../../assets/img/table_border.png"></span></button>
-                          <button onclick="paintMatrix6();"><span  style="color: grey height:15px; width:5px;"><img src="../../assets/img/table.png" ></span></button>
-                         <button onclick="paintMatrix();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-to.png"></span></button>
-                        <button onclick="paintMatrix2();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
-                        <button onclick="paintMatrix3();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-right.png"></span></button>
-                        <button onclick="paintMatrix4();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-left.png"></span></button>
+                          <button onclick="paintMatrix5();"><span  style="color: grey height:15px;"><img class="savebutton" src="../../assets/img/table_border.png"></span></button>
+                          <button onclick="paintMatrix6();"><span  style="color: grey height:15px; width:5px;"><img class="savebutton" src="../../assets/img/table.png" ></span></button>
+                         <button onclick="paintMatrix();"><span  style="color: grey height:15px;"><img class="savebutton" src="../../assets/img/border-to.png"></span></button>
+                        <button onclick="paintMatrix2();"><span  style="color: grey height:15px;"><img class="savebutton" src="../../assets/img/border-bott.png"></span></button>
+                        <button onclick="paintMatrix3();"><span  style="color: grey height:15px;"><img class="savebutton" src="../../assets/img/border-right.png"></span></button>
+                        <button onclick="paintMatrix4();"><span  style="color: grey height:15px;"><img class="savebutton" src="../../assets/img/border-left.png"></span></button>
                         
                       </div>
                     </div> 
-                   <!--  <img src="../../assets/img/arrow_2.svg">   -->
-                </td>
-
-        <td>
-          <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><span class="tooltiptext">Center</span><img src="../../assets/img/alignment.svg" style="height:15px;"></button>
-          <div class="drop">
-            <button class="dr-btn file" onclick="myFunction2()"><img src="../../assets/img/arrow_2.svg"></button>&nbsp;&nbsp;&nbsp;&nbsp; 
-             <div id="my-Dropdown" class="drop-content" >
-                <button onclick="document.execCommand('justifyCenter',false,null);" ><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
-                <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
-                <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
-              </div>
-          </div>
-
-          <!-- <img src="img/arrow_2.svg"> -->
-          <button class="file" onclick="textwrap();"><span class="tooltiptext">Text wrap</span><img src="../../assets/img/Text Warp.svg" style="height:15px;"></button>
-          <div class="drop2">
-                      <button class="dr-btn2 file" onclick="myFunction4()"><img src="../../assets/img/arrow_2.svg"> </button>&nbsp;&nbsp;&nbsp;&nbsp; 
-                      <div id="my-Dropdown2" class="drop2-content" >
-                         <button onclick="overflow();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png"></span></button>
+  </div>
+  <div class="mid-cell">
+       <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg" class="savebutton"></button>
+                    <div class="drop">
+                      <button class="dr-btn file" onclick="myFunction2()"><img src="../../assets/img/arrow_2.svg" ></button>&nbsp;&nbsp;&nbsp;&nbsp; 
+                      <div id="my-Dropdown" class="drop-content" >
+                         <button onclick="document.execCommand('justifyCenter',false,null);" ><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
+                        <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
+                        <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
                       </div>
                     </div>
-          
-        </td>
-        <td>
-          <button class="file" onclick="add()"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg"></button>
-        </td>
-        <td>
-          <button class="file" id="filter" onclick="addfilter();"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg"></button>
-        </td>
-        <!-- <div id="img"></div> -->
-        <td style="width: 100%"></td>
-      </tr>
-    </table>
+
+
+              <!--   <div class="row" >
+                  <div class="col-sm-4"> <button onclick="document.execCommand('justifyCenter',false,null);" ><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button></div>
+                  <div class="col-sm-4"> <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button></div>
+                  <div class="col-sm-4"> <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button></div>
+                </div> -->
+                    
+                       
+                       
+                    <!-- <img src="img/arrow_2.svg"> -->
+                    <button class="file" onclick="textwrap();"> <img src="../../assets/img/Text Warp.svg" class="savebutton"></button>
+                     <div class="drop2">
+                      <button class="dr-btn2 file" onclick="myFunction4()"><img src="../../assets/img/arrow_2.svg" > </button>&nbsp;&nbsp;&nbsp;&nbsp; 
+                      <div id="my-Dropdown2" class="drop2-content" >
+                         <button onclick="overflow();"><span  style="color: grey height:15px;"><img src="../../assets/img/border-bott.png" class="savebutton"></span></button>
+                      </div>
+                    </div> 
+    </div>
+    <div class="mid-cell">
+       <img src="../../assets/img/sigma.svg" class="savebutton">
+    </div>
+    <div class="mid-cell">
+       <button class="file"  onclick="addfilter();"><img src="../../assets/img/filter.svg" class="savebutton"></button>
+    </div>
+</div>
+   
   </div>
 </section>
        

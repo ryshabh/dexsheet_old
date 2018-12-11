@@ -851,20 +851,24 @@ function Createmptytable(){
 function CreateTable() {
          
         // NOW CREATE AN INPUT BOX TYPE BUTTON USING createElement() METHOD.
-        var button = document.createElement('input');
-
-        // SET INPUT ATTRIBUTE 'type' AND 'value'.
-        button.setAttribute('type', 'button');
-        button.setAttribute('value', 'Read Table Data');
-        var a = document.getElementById('demo');
-        // button.setAttribute('id','demo');
-        var b = localStorage.getItem("project")
-        button.setAttribute('value', b);
-
         var row = document.getElementById("myRow");
-         var x = row.insertCell(2);
+        var button = document.createElement('div');
+        button.setAttribute('class','top-cell');
+        var span = document.createElement('span');
+        span.setAttribute('id','spanid');
+        var b = localStorage.getItem("project");
+        span.innerHTML = b;
+        // SET INPUT ATTRIBUTE 'type' AND 'value'.
         
-         x.innerHTML = b;
+        // var a = document.getElementById('demo');
+        
+        
+
+         
+         // var x = row.insertCell(2);
+        
+        button.appendChild(span);
+        row.appendChild(button);
          // x.setAttribute(onclick,'showtable();');
     
         // ADD THE BUTTON's 'onclick' EVENT.
@@ -1163,7 +1167,7 @@ var row = document.getElementById(`r-${j}`);
      button.addEventListener("click", datechange);
 
      var img_tag = document.createElement('img');
-     img_tag.src = "img/calendar.svg";
+     img_tag.src = "assets/img/calendar.svg";
      img_tag.setAttribute('id',`input_img-${j}-${res_id}`);
 
      img_tag.setAttribute('class',`img_class`);
@@ -1311,7 +1315,7 @@ function swaptext3(){
      button.addEventListener("click", datechange1);
 
      var img_tag = document.createElement('img');
-     img_tag.src = "img/calendar.svg";
+     img_tag.src = "assets/img/calendar.svg";
      img_tag.setAttribute('id',`input_img1-${j}-${res_id}`);
 
      img_tag.setAttribute('class',`img_class`);

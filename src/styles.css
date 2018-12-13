@@ -74,8 +74,6 @@ html {
   /*width: 10px;*/
 }
 
-
-
 .down-cell1 {
   display: table-cell;
   background-color: #F8FAFF;
@@ -88,9 +86,9 @@ html {
 .down-cell:hover{
   background: white;
 }
-.down-cell1:hover{
+/*.down-cell1:hover{
   background: white;
-}
+}*/
 
 #mainfile{
   border: none;
@@ -111,6 +109,7 @@ html {
 }
 .mid-row {
   display: table-row;
+  background-color: #F8FAFF;
 }
 
 .mid-cell1 {
@@ -121,6 +120,21 @@ html {
   padding-left: 25px;
   word-spacing: 5px;
 }
+
+.mid-cell2 {
+  display: table-cell;
+  padding: 2px;
+  /*border: 1px solid #d9d9d9;*/
+  height: 5px;
+ 
+  /*word-spacing: 8px;*/
+}
+
+.mid-cell2:hover{
+  background: white;
+  height: 20px;
+}
+
 .mid-cell {
   display: table-cell;
   /*padding-top: 0px;*/
@@ -131,6 +145,59 @@ html {
 
   /*width: 10px;*/
 }
+
+.mid-cell3{
+  display: table-cell;
+  height: 5px;
+  padding: 0px 5px 4px 5px;
+
+}
+
+.mid-cell4{
+  display: table-cell;
+  height: 5px;
+  padding: 0px 5px 4px 5px;
+}
+
+.mid-cell5{
+    display: table-cell;
+     /*border: 1px solid #d9d9d9;*/
+    padding: 0px 0px 0px 5px;
+}
+.mid-cell5:hover{
+  background: white;
+  height: 20px;
+}
+.mid-cell6{
+    display: table-cell;
+     /*border: 1px solid #d9d9d9;*/
+    padding: 0px 0px 0px 11px;
+}
+
+.mid-cell7 {
+  display: table-cell;
+  background-color: #F8FAFF;
+  border: 0px solid #d9d9d9;
+  padding-left: 1200px;
+  padding-right: 7px;
+  /*width: 10px;*/
+}
+
+
+.mid-cell3:hover{
+  background: white;
+  height: 20px;
+}
+
+.mid-cell4:hover{
+   background: white;
+  height: 20px;
+}
+
+img.texfile {
+  fill: #fff; 
+}
+
 
 
 .midnav td{
@@ -145,6 +212,15 @@ html {
   /*word-spacing: 4px;*/
 }
 
+.savebutton1{
+  height: 12px;
+  width: auto;
+}
+
+.textfile{
+  height: 15px;
+  width: auto;
+}
 
 .space1{
   text-align: left;
@@ -190,13 +266,17 @@ html {
 
 .spreadsheet table,
 .spreadsheet td,
-/*.spreadsheet th,*/
+.spreadsheet th,
 .spreadsheet tr {
   border: 0.05rem solid rgba(197, 197, 197, 0.486);
   font-size: 1.4rem;
   height: 2.5rem;
   table-layout: fixed;
   border-spacing: 0rem;
+}
+
+.spreadsheet th{
+  background-color:#F1F3F4; 
 }
 
 #table-body
@@ -231,9 +311,6 @@ html {
 
 }
 
-
-
-
 .column-header-span {
   resize: horizontal;
   border: 1px;
@@ -255,7 +332,7 @@ html {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  background-color: white;
+  background-color: #F1F3F4;
   width: 8px;
   height: 100%;
 }
@@ -457,12 +534,12 @@ tbody #h {
 
 }
 
-.file :hover{
-  /*background:   #262626;*/
+/*.file :hover{
+  background:   #262626;
    border-radius: 5px;
    height: 20px;
   width: auto;
-}
+}*/
 
 #sel1{
   outline: none;
@@ -1064,3 +1141,21 @@ td
     border: 1px solid green;
     overflow: hidden;
 }*/
+
+.sp-palette {
+max-width: 200px;
+}
+
+.label {
+    background: #444;
+    padding:8px;    
+    border-radius: 4px;
+    color: #eee;
+    margin-top: 10px;
+    display:inline-block;
+}
+
+.favcolor{
+  width: auto;
+  height: 15px;
+}

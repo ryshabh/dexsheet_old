@@ -791,8 +791,8 @@ $(document).ready(function(){
 
 
 
-  var theInput = document.getElementById("favcolor");
-      var theColor = theInput.value;
+  // var theInput = document.getElementById("favcolor");
+  //     var theColor = theInput.value;
       
       function setcolor(){
       // Get Selection
@@ -1349,6 +1349,140 @@ function swaptext3(){
   el.innerHTML = "To"
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = x.innerHTML;
+  saveData(spreadsheetData);
+}
+
+function swaptext4(){
+  // document.getElementById("demo").innerHTML = "Hello World";
+ let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+   for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    // var x = row.insertCell(res_id);
+    var x = document.getElementById(`r-${j}-${res_id}`);
+
+    var div = document.createElement('div');
+    div.setAttribute('id',`input_container-${res_id}`);
+    div.setAttribute('class','input_containr1');
+     var button = document.createElement('input');
+     // var button.setAttribute('id','inputid');
+     // button.setAttribute('onClick','calendarfun();');
+     // button.onClick = inputfunction();
+     button.setAttribute('type','checkbox');
+     button.setAttribute('class', `checkbox`);
+     button.setAttribute('id', `checkbox-${j}`);
+     // button.addEventListener("click", datechange1);
+
+     // var img_tag = document.createElement('img');
+     // img_tag.src = "img/calendar.svg";
+     // img_tag.setAttribute('id',`input_img1-${j}`);
+
+     // img_tag.setAttribute('class',`img_class`);
+     // button.addEventListener("click", showimage);
+     // img_tag.style.display = 'none';
+     
+    // div.appendChild(img_tag);
+     div.appendChild(button);
+     x.appendChild(div);
+     
+    
+    button.setAttribute('onfocus',`document.getElementById('checkbox-${j}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('checkbox-${j}').style.display='none';`);
+    let spreadsheetData = getData();
+    spreadsheetData[j][res_id] = el.innerHTML;
+    saveData(spreadsheetData);
+   }
+
+   $(function() {
+     $(".datepicker1").datepicker();
+   });
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el.innerHTML = "CheckBox"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = x.innerHTML;
+  saveData(spreadsheetData);
+}
+
+function swaptext5(){
+  // document.getElementById("demo").innerHTML = "Hello World";
+let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Assign To"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el.innerHTML = "Assign To"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+  saveData(spreadsheetData);
+}
+
+function swaptext6(){
+  // document.getElementById("demo").innerHTML = "Hello World";
+let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Status"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el.innerHTML = "Status"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+  saveData(spreadsheetData);
+}
+
+function swaptext7(){
+  // document.getElementById("demo").innerHTML = "Hello World";
+let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  var res = a.split("-");
+  var res_id = res[2];
+  console.log("res",res[2]);
+  var el = document.getElementById(`h-0-${res_id}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Comment"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el.innerHTML = "Comment"
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
 }
 
@@ -2594,22 +2728,22 @@ function bold(){
 
         }
            
-        function textcolor(){
-           var theInput1 = document.getElementById("favcolor");
-          var theColor1 = theInput1.value;
-          var a = localStorage.getItem("cell");
-          var s = document.getElementById(a);
-          document.getElementById(a).style.color = theInput1.value;
-        }
+        // function textcolor(){
+        //    var theInput1 = document.getElementById("favcolor");
+        //   var theColor1 = theInput1.value;
+        //   var a = localStorage.getItem("cell");
+        //   var s = document.getElementById(a);
+        //   document.getElementById(a).style.color = theInput1.value;
+        // }
 
         
-        function Fillcolor() {
-          var theInput1 = document.getElementById("favcolor1");
-          var theColor1 = theInput1.value;
-          var a = localStorage.getItem("cell");
-          var s = document.getElementById(a);
-          document.getElementById(a).style.backgroundColor = theInput1.value;
-        }
+        // function Fillcolor() {
+        //   var theInput1 = document.getElementById("favcolor1");
+        //   var theColor1 = theInput1.value;
+        //   var a = localStorage.getItem("cell");
+        //   var s = document.getElementById(a);
+        //   document.getElementById(a).style.backgroundColor = theInput1.value;
+        // }
 
         function addborder(){
             var a = localStorage.getItem("cell");
@@ -2997,3 +3131,312 @@ function filterFunction() {
 //    document.getElementById('sortz').style.display = 'none';
 //    document.getElementById('sorta').style.display = 'block';
 // }
+
+function printColor(color) {
+   var text = "You chose... " + color.toHexString();    
+   $(".label").text(text);
+    
+}
+
+
+$(".favcolor").spectrum({
+    showPaletteOnly: true,
+    togglePaletteOnly: true,
+    togglePaletteMoreText: 'more',
+    togglePaletteLessText: 'less',
+    color: initialColor,
+    palette: [
+        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+    ],
+    move: function (color) { updateColor(color); },
+    hide: function (color) { updateColor(color); }
+
+
+});
+      
+
+
+ var initialColor = "#f00";
+ var a = localStorage.getItem("cell");
+
+    $(a).css("color", initialColor);
+
+    function updateColor(color) {
+        var value = $(".favcolor").spectrum('get').toHexString();
+// console.log("check value color",value);
+ var a = localStorage.getItem("cell");
+ var s = document.getElementById(a);
+ document.getElementById(a).style.color = value;
+ document.getElementById("fonttext").style.color = value;
+    }
+
+    $(".favcolor1").spectrum({
+    showPaletteOnly: true,
+    togglePaletteOnly: true,
+    togglePaletteMoreText: 'more',
+    togglePaletteLessText: 'less',
+    color: initialColor,
+    palette: [
+        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+    ],
+    move: function (color) { updateColor1(color); },
+    hide: function (color) { updateColor1(color); }
+
+
+});
+      
+
+
+ var initialColor = "#f00";
+ var a = localStorage.getItem("cell");
+
+    $(a).css("color", initialColor);
+
+    function updateColor1(color) {
+        var value = $(".favcolor1").spectrum('get').toHexString();
+// console.log("check value color",value);
+ var a = localStorage.getItem("cell");
+ var s = document.getElementById(a);
+ document.getElementById(a).style.backgroundColor = value;
+    }
+    
+
+
+function planner() {
+  // let defaultRowCount = 8;
+  let count = 0;
+  var a = localStorage.getItem("cell");
+  console.log("abc",a);
+  // var res = a.split("-");
+  // var res_id = res[2];
+  // console.log("res",res[2]);
+  var el1 = document.getElementById(`h-0-1`);
+  var input = 2;
+  while (input <= defaultColCount) {
+   console.log(input);
+   var output = input++;
+   console.log("checkbox",output);
+    
+  if(output == 2){
+  var el = document.getElementById(`h-0-${output}`);
+    for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    // var x = row.insertCell(res_id);
+    var x = document.getElementById(`r-${j}-${output}`);
+
+    var div = document.createElement('div');
+    div.setAttribute('id',`input_container-${output}`);
+    div.setAttribute('class','input_containr')
+     var button = document.createElement('input');
+     // var button.setAttribute('id','inputid');
+     // button.setAttribute('onClick','calendarfun();');
+     // button.onClick = inputfunction();
+     button.setAttribute('type','text');
+     button.setAttribute('class', `datepicker`);
+     button.setAttribute('id', `datepicker1-${j}`);
+     button.addEventListener("click", datechange);
+
+     var img_tag = document.createElement('img');
+     img_tag.src = "img/calendar.svg";
+     img_tag.setAttribute('id',`input_img-${j}`);
+
+     img_tag.setAttribute('class',`img_class`);
+     // button.addEventListener("click", showimage);
+     img_tag.style.display = 'none';
+     
+    div.appendChild(img_tag);
+     div.appendChild(button);
+     x.appendChild(div);
+     
+    
+    button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
+     
+    let spreadsheetData = getData();
+    spreadsheetData[j][output] = x.innerHTML;
+    saveData(spreadsheetData);
+}
+  el.innerHTML = "From";
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el.innerHTML;
+  saveData(spreadsheetData);
+
+
+} if(output == 3){
+   var el2 = document.getElementById(`h-0-${output}`);
+   for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    // var x = row.insertCell(res_id);
+    var x = document.getElementById(`r-${j}-${output}`);
+
+    var div = document.createElement('div');
+    div.setAttribute('id',`input_container-${output}`);
+    div.setAttribute('class','input_containr1');
+     var button = document.createElement('input');
+     // var button.setAttribute('id','inputid');
+     // button.setAttribute('onClick','calendarfun();');
+     // button.onClick = inputfunction();
+     button.setAttribute('type','text');
+     button.setAttribute('class', `datepicker1`);
+     button.setAttribute('id', `datepicker11-${j}`);
+     button.addEventListener("click", datechange1);
+
+     var img_tag = document.createElement('img');
+     img_tag.src = "img/calendar.svg";
+     img_tag.setAttribute('id',`input_img1-${j}`);
+
+     img_tag.setAttribute('class',`img_class`);
+     // button.addEventListener("click", showimage);
+     img_tag.style.display = 'none';
+     
+    div.appendChild(img_tag);
+     div.appendChild(button);
+     x.appendChild(div);
+     
+    
+    button.setAttribute('onfocus',`document.getElementById('input_img1-${j}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('input_img1-${j}').style.display='none';`);
+    let spreadsheetData = getData();
+    spreadsheetData[j][output] = el2.innerHTML;
+    saveData(spreadsheetData);
+   }
+
+   $(function() {
+     $(".datepicker1").datepicker();
+   });
+  
+  el2.innerHTML = "To"
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = x.innerHTML;
+  saveData(spreadsheetData);
+
+} if (output == 4) {
+   var el4 = document.getElementById(`h-0-${output}`);
+   for (var j = 1; j  <=defaultRowCount; j++){
+      console.log("testloop",i);
+      var row = document.getElementById(`r-${j}`);
+  // var row = document.getElementById("r-8-1");
+    // var x = row.insertCell(res_id);
+    var x = document.getElementById(`r-${j}-${output}`);
+
+    var div = document.createElement('div');
+    div.setAttribute('id',`input_container-${output}`);
+    div.setAttribute('class','input_containr1');
+     var button = document.createElement('input');
+     // var button.setAttribute('id','inputid');
+     // button.setAttribute('onClick','calendarfun();');
+     // button.onClick = inputfunction();
+     button.setAttribute('type','checkbox');
+     button.setAttribute('class', `checkbox`);
+     button.setAttribute('id', `checkbox-${j}`);
+     // button.addEventListener("click", datechange1);
+
+     // var img_tag = document.createElement('img');
+     // img_tag.src = "img/calendar.svg";
+     // img_tag.setAttribute('id',`input_img1-${j}`);
+
+     // img_tag.setAttribute('class',`img_class`);
+     // button.addEventListener("click", showimage);
+     // img_tag.style.display = 'none';
+     
+    // div.appendChild(img_tag);
+     div.appendChild(button);
+     x.appendChild(div);
+     
+    
+    button.setAttribute('onfocus',`document.getElementById('checkbox-${j}').style.display='block';`);
+     button.setAttribute('onblur',`document.getElementById('checkbox-${j}').style.display='none';`);
+    let spreadsheetData = getData();
+    spreadsheetData[j][output] = el4.innerHTML;
+    saveData(spreadsheetData);
+   }
+
+   $(function() {
+     $(".datepicker1").datepicker();
+   });
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el4.innerHTML = "CheckBox"
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = x.innerHTML;
+  saveData(spreadsheetData);
+} 
+
+  if (output == 5) {
+    var el5 = document.getElementById(`h-0-${output}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Assign To"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el5.innerHTML = "Assign To"
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el5.innerHTML;
+  saveData(spreadsheetData);
+  }
+
+  if (output == 6) {
+    var el6 = document.getElementById(`h-0-${output}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Status"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el6.innerHTML = "Status"
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el6.innerHTML;
+  saveData(spreadsheetData);
+  }
+  if (output == 7) {
+    var el7 = document.getElementById(`h-0-${output}`);
+  for (let m = 0; m< defaultColCount.length; m++){
+    console.log("count",count)
+    if(document.getElementById(`h-0-${m}`).innerHTML=="Comment"){
+      count= count+1;
+      console.log("count",count)
+    }
+
+  }
+  el7.innerHTML = "Comment"
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el7.innerHTML;
+  saveData(spreadsheetData);
+  } 
+
+  el1.innerHTML = "Task";
+  let spreadsheetData = getData();
+  spreadsheetData[0][1] = el1.innerHTML;
+  saveData(spreadsheetData); 
+}
+ 
+}

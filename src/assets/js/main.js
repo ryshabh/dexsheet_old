@@ -1354,68 +1354,93 @@ function swaptext3(){
 
 function swaptext4(){
   // document.getElementById("demo").innerHTML = "Hello World";
- let count = 0;
+ var tbl = document.getElementById("table-main");
+  let count = 0;
   var a = localStorage.getItem("cell");
   console.log("abc",a);
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
   var el = document.getElementById(`h-0-${res_id}`);
-   for (var j = 1; j  <=defaultRowCount; j++){
+    for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
-      var row = document.getElementById(`r-${j}`);
+var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
     // var x = row.insertCell(res_id);
     var x = document.getElementById(`r-${j}-${res_id}`);
 
     var div = document.createElement('div');
     div.setAttribute('id',`input_container-${res_id}`);
-    div.setAttribute('class','input_containr1');
+    div.setAttribute('class','input_containr')
      var button = document.createElement('input');
      // var button.setAttribute('id','inputid');
      // button.setAttribute('onClick','calendarfun();');
      // button.onClick = inputfunction();
-     button.setAttribute('type','checkbox');
-     button.setAttribute('class', `checkbox`);
-     button.setAttribute('id', `checkbox-${j}`);
-     // button.addEventListener("click", datechange1);
+     button.setAttribute('type','text');
+     button.setAttribute('class', `inputclaass`);
+     button.setAttribute('id', `inputclaass-${j}`);
+     button.addEventListener("click", datechange);
 
-     // var img_tag = document.createElement('img');
-     // img_tag.src = "img/calendar.svg";
-     // img_tag.setAttribute('id',`input_img1-${j}`);
+     var img_tag = document.createElement('img');
+     img_tag.src = "assets/img/unchecked.png";
+     img_tag.setAttribute('id',`input_img-${j}`);
+     // img_tag.setAttribute('onClick','switchImg()');
 
-     // img_tag.setAttribute('class',`img_class`);
+     img_tag.setAttribute('class',`img_class`);
      // button.addEventListener("click", showimage);
-     // img_tag.style.display = 'none';
+     img_tag.style.display = 'none';
+
+     var img_tag1 = document.createElement('img');
+     img_tag1.src = "assets/img/checked.png";
+     img_tag1.setAttribute('id',`input_img2-${j}`);
+
+     img_tag1.setAttribute('class',`img_class2`);
+     // button.addEventListener("click", showimage);
+     img_tag1.style.display = 'none';
+    
+
      
-    // div.appendChild(img_tag);
+    div.appendChild(img_tag);
+    div.appendChild(img_tag1);
      div.appendChild(button);
      x.appendChild(div);
      
     
-    button.setAttribute('onfocus',`document.getElementById('checkbox-${j}').style.display='block';`);
-     button.setAttribute('onblur',`document.getElementById('checkbox-${j}').style.display='none';`);
+    button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
+
+    img_tag.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='none';`);
+     img_tag.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='block';`);
+    //  img_tag1.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='none';`);
+    // img_tag1.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='block';`);
+     // button.setAttribute('onblur',`document.getElementById('input_img2-${j}').style.display='none';`);
+     
     let spreadsheetData = getData();
-    spreadsheetData[j][res_id] = el.innerHTML;
+    spreadsheetData[j][res_id] = x.innerHTML;
     saveData(spreadsheetData);
-   }
+}
 
-   $(function() {
-     $(".datepicker1").datepicker();
-   });
-  for (let m = 0; m< defaultColCount.length; m++){
-    console.log("count",count)
-    if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
-      count= count+1;
-      console.log("count",count)
-    }
-
-  }
   el.innerHTML = "CheckBox"
   let spreadsheetData = getData();
-  spreadsheetData[0][res_id] = x.innerHTML;
+  spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
 }
+// $('.img_class').click(function() {
+//     $('.img_class2').toggle();
+// });
+// function switchImg(){
+
+//     if($('.img_class').css('display') == 'none'){
+//         $('img_class2').css('display', 'block');
+//         $('.img_class').css('display', 'none');
+//     }
+//     else
+//     {
+//       console.log("check if it works");
+//         $('.img_class').css('display', 'none');
+//         $('.img_class2').css('display', 'block');
+//     }
+//   }
+
 
 function swaptext5(){
   // document.getElementById("demo").innerHTML = "Hello World";
@@ -3253,7 +3278,7 @@ var row = document.getElementById(`r-${j}`);
      button.addEventListener("click", datechange);
 
      var img_tag = document.createElement('img');
-     img_tag.src = "img/calendar.svg";
+     img_tag.src = "assets/img/calendar.svg";
      img_tag.setAttribute('id',`input_img-${j}`);
 
      img_tag.setAttribute('class',`img_class`);
@@ -3300,7 +3325,7 @@ var row = document.getElementById(`r-${j}`);
      button.addEventListener("click", datechange1);
 
      var img_tag = document.createElement('img');
-     img_tag.src = "img/calendar.svg";
+     img_tag.src = "assets/img/calendar.svg";
      img_tag.setAttribute('id',`input_img1-${j}`);
 
      img_tag.setAttribute('class',`img_class`);
@@ -3329,60 +3354,68 @@ var row = document.getElementById(`r-${j}`);
   saveData(spreadsheetData);
 
 } if (output == 4) {
-   var el4 = document.getElementById(`h-0-${output}`);
-   for (var j = 1; j  <=defaultRowCount; j++){
+     // var tbl = document.getElementById("table-main");
+  var el4 = document.getElementById(`h-0-${output}`);
+    for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
-      var row = document.getElementById(`r-${j}`);
+var row = document.getElementById(`r-${j}`);
   // var row = document.getElementById("r-8-1");
     // var x = row.insertCell(res_id);
     var x = document.getElementById(`r-${j}-${output}`);
 
     var div = document.createElement('div');
     div.setAttribute('id',`input_container-${output}`);
-    div.setAttribute('class','input_containr1');
+    div.setAttribute('class','input_containr')
      var button = document.createElement('input');
      // var button.setAttribute('id','inputid');
      // button.setAttribute('onClick','calendarfun();');
      // button.onClick = inputfunction();
-     button.setAttribute('type','checkbox');
-     button.setAttribute('class', `checkbox`);
-     button.setAttribute('id', `checkbox-${j}`);
-     // button.addEventListener("click", datechange1);
+     button.setAttribute('type','text');
+     button.setAttribute('class', `inputclaass`);
+     button.setAttribute('id', `inputclaass-${j}`);
+     button.addEventListener("click", datechange);
 
-     // var img_tag = document.createElement('img');
-     // img_tag.src = "img/calendar.svg";
-     // img_tag.setAttribute('id',`input_img1-${j}`);
+     var img_tag2 = document.createElement('img');
+     img_tag2.src = "assets/img/unchecked.png";
+     img_tag2.setAttribute('id',`input_img3-${j}`);
+     // img_tag.setAttribute('onClick','switchImg()');
 
-     // img_tag.setAttribute('class',`img_class`);
+     img_tag2.setAttribute('class',`img_class2`);
      // button.addEventListener("click", showimage);
-     // img_tag.style.display = 'none';
+     img_tag2.style.display = 'none';
+
+     var img_tag1 = document.createElement('img');
+     img_tag1.src = "assets/img/checked.png";
+     img_tag1.setAttribute('id',`input_img2-${j}`);
+
+     img_tag1.setAttribute('class',`img_class2`);
+     // button.addEventListener("click", showimage);
+     img_tag1.style.display = 'none';
+    
+
      
-    // div.appendChild(img_tag);
+    div.appendChild(img_tag2);
+    div.appendChild(img_tag1);
      div.appendChild(button);
      x.appendChild(div);
      
     
-    button.setAttribute('onfocus',`document.getElementById('checkbox-${j}').style.display='block';`);
-     button.setAttribute('onblur',`document.getElementById('checkbox-${j}').style.display='none';`);
+    button.setAttribute('onfocus',`document.getElementById('input_img3-${j}').style.display='block';`);
+
+    img_tag2.setAttribute('onClick',`document.getElementById('input_img3-${j}').style.display='none';`);
+     img_tag2.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='block';`);
+    //  img_tag1.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='none';`);
+    // img_tag1.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='block';`);
+     // button.setAttribute('onblur',`document.getElementById('input_img2-${j}').style.display='none';`);
+     
     let spreadsheetData = getData();
-    spreadsheetData[j][output] = el4.innerHTML;
+    spreadsheetData[j][output] = x.innerHTML;
     saveData(spreadsheetData);
-   }
+}
 
-   $(function() {
-     $(".datepicker1").datepicker();
-   });
-  for (let m = 0; m< defaultColCount.length; m++){
-    console.log("count",count)
-    if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
-      count= count+1;
-      console.log("count",count)
-    }
-
-  }
   el4.innerHTML = "CheckBox"
   let spreadsheetData = getData();
-  spreadsheetData[0][output] = x.innerHTML;
+  spreadsheetData[0][output] = el4.innerHTML;
   saveData(spreadsheetData);
 } 
 

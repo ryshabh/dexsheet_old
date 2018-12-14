@@ -32,8 +32,8 @@ $(document).ready(function(){
      $("#middle").toggle();
  });
 });
-
-let defaultRowCount = 10; // No of rows
+let z =1;
+let defaultRowCount = 99 + z; // No of rows
 let defaultColCount = 10; // No of cols
 let st_row=0;
 let end_row=0;
@@ -315,6 +315,7 @@ createTableBodyRow = rowNum => {
       // span.appendChild(img);
       // cell.appendChild(span);
       const s = document.createElement("span");
+       s.setAttribute('id','spanrow');
 
       s.innerHTML = rowNum;
       cell.appendChild(s)
@@ -3166,6 +3167,7 @@ function printColor(color) {
 
 $(".favcolor").spectrum({
     showPaletteOnly: true,
+    hideAfterPaletteSelect:true,
     togglePaletteOnly: true,
     togglePaletteMoreText: 'more',
     togglePaletteLessText: 'less',
@@ -3204,6 +3206,7 @@ $(".favcolor").spectrum({
 
     $(".favcolor1").spectrum({
     showPaletteOnly: true,
+    hideAfterPaletteSelect:true,
     togglePaletteOnly: true,
     togglePaletteMoreText: 'more',
     togglePaletteLessText: 'less',
@@ -3473,3 +3476,8 @@ var row = document.getElementById(`r-${j}`);
 }
  
 }
+
+$( function() {
+    $( ".row-header" ).resizable();
+
+  } );

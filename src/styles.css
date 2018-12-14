@@ -270,7 +270,7 @@ img.texfile {
 .spreadsheet tr {
   border: 0.05rem solid rgba(197, 197, 197, 0.486);
   font-size: 1.4rem;
-  height: 2.5rem;
+  height: 2rem;
   table-layout: fixed;
   border-spacing: 0rem;
 }
@@ -311,7 +311,12 @@ img.texfile {
 
 }
 
+#spanrow{
+  display:block;
+  width: 35px;
+}
 
+/*
 .row-header{
    resize: vertical;
   border: 1px;
@@ -336,7 +341,7 @@ img.texfile {
 .row-header:hover:after {
   cursor: row-resize;
 }
-
+*/
 
 .column-header-span {
   resize: horizontal;

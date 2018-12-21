@@ -45,7 +45,7 @@ html {
   display: table-cell;
  
   border: 1px solid #d9d9d9;
-  padding-left: 15px;
+  padding-left: 25px;
   padding-right: 7px;
   /*width: 10px;*/
 }
@@ -82,7 +82,6 @@ html {
   padding-right: 7px;
   /*width: 10px;*/
 }
-
 .down-cell:hover{
   background: white;
 }
@@ -1209,3 +1208,17 @@ max-width: 200px;
     width:14px;
     height:14px;
 }
+
+.selected{ background-color: #ace; }
+
+tr.highlighted td {
+    background: #ace;
+    outline: 1px solid blue;
+
+}
+
+/*#table-main td.selected {
+  outline: 1px solid blue;
+}*/
+
+

@@ -1,9 +1,8 @@
 <div class="topper">
   
         <span style="float: right; padding: 5px;">
-            <button  style=" margin-top:5px ; margin-right: 40px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
             <img src="../../assets/img/notification.svg">
-            <img src="../../assets/img/google-sheets-logo-.png" style="height: 15px; width: auto; border-radius: 25px; margin-right: 30px;">
+            <img src="../../assets/img/user-png-12.png" style="height: 15px; width: auto; border-radius: 25px; margin-right: 30px;">
           </span>
   </div>
   <section >
@@ -11,12 +10,12 @@
     <div class="top">
             <div class="top-row" >
               <div id="myRow">
-              <div class="top-cell1">
-                <img src="../../assets/img/logo.png" style="height:20px; width:20px;"
+              <!-- <div class="top-cell1">
+                <img src="img/logo.png" style="height:20px; width:20px;"
                   alt="sheets"
             class="title__logo">
                  <span>ALL</span> 
-              </div>
+              </div> -->
               <div class="top-cell">
                  <img src="../../assets/img/dots.svg">
               </div>
@@ -45,18 +44,10 @@
                  <button class="file" id="home">Home</button>
               </div>
               <div class="down-cell">
-                  <span>Lorem</span>
+                  <div class="down-cell1">
+                   <button  style=" margin-top:5px ; margin-left: 50px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
               </div>
-              <div class="down-cell">
-                  <span>Lorem</span>
               </div>
-              <div class="down-cell">
-                  <span>Lorem</span>
-              </div>
-              <div class="down-cell1">
-                  
-              </div>
-
               
             </div>
           </div>
@@ -124,7 +115,8 @@
                     <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" ></button>
                   </div>
                   <div class="mid-cell4">
-                    <img src="../../assets/img/paint.svg" class="savebutton"></div>
+                    <button class="file" id="painter" ><img  src="../../assets/img/paint.svg" class="savebutton"></button>
+                  </div>
     </div>
      <div class="mid-cell" style="word-spacing: 5px;">
         <div class="mid-cell4">
@@ -136,18 +128,19 @@
     </div>
     <div class="mid-cell">
        <select  id="sel1" onchange="changeSize(this);">
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                      <option>14</option>
-                      <option>16</option>
-                      <option>18</option>
-                      <option>24</option>
-                      <option>36</option>
+                       <option id="six">6</option>
+                      <option id="seven">7</option>
+                      <option id="8">8</option>
+                      <option id="9">9</option>
+                      <option id="10">10</option>
+                      <option id="11">11</option>
+                      <option id="12">12</option>
+                      <option id="14">14</option>
+                      <option id="16">16</option>
+                      <option id="18">18</option>
+                      <option id="24">24</option>
+                      <option id="36">36</option>
+                      <!-- <input id="else" type="text" value="40" style="display: none; height: 15px; width: 30px;"> -->
                     </select>
                 
     </div>

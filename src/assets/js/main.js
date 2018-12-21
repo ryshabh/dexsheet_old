@@ -43,6 +43,15 @@ let color = "";
 let cell_clr = false;
 let cell_sum =false;
 var copyText;
+var font;
+var color2;
+let count = 0;
+var a = localStorage.getItem("cell");
+console.log("abc",a);
+var res = a.split("-");
+var res_id = res[1];
+var res_id2 = res[2]
+var slideInProgress = false;
 
 
 initializeData = () => {
@@ -1064,10 +1073,10 @@ let count = 0;
     }
 
   }
-  el.innerHTML = "Task"
-  let spreadsheetData = getData();
-  spreadsheetData[0][res_id] = el.innerHTML;
-  saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">Task</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][res_id] = el.innerHTML;
+  // saveData(spreadsheetData);
 }
 // function swaptext2(){
 //   var tbl = document.getElementById("table-main");
@@ -1204,10 +1213,10 @@ var row = document.getElementById(`r-${j}`);
     
 
   }
-  el.innerHTML = "From"
-  let spreadsheetData = getData();
-  spreadsheetData[0][res_id] = el.innerHTML;
-  saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">From</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][res_id] = el.innerHTML;
+  // saveData(spreadsheetData);
 }
 
 function datechange(){
@@ -1347,7 +1356,7 @@ function swaptext3(){
     }
 
   }
-  el.innerHTML = "To"
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">To</span>`
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = x.innerHTML;
   saveData(spreadsheetData);
@@ -1411,7 +1420,7 @@ var row = document.getElementById(`r-${j}`);
 
     img_tag.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='none';`);
      img_tag.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='block';`);
-    //  img_tag1.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='none';`);
+    img_tag1.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='none';`);
     // img_tag1.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='block';`);
      // button.setAttribute('onblur',`document.getElementById('input_img2-${j}').style.display='none';`);
      
@@ -1420,10 +1429,10 @@ var row = document.getElementById(`r-${j}`);
     saveData(spreadsheetData);
 }
 
-  el.innerHTML = "CheckBox"
-  let spreadsheetData = getData();
-  spreadsheetData[0][res_id] = el.innerHTML;
-  saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">CheckBox</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][res_id] = el.innerHTML;
+  // saveData(spreadsheetData);
 }
 // $('.img_class').click(function() {
 //     $('.img_class2').toggle();
@@ -1460,7 +1469,7 @@ let count = 0;
     }
 
   }
-  el.innerHTML = "Assign To"
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">Assign To</span>`
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
@@ -1483,7 +1492,7 @@ let count = 0;
     }
 
   }
-  el.innerHTML = "Status"
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">Status</span>`
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
@@ -1506,7 +1515,7 @@ let count = 0;
     }
 
   }
-  el.innerHTML = "Comment"
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">Comment</span>`
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
@@ -2339,9 +2348,90 @@ function deleteUp(){
           console.log(copyText);
         }
 
-     
-   
+        document.body.addEventListener("keydown",function(e){
+      e = e || window.event;
+      var key = e.which || e.keyCode; // keyCode detection
+      var ctrl = e.ctrlKey ? e.ctrlKey : ((key === 17) ? true : false); // ctrl detection
       
+      if ( key == 86 && ctrl ) {
+        
+          let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+
+          var pasteText = document.getElementById(`r-${res_id}-${res_id2}`);
+          pasteText.innerHTML = copyText;
+          // alert("raj is here");
+          
+      } else if ( key == 67 && ctrl ) {
+        let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+          copyText = document.getElementById(`r-${res_id}-${res_id2}`).innerText;
+           // var row = document.getElementById(`r-${res_id}-${res_id2}`);
+          // var row = document.getElementById("r-8-1");
+          // console.log("chedck copytext",row);
+          console.log(copyText); 
+          // var fullLink1 = document.createElement('input');
+          // document.body.appendChild(fullLink1);
+          // fullLink1.value = copyText1;
+        
+          // fullLink1.select();
+          // document.execCommand("copy", true);
+          // fullLink1.remove();
+      }
+  
+},false);
+
+$('#table-main td').bind("paste",function(e) {
+          e.preventDefault();
+      });
+
+$('html').keyup(function(e){
+    if(e.keyCode == 46) {
+         let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+
+          var delText = document.getElementById(`r-${res_id}-${res_id2}`);
+          delText.innerHTML = " ";
+    }
+});
+
+$('#table-main th').on('dblclick', function() {
+    var $currentTable = $(this).closest('table');
+    console.log("checj cyrrent table",$currentTable);
+    var ind = $(this).index();
+    var ind1= ind - 1;
+    var index = ind1;
+    console.log("checj index table",index);
+    $currentTable.find('td').removeClass('selected');
+    $currentTable.find('tr').each(function() {
+        $(this).find('td').eq(index).addClass('selected');
+    });
+});
+
+$('#table-main td').click(function(e) {
+    $('#table-main tr').removeClass('highlighted');
+   
+});
+
+$('#table-main tr').dblclick(function(e) {
+   
+    $(this).addClass('highlighted');
+});
 
 
 function appendRow() {
@@ -2782,6 +2872,39 @@ function bold(){
         s.style.fontSize = n.value + 'px'
 
         }
+
+        $("#table-main").click(function(){
+         var a = localStorage.getItem("cell");
+            var s = document.getElementById(a);
+          var size = $(s).css('font-size').replace('px','');
+          if (size == 6) {
+             document.getElementById("six").selected = "true";
+          } if (size == 7) {
+             document.getElementById("seven").selected = "true";
+          } if (size == 8) {
+            document.getElementById("8").selected = "true";
+          } if(size == 9){
+            document.getElementById("9").selected = "true";
+          }if (size == 10 ) {
+            document.getElementById("10").selected = "true";
+          }if (size == 11) {
+            document.getElementById("11").selected = "true";
+          }if (size == 12) {
+            document.getElementById("12").selected = "true";
+          }if (size == 14) {
+            document.getElementById("14").selected = "true";
+          }if (size == 16) {
+            document.getElementById("16").selected = "true";
+          }if (size == 18) {
+            document.getElementById("18").selected = "true";
+          }if (size == 24) {
+            document.getElementById("24").selected = "true";
+          } if (size == 36) {
+            document.getElementById("36").selected = "true";
+          } 
+
+          // alert("size:" + size); 
+        });
 
         function textwrap(){
           var a = localStorage.getItem("cell");
@@ -3296,14 +3419,14 @@ var row = document.getElementById(`r-${j}`);
     button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
      button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
      
-    let spreadsheetData = getData();
-    spreadsheetData[j][output] = x.innerHTML;
-    saveData(spreadsheetData);
+    // let spreadsheetData = getData();
+    // spreadsheetData[j][output] = x.innerHTML;
+    // saveData(spreadsheetData);
 }
-  el.innerHTML = "From";
-  let spreadsheetData = getData();
-  spreadsheetData[0][output] = el.innerHTML;
-  saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="column-header-span">From</span>`;
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][output] = el.innerHTML;
+  // saveData(spreadsheetData);
 
 
 } if(output == 3){
@@ -3347,14 +3470,16 @@ var row = document.getElementById(`r-${j}`);
     saveData(spreadsheetData);
    }
 
+
+
    $(function() {
      $(".datepicker1").datepicker();
    });
   
-  el2.innerHTML = "To"
-  let spreadsheetData = getData();
-  spreadsheetData[0][output] = x.innerHTML;
-  saveData(spreadsheetData);
+  el2.innerHTML = `<span contenteditable="false" class="column-header-span">To</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][output] = x.innerHTML;
+  // saveData(spreadsheetData);
 
 } if (output == 4) {
      // var tbl = document.getElementById("table-main");
@@ -3407,7 +3532,7 @@ var row = document.getElementById(`r-${j}`);
 
     img_tag2.setAttribute('onClick',`document.getElementById('input_img3-${j}').style.display='none';`);
      img_tag2.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='block';`);
-    //  img_tag1.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='none';`);
+     img_tag1.setAttribute('onClick',`document.getElementById('input_img2-${j}').style.display='none';`);
     // img_tag1.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='block';`);
      // button.setAttribute('onblur',`document.getElementById('input_img2-${j}').style.display='none';`);
      
@@ -3416,10 +3541,10 @@ var row = document.getElementById(`r-${j}`);
     saveData(spreadsheetData);
 }
 
-  el4.innerHTML = "CheckBox"
-  let spreadsheetData = getData();
-  spreadsheetData[0][output] = el4.innerHTML;
-  saveData(spreadsheetData);
+  el4.innerHTML = `<span contenteditable="false" class="column-header-span">CheckBox</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][output] = el4.innerHTML;
+  // saveData(spreadsheetData);
 } 
 
   if (output == 5) {
@@ -3432,10 +3557,10 @@ var row = document.getElementById(`r-${j}`);
     }
 
   }
-  el5.innerHTML = "Assign To"
-  let spreadsheetData = getData();
-  spreadsheetData[0][output] = el5.innerHTML;
-  saveData(spreadsheetData);
+ el5.innerHTML = `<span contenteditable="false" class="column-header-span">Assign To</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][output] = el5.innerHTML;
+  // saveData(spreadsheetData);
   }
 
   if (output == 6) {
@@ -3448,10 +3573,10 @@ var row = document.getElementById(`r-${j}`);
     }
 
   }
-  el6.innerHTML = "Status"
-  let spreadsheetData = getData();
-  spreadsheetData[0][output] = el6.innerHTML;
-  saveData(spreadsheetData);
+  el6.innerHTML = `<span contenteditable="false" class="column-header-span">Status</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][output] = el6.innerHTML;
+  // saveData(spreadsheetData);
   }
   if (output == 7) {
     var el7 = document.getElementById(`h-0-${output}`);
@@ -3463,16 +3588,16 @@ var row = document.getElementById(`r-${j}`);
     }
 
   }
-  el7.innerHTML = "Comment"
-  let spreadsheetData = getData();
-  spreadsheetData[0][output] = el7.innerHTML;
-  saveData(spreadsheetData);
+  el7.innerHTML = `<span contenteditable="false" class="column-header-span">Comment</span>`
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][output] = el7.innerHTML;
+  // saveData(spreadsheetData);
   } 
 
-  el1.innerHTML = "Task";
-  let spreadsheetData = getData();
-  spreadsheetData[0][1] = el1.innerHTML;
-  saveData(spreadsheetData); 
+  el1.innerHTML = `<span contenteditable="false" class="column-header-span">Task</span>`;
+  // let spreadsheetData = getData();
+  // spreadsheetData[0][1] = el1.innerHTML;
+  // saveData(spreadsheetData);
 }
  
 }
@@ -3481,3 +3606,81 @@ $( function() {
     $( ".row-header" ).resizable();
 
   } );
+
+element = document.getElementById(`r-${res_id}-${res_id2}`);
+
+document.getElementById("painter").addEventListener('click', format);
+        function format(){
+          let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2]
+          console.log("res",res[2]);
+          var element = document.getElementById(`r-${res_id}-${res_id2}`);
+          style = window.getComputedStyle(element);
+          top = style.getPropertyValue('top');
+          position = style.getPropertyValue('position');
+          color2 = style.getPropertyValue('color');
+          font = style.getPropertyValue('font-size');
+          console.log("test color",color2,font);
+          document.onclick = setvalue;
+
+        }
+        
+    var click = 0;
+    function setvalue(e){
+          
+     $(`#table-main td`).click(function(){
+        
+        click ++
+       console.log("check click",click)
+       if (click == 1) {
+          console.log("working",color);
+         let count = 0;
+         var a = localStorage.getItem("cell");
+         console.log("abc",a);
+         var res = a.split("-");
+         var res_id = res[1];
+         var res_id2 = res[2];
+         console.log("res",res[2]);
+
+         var element1 = document.getElementById(`r-${res_id}-${res_id2}`)
+          // element1.style.fontWeight = bold;
+          // element1.style.textDecoration = strikethrough;
+          // element1.style.backgroundColor = background;
+          // element1.style.fontStyle = italic;
+
+
+          element1.style.fontSize = font;
+
+          element1.style.color = color2;
+          slideInProgress = false;
+           var ban = element.style.fontWeight  ;
+           var ban1 = element.style.fontStyle;
+           var ban2 = element.style.textDecoration;
+          console.log("banvalue",ban);
+
+              if(ban == 'bold'){
+               element1.style.fontWeight ="bold";
+                } else {
+                 element1.style.fontWeight = "normal";
+                }
+             if(ban1 == 'italic'){
+               element1.style.fontStyle ="italic";
+                } else {
+                 element1.style.fontStyle = "normal";
+                }
+
+             if (ban2 == 'line-through') {
+               element1.style.textDecoration ="line-through";
+                } else {
+                 element1.style.textDecoration = "normal";
+             }
+
+          } else {
+           return false
+          }
+         });
+       }

@@ -3611,6 +3611,7 @@ element = document.getElementById(`r-${res_id}-${res_id2}`);
 
 document.getElementById("painter").addEventListener('click', format);
         function format(){
+          console.log("format");
           let count = 0;
           var a = localStorage.getItem("cell");
           console.log("abc",a);

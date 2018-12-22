@@ -53,6 +53,22 @@ var res_id = res[1];
 var res_id2 = res[2]
 var slideInProgress = false;
 
+function inhere(){
+var a = localStorage.getItem("cell");
+console.log("abc",a);
+var res = a.split("-");
+var res_id = res[1];
+var res_id2 = res[2];
+var slideInProgress = false;
+var inn = document.getElementById("inhere");
+inn.innerHTML = `<label id="#bb"> Add Image
+              <input id="imgInp" class="inpadd${res_id}" type="file"  >
+
+             </label> `;
+             console.log("check class input inpadd",res_id);
+}
+
+inhere();
 
 initializeData = () => {
   // console.log("initializeData");
@@ -315,17 +331,35 @@ createTableBodyRow = rowNum => {
       cell.contentEditable = false;
 
       const span = document.createElement("span");
-      // var img = document.createElement("img");
- 
-      // img.src = "assets/img/attachment.svg";
-      // img.width = "12";
-      // img.height = "12";
-      // img.setAttribute('onclick', 'alert(test()')
-      // span.appendChild(img);
-      // cell.appendChild(span);
-      const s = document.createElement("span");
-       s.setAttribute('id','spanrow');
+      var img = document.createElement("img");
+      img.setAttribute('class',`attachment`);
+      img.setAttribute('id',`idattach-${rowNum}`);
+      img.src = "assets/img/attachment1.png";
+      img.width = "10";
+      img.height = "10";
+      img.setAttribute('onclick', 'showimage();openRightMenu();');
 
+      var img1 = document.createElement("img");
+      img1.setAttribute('class',`attachment1-${rowNum}`);
+      img1.setAttribute('id',`idattach1-${rowNum}`);
+      img1.src = "assets/img/attachment1.png";
+      img1.width = "10";
+      img1.height = "10";
+      img1.setAttribute('onclick', 'showimage();openRightMenu();');
+      img1.style.display = 'none';
+
+      // img.setAttribute('onClick',`document.getElementById('idattach1-${rowNum}').style.display='block';`);
+      // img.setAttribute('onClick',`document.getElementById('idattach-${rowNum}').style.display='none';`);
+
+
+      
+      cell.appendChild(img);
+      cell.appendChild(span);
+      
+      const s = document.createElement("span");
+      s.setAttribute('id','spanrow');
+      
+      
       s.innerHTML = rowNum;
       cell.appendChild(s)
 
@@ -341,6 +375,10 @@ createTableBodyRow = rowNum => {
   }
   return tr;
 };
+
+function showimage(){
+  document.getElementById("blah").style.display = "block";
+}
 
 createTableBody = tableBody => {
   for (let rowNum = 1; rowNum <= defaultRowCount; rowNum++) {
@@ -3658,7 +3696,7 @@ document.getElementById("painter").addEventListener('click', format);
 
           element1.style.color = color2;
           slideInProgress = false;
-           var ban = element.style.fontWeight  ;
+           var ban = element.style.fontWeight;
            var ban1 = element.style.fontStyle;
            var ban2 = element.style.textDecoration;
           console.log("banvalue",ban);
@@ -3685,3 +3723,36 @@ document.getElementById("painter").addEventListener('click', format);
           }
          });
        }
+
+       function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+
+
+function openRightMenu() {
+  
+     document.getElementById("main").style.marginRight = "50%";
+    document.getElementById("rightMenu").style.width = "50%";
+   document.getElementById("rightMenu").style.display = "block";
+    // document.getElementById("openNav").style.display = 'none';
+  }
+
+  function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+     document.getElementById("main").style.marginRight = "0%";
+    document.getElementById("rightMenu").style.display = "none";
+    // document.getElementById("openNav").style.display = "inline-block";
+  }

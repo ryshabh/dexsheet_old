@@ -310,10 +310,10 @@ img.texfile {
 
 }
 
-#spanrow{
+/*#spanrow{
   display:block;
   width: 35px;
-}
+}*/
 
 /*
 .row-header{
@@ -1221,4 +1221,35 @@ tr.highlighted td {
   outline: 1px solid blue;
 }*/
 
+/*#table-main td.selected {
+  outline: 1px solid blue;
+}*/
+
+.attachment{
+   position: relative;
+    display: inline-block;
+
+}
+
+label{
+    padding: 10px 102px 10px 10px;
+    background: grey; 
+    display: table;
+    color: #fff;
+     }
+
+
+
+#imgInp {
+    display: none;
+}
+
+#blah{
+  display: none;
+}
+
+#main {
+  transition: margin-right .5s;
+
+}
 

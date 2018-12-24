@@ -46,29 +46,28 @@ var copyText;
 var font;
 var color2;
 let count = 0;
-var a = localStorage.getItem("cell");
-console.log("abc",a);
-var res = a.split("-");
-var res_id = res[1];
-var res_id2 = res[2]
-var slideInProgress = false;
+var apply_format = false;
+
 
 function inhere(){
 var a = localStorage.getItem("cell");
-console.log("abc",a);
-var res = a.split("-");
-var res_id = res[1];
-var res_id2 = res[2];
-var slideInProgress = false;
-var inn = document.getElementById("inhere");
-inn.innerHTML = `<label id="#bb"> Add Image
-              <input id="imgInp" class="inpadd${res_id}" type="file"  >
+  console.log("inhere abc",a);
+  var res = a.split("-");
+  var res_id = res[1];
 
-             </label> `;
-             console.log("check class input inpadd",res_id);
+var inn = document.getElementById("content");
+var li = document.createElement('li');
+li.innerHTML = `<li>
+<label id="#bb"> Add Image
+              <input id="imgInp${res_id}" class="inpadd" type="file" onchange="readURL2(this.value)">
+
+             </label> </li>`;
+             console.log("check class input inpadd");
+  inn.appendChild(li);
 }
 
-inhere();
+
+
 
 initializeData = () => {
   // console.log("initializeData");
@@ -721,19 +720,7 @@ function fileSelected(input){
 //                document.getElementById("demo1").innerHTML = retVal;
 //              }
 
-function getValue(){
-  var retVal = prompt("Enter the name of the project", "New Project");
-  if (retVal == null) {
-    console.log("printing");
-    document.getElementById("spreadsheethide").style.display = "none";
-    Createmptytable();
-  } else{
-    localStorage.setItem("project",retVal)
-    // document.getElementById("demo").innerHTML = retVal;
-    CreateTable(); 
-    showtable();
-  }
-}
+
 
 function myprint() {
     window.print();
@@ -3645,84 +3632,107 @@ $( function() {
 
   } );
 
-element = document.getElementById(`r-${res_id}-${res_id2}`);
-
 document.getElementById("painter").addEventListener('click', format);
         function format(){
-          console.log("format");
+          apply_format = true;
           let count = 0;
           var a = localStorage.getItem("cell");
+          localStorage.setItem("paint_cell",a)
           console.log("abc",a);
           var res = a.split("-");
           var res_id = res[1];
           var res_id2 = res[2]
           console.log("res",res[2]);
-          var element = document.getElementById(`r-${res_id}-${res_id2}`);
+           element = document.getElementById(`r-${res_id}-${res_id2}`);
           style = window.getComputedStyle(element);
           top = style.getPropertyValue('top');
           position = style.getPropertyValue('position');
           color2 = style.getPropertyValue('color');
           font = style.getPropertyValue('font-size');
+          background = style.getPropertyValue('backgroundColor');
           console.log("test color",color2,font);
           document.onclick = setvalue;
 
         }
         
-    var click = 0;
+  // var click = 0;
     function setvalue(e){
-          
-     $(`#table-main td`).click(function(){
-        
-        click ++
-       console.log("check click",click)
-       if (click == 1) {
-          console.log("working",color);
-         let count = 0;
-         var a = localStorage.getItem("cell");
-         console.log("abc",a);
-         var res = a.split("-");
-         var res_id = res[1];
-         var res_id2 = res[2];
-         console.log("res",res[2]);
+         
+    
+         
+      $(`#table-main td`).click(function(){
+         
+         // click ++
+        // console.log("check click",click)
+        if (apply_format==true) {
 
-         var element1 = document.getElementById(`r-${res_id}-${res_id2}`)
-          // element1.style.fontWeight = bold;
-          // element1.style.textDecoration = strikethrough;
-          // element1.style.backgroundColor = background;
-          // element1.style.fontStyle = italic;
+           console.log("working",color);
+          let count = 0;
+          var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2];
+          console.log("res",res[2]);
+
+          var a2 = localStorage.getItem("paint_cell");
+          console.log("a2",a2);
+          var res2 = a2.split("-");
+          var res_id3 = res2[1];
+          var res_id4 = res2[2];
+          console.log("res_id3",res2[2]);
 
 
-          element1.style.fontSize = font;
+          var element1 = document.getElementById(`r-${res_id}-${res_id2}`)
+          element = document.getElementById(`r-${res_id3}-${res_id4}`);
+           // element1.style.fontWeight = bold;
+           // element1.style.textDecoration = strikethrough;
+           // element1.style.backgroundColor = background;
+           // element1.style.fontStyle = italic;
 
-          element1.style.color = color2;
-          slideInProgress = false;
-           var ban = element.style.fontWeight;
-           var ban1 = element.style.fontStyle;
-           var ban2 = element.style.textDecoration;
-          console.log("banvalue",ban);
 
-              if(ban == 'bold'){
-               element1.style.fontWeight ="bold";
-                } else {
-                 element1.style.fontWeight = "normal";
-                }
-             if(ban1 == 'italic'){
-               element1.style.fontStyle ="italic";
-                } else {
-                 element1.style.fontStyle = "normal";
-                }
+           element1.style.fontSize = font;
 
-             if (ban2 == 'line-through') {
-               element1.style.textDecoration ="line-through";
-                } else {
-                 element1.style.textDecoration = "normal";
-             }
+           element1.style.color = color2;
+           element1.style.backgroundColor = background;
+           slideInProgress = false;
+            var ban = element.style.fontWeight  ;
+            var ban1 = element.style.fontStyle;
+            var ban2 = element.style.textDecoration;
+            var ban3 = element.style.backgroundColor;
+           console.log("banvalue",ban);
+ 
+               if(ban == 'bold'){
+                element1.style.fontWeight ="bold";
+                 } else {
+                  element1.style.fontWeight = "normal";
+                 }
+              if(ban1 == 'italic'){
+                element1.style.fontStyle ="italic";
+                 } else {
+                  element1.style.fontStyle = "normal";
+                 }
 
-          } else {
-           return false
-          }
-         });
-       }
+              if (ban2 == 'line-through') {
+                element1.style.textDecoration ="line-through";
+                 } else {
+                  element1.style.textDecoration = "normal";
+              }
+
+            
+
+                apply_format = false;
+                return false
+           } 
+
+           // else 
+           // {
+            
+           //  return false
+           
+           // }
+          });
+        }
 
        function readURL(input) {
 
@@ -3756,3 +3766,5 @@ function openRightMenu() {
     document.getElementById("rightMenu").style.display = "none";
     // document.getElementById("openNav").style.display = "inline-block";
   }
+
+  document.getElementById("spreadsheethide").style.display = "block";

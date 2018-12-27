@@ -16,18 +16,15 @@
             class="title__logo">
                  <span>ALL</span> 
               </div> -->
-              <div class="top-cell">
+              <div class="top-cell1">
                  <img src="../../assets/img/dots.svg">
-              </div>
-              <div class="top-cell" >
-                  <span>New Project</span>
               </div>
             </div>
 
               <!-- <div id="myRow"></div> -->
               <div class="top-cell">
                 
-                 <button class="file2" type="submit" onclick="getValue();"><img src="../../assets/img/Group 3.svg"></button>
+                 <button class="file2" id="table2" type="submit" onclick="getValue();duplicate();"><img src="../../assets/img/Group 3.svg"></button>
               </div>
               <div class="top-cell">
                  <img src="../../assets/img/menu.svg">
@@ -43,11 +40,11 @@
               <div class="down-cell">
                  <button class="file" id="home">Home</button>
               </div>
-              <div class="down-cell">
+              
                   <div class="down-cell1">
                    <button  style=" margin-top:5px ; margin-left: 50px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
               </div>
-              </div>
+              
               
             </div>
           </div>
@@ -109,21 +106,21 @@
     </div>
     <div class="mid-cell">
       <div class="mid-cell4">
-      <button class="file" onclick="document.execCommand('undo',false,null);"><img src="../../assets/img/backward.svg" ></button>
+      <button class="file" onclick="document.execCommand('undo',false,null);"><span class="tooltiptext">Backward</span><img src="../../assets/img/backward.svg" ></button>
     </div>
     <div class="mid-cell4">
-                    <button class="file" onclick="document.execCommand('redo',false,null);"><img src="../../assets/img/forward.svg" ></button>
+                    <button class="file" onclick="document.execCommand('redo',false,null);"><span class="tooltiptext">Forward</span><img src="../../assets/img/forward.svg" ></button>
                   </div>
                   <div class="mid-cell4">
-                    <button class="file" id="painter" ><img  src="../../assets/img/paint.svg" class="savebutton"></button>
+                    <button class="file" id="painter" ><span class="tooltiptext">Paint</span><img  src="../../assets/img/paint.svg" class="savebutton"></button>
                   </div>
     </div>
      <div class="mid-cell" style="word-spacing: 5px;">
         <div class="mid-cell4">
-        <button class="file" onclick="document.execCommand('justifyRight',false,null);"><img src="../../assets/img/Left Indent.svg" class="savebutton"></button>
+        <button class="file" onclick="document.execCommand('justifyRight',false,null);"><span class="tooltiptext">Left Indent</span><img src="../../assets/img/Left Indent.svg" class="savebutton"></button>
       </div>
       <div class="mid-cell4">
-                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><img src="../../assets/img/Right Indent.svg" class="savebutton"></button>
+                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><span class="tooltiptext">Right Indent</span><img src="../../assets/img/Right Indent.svg" class="savebutton"></button>
                   </div>
     </div>
     <div class="mid-cell">
@@ -146,28 +143,28 @@
     </div>
     <div class="mid-cell" style="word-spacing: 4px;">
       <div class="mid-cell4">
-      <button class="file" id="jBold" onclick="bold();"><img src="../../assets/img/bold.svg" class="savebutton"><!-- <p class="text">Bold</p> --></button>
+      <button class="file" id="jBold" onclick="bold();"><span class="tooltiptext">Bold</span><img src="../../assets/img/bold.svg" class="savebutton"><!-- <p class="text">Bold</p> --></button>
     </div>
     <div class="mid-cell4">
-                    <button class="file" onclick="italic();"><img src="../../assets/img/italic.svg" class="savebutton"></button>
+                    <button class="file" onclick="italic();"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" class="savebutton"></button>
                   </div>
     <div class="mid-cell4">
-                    <button class="file" onclick="strikethrough();"><img src="../../assets/img/strikethrough.svg" class="savebutton"></button>
+                    <button class="file" onclick="strikethrough();"><span class="tooltiptext">Strikethrough</span><img src="../../assets/img/strikethrough.svg" class="savebutton"></button>
                   </div>
                   <div class="mid-cell4">
-                    <button id="change_color" class="favcolor file" style="position: relative; left: -5px; bottom: -2px; color: grey"><span class="glyphicon glyphicon-text-color" id="fonttext"></span>
+                    <button id="change_color" class="favcolor file" style="position: relative; left: -5px; bottom: -2px; color: grey"><span class="tooltiptext">Textcolor</span><span class="glyphicon glyphicon-text-color" id="fonttext"></span>
                    </button>
                  </div>
                    
     </div>
     <div class="mid-cell">
       <div class="mid-cell5">
-        <button class=" file" id="favcolor1" >
+        <button class=" file" id="favcolor1" ><span class="tooltiptext">TextFill</span>
       <img src="../../assets/img/text fill.svg" ></button></div>
       <div class="mid-cell5">        
                 <img src="../../assets/img/arrow_2.svg" class="favcolor1"></div>
                 <div class="mid-cell5">
-                    <button class="file" ><span class="tooltiptext">Table</span><img src="../../assets/img/table.svg"></button></div>
+                    <button class="file" onclick="myFunction3()"><span class="tooltiptext">Table</span><img src="../../assets/img/table.svg"></button></div>
                      <div class="mid-cell3">
                     <div class="drop1">
                       <button class="dr-btn1 file" onclick="myFunction3()"><img src="../../assets/img/arrow_2.svg"> </button>
@@ -186,7 +183,7 @@
   </div>
   <div class="mid-cell">
     <div class="mid-cell6">
-       <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><img src="../../assets/img/alignment.svg" class="savebutton"></button>
+       <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><span class="tooltiptext">Alignment</span><img src="../../assets/img/alignment.svg" class="savebutton"></button>
      </div>
        <div class="mid-cell5">
                     <div class="drop">
@@ -210,7 +207,7 @@
                        
                     <!-- <img src="img/arrow_2.svg"> -->
                     <div class="mid-cell5">
-                    <button class="file" onclick="textwrap();"> <img src="../../assets/img/Text Warp.svg" class="savebutton"></button></div>
+                    <button class="file" onclick="textwrap();"><span class="tooltiptext">Text Wrap</span> <img src="../../assets/img/Text Warp.svg" class="savebutton"></button></div>
                     <div class="mid-cell3">
                      <div class="drop2">
                       <button class="dr-btn2 file" onclick="myFunction4()"><img src="../../assets/img/arrow_2.svg" > </button>
@@ -222,22 +219,19 @@
     </div>
     <div class="mid-cell">
       <div class="mid-cell4">
-       <img src="../../assets/img/sigma.svg" class="savebutton">
+       <button class= "file"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg" class="savebutton"></button>
      </div>
     </div>
     <div class="mid-cell">
       <div class="mid-cell4">
-       <button class="file"  onclick="addfilter();"><img src="../../assets/img/filter.svg" class="savebutton"></button>
+       <button class="file"  onclick="addfilter();"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg" class="savebutton"></button>
      </div>
     </div>
     <div class="mid-cell7"></div>
     <!-- <div class="mid-cell-Last"></div> -->
 </div>
 
-</div>
-
- 
-   
+</div> 
   </div>
 </section>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
@@ -245,13 +239,14 @@
   <img id="blah" src="#" alt="your image" width="100%" height="auto">
 </div>
   <div id="main"> 
-  <div style="height:815px;width:100%;overflow:auto;">
-    <div class="w3-teal">
-   <!--    <button id="openNav" class="w3-button w3-teal w3-xlarge w3-right" onclick="openRightMenu()">&#9776;</button> -->
-      <!-- <div class="w3-container">
+  <div id="a_abc" style="height:815px;width:100%;overflow:auto;">
+  <div id="tablediv0"> </div></div>
+    <!-- <div class="w3-teal">
+      <button id="openNav" class="w3-button w3-teal w3-xlarge w3-right" onclick="openRightMenu()">&#9776;</button>
+      <div class="w3-container">
         <h1>My Page</h1>
-      </div> -->
-    </div>
+      </div>
+    </div> -->
     <section class="spreadsheet" id="spreadsheethide">
       <input class="form-control" id="myInput" type="text" placeholder="Search..">
         <table class="spreadsheet__table"
@@ -276,7 +271,6 @@
             <td style="width: 100%; background-color:  #d9d9d9"></td>
         </tr>
     </table>
-    </div>
   </div>
 
 
@@ -295,7 +289,10 @@
             Paste
           </li>
           <li>
-            <div id="inhere"></div> 
+            <label id="#bb"> Add Image
+              <input id="imgInp" class="inpadd" type="file" onchange="readURL2(this)">
+
+             </label> 
           </li>
           <li class="w3-bar-item w3-button" onclick="addRow()">
             Insert row 

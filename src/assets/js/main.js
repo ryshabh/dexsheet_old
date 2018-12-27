@@ -29,7 +29,7 @@
 
 $(document).ready(function(){
    $("#home").click(function(){
-     $("#middle").toggle();
+     $(".mid").toggle();
  });
 });
 let z =1;
@@ -43,8 +43,11 @@ let color = "";
 let cell_clr = false;
 let cell_sum =false;
 var copyText;
+var raj=0;
+var elemsRemoved = [];
 var font;
 var color2;
+var background;
 let count = 0;
 var apply_format = false;
 
@@ -563,6 +566,111 @@ const dscSort = (currentCol, a, b) => {
   return _b - _a;
 };
 
+// function duplicate() {
+//   document.getElementById('table2') = duplicate;
+//   // console.log("duplicate 2");
+// }
+
+function duplicate() {
+    // if(raj>0){
+      
+    //       for(var k=0;k<elemsRemoved.length;k++){
+    //         $('#a_abc').append(elemsRemoved[k].obj);
+    //       }
+    //      // var elem = elemsRemoved.pop();
+    //      // console.log("element",elem.obj)
+         
+      
+    // }
+    var original = document.getElementById('tablediv0');
+    
+    console.log("check i",raj);
+    console.log("check original",original);
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.setAttribute('class','targetTable');
+    // clone.setAttribute('disabled','disabled');
+    // document.getElementById('tablediv'+raj).remove();
+
+    raj = raj+1;
+    clone.id = "tablediv" + raj; // there can only be one element with an ID
+
+    console.log("check id ",clone.id);
+    // clone.onclick = duplicate; // event handlers are not cloned
+    original.parentNode.appendChild(clone);
+
+
+
+    // var a = raj-1;
+    // for (var k =0;k<raj;k++){
+    //   elemsRemoved.push({
+    //     obj: $("#tablediv" + k)
+    //   });
+    //   $("#tablediv" + k).detach()
+    // }
+    // $("#tablediv"+a).remove();
+    document.getElementById(clone.id).style.display ="block";
+    $( ".row-header").resizable();
+    $( ".row-header").resizable('destroy');
+    $( ".row-header").resizable();
+
+    // addEvents();
+    // for(var i =0; i<=raj;i++){
+    //             if(i==raj){
+    //               $('#a_abc').append(elemsRemoved[i]);
+    //             }
+    //             else{
+    //               elemsRemoved.push($('#tablediv'+i))
+    //               $('#tablediv'+i).remove();
+    //             }
+    var cacheDom = "";
+    cacheDom = $('#tablediv0');
+    $('#tablediv0').remove();
+    console.log("check reomve");
+    var bb = document.getElementById("a_abc");
+    $(bb).append(cacheDom);
+    console.log("check add", cacheDom);
+
+     var a = document.getElementById(clone.id);
+     console.log("abbbb ",a)
+     if(a){
+        elemsRemoved[raj-1] =a ;
+    }
+    console.log("aaa b",elemsRemoved.length)
+  
+    // for (i=0;i<raj;i++){
+    
+    // }  
+    // clone.appendTo()
+    // addEvents();
+     // document.getElementById(clone.id).style.display = "block";
+}
+
+
+function tableishere(){
+  console.log("check table");
+  var table = document.getElementById("tablediv0");
+  const section = document.createElement('section');
+  section.setAttribute('class','spreadsheet');
+  section.setAttribute('id','spreadsheethide');
+  section.innerHTML = ` <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                          <table class=" spreadsheet__table"
+                              id="table-main" style="table-layout: fixed;">
+                              <thead class="spreadsheet__table--headers"
+                                  id="table-headers">
+                              </thead>
+                              <tbody class="spreadsheet__table--body"
+                                  id="table-body">
+                              </tbody>
+                          </table>`
+
+  table.appendChild(section);
+  addEvents();
+  
+}
+
+tableishere();
+
+
 createSpreadsheet = () => {
   const spreadsheetData = this.getData();
   defaultRowCount = spreadsheetData.length - 1 || defaultRowCount;
@@ -648,7 +756,7 @@ createSpreadsheet = () => {
 };
 
 createSpreadsheet();
-
+document.getElementById("tablediv0").style.display = "none";
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches(".dropbtn")) {
@@ -882,7 +990,7 @@ function Createmptytable(){
   x.innerHTML = " ";
 }
 
-        
+var count1 = 0;         
 function CreateTable() {
          
         // NOW CREATE AN INPUT BOX TYPE BUTTON USING createElement() METHOD.
@@ -890,7 +998,10 @@ function CreateTable() {
         var button = document.createElement('div');
         button.setAttribute('class','top-cell');
         var span = document.createElement('span');
-        span.setAttribute('id','spanid');
+        span.setAttribute('class','tab');
+        span.setAttribute('target',''+ ++count1)
+        console.log("checktarget",'target',''+ +count1);
+        // class="tab" target="1"
         var b = localStorage.getItem("project");
         span.innerHTML = b;
         // SET INPUT ATTRIBUTE 'type' AND 'value'.
@@ -907,12 +1018,102 @@ function CreateTable() {
          // x.setAttribute(onclick,'showtable();');
     
         // ADD THE BUTTON's 'onclick' EVENT.
-        button.setAttribute('onclick', 'GetTableValues()');
+        //button.setAttribute('onclick', 'GetTableValues()');
 
         // FINALLY ADD THE NEWLY CREATED TABLE AND BUTTON TO THE BODY.
         // document.body.appendChild(table);
         // a.appendChild(button);
     }
+
+    var mm = 0;
+//         });
+$( '#myRow' ).on( 'click', '.tab', function () {  
+              
+              jQuery('.targetTable').hide();
+
+              // $('.targetTable').destroy();
+              // var $j_object = $(".targetTable");
+              //   alert($j_object.size());
+               // $(".targetTable").attr('disabled','disabled');
+              // $("div").removeClass("targetTable");
+             
+              // var cacheDom1 = "";
+              // var abc = [];
+              // var a= $(this).attr('target');
+              // var b = a-++mm;
+            
+              // cacheDom1  = $(`#tablediv${++mm}`);
+              
+             
+              // console.log("check for this tablediv",$(this).attr('target'));
+              // console.log("chekc mmm value",mm);
+              // $(`#tablediv${mm}`).remove();
+              //  $('div .targetTable').removeClass('targetTable');
+              // $(this).addClass('targetTable');
+              // cacheDom1  = $('#tablediv'+$(this).attr('target'));
+              // console.log("check for this tablediv",mm);
+              // var bb = document.getElementById('#tablediv'+$(this).attr('target'));
+              // $(bb).append(cacheDom1);
+                
+              // console.log("check for remove",mm);
+              // var bb = document.getElementById(`#tablediv${mm}`);
+              // let k = $(this).attr('target');
+              // console.log("check for bb ",`#tablediv${mm}`);
+              // $(`#tablediv${mm}`).append(cacheDom1);
+              // console.log("check for bb ",cacheDom1);
+              // $(bb).append(cacheDom1);
+              // console.log("this ", raj, $(this).attr('target'));
+              console.log("aa ",mm)
+              // console.log("aaa b",elemsRemoved.length)
+                
+                // elemsRemoved.push(a);
+                // console.log("elemsRemoved ",JSON.stringify(elemsRemoved[mm]))
+                  // $('#tablediv'+i).remove();
+              
+
+              // $(`#tablediv${mm}`).remove();
+              console.log("aaa ",elemsRemoved.length)
+              for(var j =1; j<=raj;j++){
+                console.log("this ",$(this).attr('target'))
+                console.log("value in for ",elemsRemoved[j-1],j);
+                var c = $(this).attr('target');
+                console.log("c ",c)
+                if(document.getElementById(`tablediv${j}`)){
+                    document.getElementById(`tablediv${j}`).remove();
+                }
+                if(j==c){
+                  console.log("j=c",j,c)
+                  var b = elemsRemoved[j-1];
+                  console.log("b ",b)
+                  document.getElementById('a_abc').append(b);
+                                var cacheDom = "";
+                  cacheDom = $('#tablediv0');
+                  $('#tablediv0').remove();
+                  console.log("check reomve");
+                  var bb = document.getElementById("a_abc");
+                  $(bb).append(cacheDom);
+                  console.log("check add", cacheDom);
+
+
+                  // document.getElementById(`tablediv${j}`).style.display= "block";
+
+                }
+                // else{
+                //   console.log("else ",j,c)
+                  
+                  
+                // }
+                
+              }
+
+               // console.log("check tab is working or not");
+               // jQuery('#tablediv'+$(this).attr('disabled')).show();
+               // $('#tablediv'+$(this).attr('target')).prop('disabled', false);
+                // $('#tablediv'+$(this).attr('target')).addClass("targetTable");
+              jQuery('#tablediv'+$(this).attr('target')).show();
+
+              console.log("check tab is working or not",$(this));
+ });
 
     function showtable(){
       document.getElementById("spreadsheethide").style.display = "block";
@@ -1024,6 +1225,24 @@ function addEvents(){
 
         }
 }
+
+$(document).on('mousedown', '#table-main td', function(event) {
+   if (event.which == 3){
+                           console.log("addEvents() if event.3");
+                      getval(this); 
+                      } else if(event.which == 1) {
+                                  console.log("addEvents() if getcellval");
+                          getCellVal(this); 
+                      } 
+  document.getElementById("spreadsheethide").addEventListener('contextmenu', function(ev) {
+  ev.stopPropagation();
+  ev.preventDefault();
+  rightclick();
+  return false;
+}, false);
+  // getval1(this.id); 
+});
+
         function getval(cel) {
             console.log("test",cel.id)
             localStorage.setItem("cell",cel.id);
@@ -2416,7 +2635,7 @@ function deleteUp(){
   
 },false);
 
-$('#table-main td').bind("paste",function(e) {
+$(document).bind('paste', 'td', function(e) {
           e.preventDefault();
       });
 
@@ -2435,7 +2654,7 @@ $('html').keyup(function(e){
     }
 });
 
-$('#table-main th').on('dblclick', function() {
+$(document).on('dblclick', '.column-header', function() {
     var $currentTable = $(this).closest('table');
     console.log("checj cyrrent table",$currentTable);
     var ind = $(this).index();
@@ -2448,12 +2667,12 @@ $('#table-main th').on('dblclick', function() {
     });
 });
 
-$('#table-main td').click(function(e) {
+$(document).on('click', 'tr', function(e){
     $('#table-main tr').removeClass('highlighted');
    
 });
 
-$('#table-main tr').dblclick(function(e) {
+$(document).on('dblclick', 'tr', function(e){
    
     $(this).addClass('highlighted');
 });
@@ -2729,7 +2948,7 @@ function sortNumbers(a, b) {
 let isDragging = false;
 let selection = {};
 
-$("#table-main").on("mousedown", "td", function() {
+$(document).on("mousedown", "td", function() {
   // Start dragging
   isDragging = true;
 
@@ -2827,7 +3046,7 @@ function bold(){
            function italic(){
           var a = localStorage.getItem("cell");
           // document.getElementById(a).style.fontWeight = "normal ";
-
+          console.log("italic",a);
            var  ban =document.getElementById(a).style.fontStyle  ;
            console.log("banvalue",ban);
  
@@ -2898,7 +3117,7 @@ function bold(){
 
         }
 
-        $("#table-main").click(function(){
+        $(document).on("click","td",function(){
          var a = localStorage.getItem("cell");
             var s = document.getElementById(a);
           var size = $(s).css('font-size').replace('px','');
@@ -3065,7 +3284,7 @@ function bold(){
   //  });
 
 $(function () {
-    $("#table-main td").dblclick(function () {
+    $(document).on('dblclick', '#table-main td', function()  {
         newInput(this);
     });
 });
@@ -3649,7 +3868,7 @@ document.getElementById("painter").addEventListener('click', format);
           position = style.getPropertyValue('position');
           color2 = style.getPropertyValue('color');
           font = style.getPropertyValue('font-size');
-          background = style.getPropertyValue('backgroundColor');
+          background = $(`#r-${res_id}-${res_id2}`).css("background-color");
           console.log("test color",color2,font);
           document.onclick = setvalue;
 
@@ -3768,3 +3987,7 @@ function openRightMenu() {
   }
 
   document.getElementById("spreadsheethide").style.display = "block";
+
+  
+
+ 

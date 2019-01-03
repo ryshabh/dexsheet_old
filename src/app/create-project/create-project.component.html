@@ -37,12 +37,12 @@
               <div class="down-cell">
                  <span style="margin-left: 15px;">File</span>
               </div>
-              <div class="down-cell">
+              <div class="down-cell" id="bg-change1" onclick="myFunc();">
                  <button class="file" id="home">Home</button>
               </div>
               
                   <div class="down-cell1">
-                   <button  style=" margin-top:5px ; margin-left: 50px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
+                   <button  style=" margin-top:5px ; margin-left: 100px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
               </div>
               
               
@@ -79,7 +79,7 @@
         <td style="width: 100%"></td>
       </tr>
     </table> -->
-    <div class="mid">
+    <div class="mid" id="mid">
     <div class="mid-row">
    
     <div class="mid-cell1">
@@ -217,11 +217,11 @@
                     </div> 
                   </div>
     </div>
-    <div class="mid-cell">
+    <!-- <div class="mid-cell">
       <div class="mid-cell4">
        <button class= "file"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg" class="savebutton"></button>
      </div>
-    </div>
+    </div> -->
     <div class="mid-cell">
       <div class="mid-cell4">
        <button class="file"  onclick="addfilter();"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg" class="savebutton"></button>
@@ -328,8 +328,8 @@
           <li class="dropdown-submenu">
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Special<span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext();">Task Name</a></li>
-                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();">From</a></li>
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext();" id="task">Task Name</a></li>
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();" id="from">From</a></li>
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext3();">To</a></li>
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext4();">CheckBox</a></li>
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext5();">Assign To </a></li>

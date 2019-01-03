@@ -330,43 +330,45 @@ createTableBodyRow = rowNum => {
   for (let i = 0; i <= defaultColCount; i++) {
     const cell = document.createElement(`${i === 0 ? "th" : "td"}`);
     if (i === 0) {
-      cell.contentEditable = false;
+      if(rowNum>0){
+        cell.contentEditable = false;
 
-      const span = document.createElement("span");
-      var img = document.createElement("img");
-      img.setAttribute('class',`attachment`);
-      img.setAttribute('id',`idattach-${rowNum}`);
-      img.src = "assets/img/attachment1.png";
-      img.width = "10";
-      img.height = "10";
-      img.setAttribute('onclick', 'showimage();openRightMenu();');
+        const span = document.createElement("span");
+        var img = document.createElement("img");
+        img.setAttribute('class',`attachment`);
+        img.setAttribute('id',`idattach-${rowNum}`);
+        img.src = "assets/img/attachment1.png";
+        img.width = "10";
+        img.height = "10";
+        img.setAttribute('onclick', 'showimage();openRightMenu();');
 
-      var img1 = document.createElement("img");
-      img1.setAttribute('class',`attachment1-${rowNum}`);
-      img1.setAttribute('id',`idattach1-${rowNum}`);
-      img1.src = "assets/img/attachment1.png";
-      img1.width = "10";
-      img1.height = "10";
-      img1.setAttribute('onclick', 'showimage();openRightMenu();');
-      img1.style.display = 'none';
+        var img1 = document.createElement("img");
+        img1.setAttribute('class',`attachment1-${rowNum}`);
+        img1.setAttribute('id',`idattach1-${rowNum}`);
+        img1.src = "assets/img/attachment1.png";
+        img1.width = "10";
+        img1.height = "10";
+        img1.setAttribute('onclick', 'showimage();openRightMenu();');
+        img1.style.display = 'none';
 
-      // img.setAttribute('onClick',`document.getElementById('idattach1-${rowNum}').style.display='block';`);
-      // img.setAttribute('onClick',`document.getElementById('idattach-${rowNum}').style.display='none';`);
+        // img.setAttribute('onClick',`document.getElementById('idattach1-${rowNum}').style.display='block';`);
+        // img.setAttribute('onClick',`document.getElementById('idattach-${rowNum}').style.display='none';`);
 
 
-      
-      cell.appendChild(img);
-      cell.appendChild(span);
-      
-      const s = document.createElement("span");
-      s.setAttribute('id','spanrow');
-      
-      
-      s.innerHTML = rowNum;
-      cell.appendChild(s)
+        
+        cell.appendChild(img);
+        cell.appendChild(span);
+        
+        const s = document.createElement("span");
+        s.setAttribute('id','spanrow');
+        
+        
+        s.innerHTML = rowNum;
+        cell.appendChild(s)
 
-      // cell.appendChild(dropDownDiv);
-      cell.setAttribute("class", "row-header");
+        // cell.appendChild(dropDownDiv);
+        cell.setAttribute("class", "row-header");
+      }
     } else {
       cell.contentEditable = true;
       cell.unselectable = "on";
@@ -383,17 +385,22 @@ function showimage(){
 }
 
 createTableBody = tableBody => {
-  for (let rowNum = 1; rowNum <= defaultRowCount; rowNum++) {
+  for (let rowNum = 0; rowNum <= defaultRowCount; rowNum++) {
     tableBody.appendChild(this.createTableBodyRow(rowNum));
   }
 };
+
+function showr0(){
+  document.getElementById("r-0").style.display = "block";
+}
+
 
 // Fill Data in created table from localstorage
 populateTable = () => {
   const data = this.getData();
   if (data === undefined || data === null) return;
 
-  for (let i = 1; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     for (let j = 1; j < data[i].length; j++) {
       // if(i==0){
       //   const h_cell = document.getElementById(`h-${i}-${j}`);
@@ -1308,7 +1315,7 @@ let count = 0;
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Task"){
@@ -1317,79 +1324,13 @@ let count = 0;
     }
 
   }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">Task</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][res_id] = el.innerHTML;
-  // saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="specialclass">Task</span>`
+  el.contenteditable = false;
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+
+  saveData(spreadsheetData);
 }
-// function swaptext2(){
-//   var tbl = document.getElementById("table-main");
-//   let count = 0;
-//   var a = localStorage.getItem("cell");
-//   console.log("abc",a);
-//   var res = a.split("-");
-//   var res_id = res[2];
-//   var res_id1 = res[1];
-//   console.log("res",res[2]);
-//   var el = document.getElementById(`h-0-${res_id}`);
-//     for (var j = 1; j  <=defaultRowCount; j++){
-//       console.log("testloop",i);
-//       var row = document.getElementById(`r-${j}`);
-//   // var row = document.getElementById("r-8-1");
-//     // var x = row.insertCell(res_id);
-//     var x = document.getElementById(`r-${j}-${res_id}`);
-
-//     var div = document.createElement('div');
-//     div.setAttribute('id',`input_container-${res_id}`);
-//     div.setAttribute('class','input_containr')
-//      var button = document.createElement('input');
-//      // var button.setAttribute('id','inputid');
-//      // button.setAttribute('onClick','calendarfun();');
-//      // button.onClick = inputfunction();
-//      button.setAttribute('type','text');
-//      button.setAttribute('class', `datepicker`);
-//      button.setAttribute('id', `datepicker1-${j}`);
-
-//      var img_tag = document.createElement('img');
-//      img_tag.src = "assets/img/calendar.svg";
-//      img_tag.setAttribute('id',`input_img-${j}`);
-
-//      img_tag.setAttribute('class',`img_class`);
-//      // button.addEventListener("click", showimage);
-//      img_tag.style.display = 'none';
-     
-//     div.appendChild(img_tag);
-//      div.appendChild(button);
-//      x.appendChild(div);
-     
-    
-//     button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
-//      button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
-//     let spreadsheetData = getData();
-//     spreadsheetData[j][res_id] = x.innerHTML;
-//     saveData(spreadsheetData);
-//    }
-
-// $(function() {
-//      $(".datepicker").datepicker();
-
-//    });
-
-//   for (let m = 0; m< defaultColCount.length; m++){
-//     console.log("count",count)
-//     if(document.getElementById(`h-0-${m}`).innerHTML=="From"){
-//       count= count+1;
-//       console.log("count",count)
-//     }
-    
-    
-
-//   }
-//   el.innerHTML = "From"
-//   let spreadsheetData = getData();
-//   spreadsheetData[0][res_id] = el.innerHTML;
-//   saveData(spreadsheetData);
-// }
 
 
 function swaptext2(){
@@ -1400,7 +1341,7 @@ function swaptext2(){
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
 var row = document.getElementById(`r-${j}`);
@@ -1429,38 +1370,23 @@ var row = document.getElementById(`r-${j}`);
      img_tag.style.display = 'none';
      
     div.appendChild(img_tag);
-     div.appendChild(button);
-     x.appendChild(div);
+    div.appendChild(button);
+    x.appendChild(div);
      
     
     button.setAttribute('onfocus',`document.getElementById('input_img-${j}-${res_id}').style.display='block';`);
-     button.setAttribute('onblur',`document.getElementById('input_img-${j}-${res_id}').style.display='none';`);
+    button.setAttribute('onblur',`document.getElementById('input_img-${j}-${res_id}').style.display='none';`);
      
-    // code for saving the calender data in localstorage
-    // let spreadsheetData = getData();
-    // spreadsheetData[j][res_id] = x.innerHTML;
-    // saveData(spreadsheetData);
+    let spreadsheetData = getData();
+    spreadsheetData[j][res_id] = x.innerHTML;
+    saveData(spreadsheetData);
 }
 
-// $(function() {
-//      $(".datepicker").datepicker();
-//    });
-  
-  // }
-  for (let m = 0; m< defaultColCount.length; m++){
-    console.log("count",count)
-    if(document.getElementById(`h-0-${m}`).innerHTML=="From"){
-      count= count+1;
-      console.log("count",count)
-    }
-    
-    
-
-  }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">From</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][res_id] = el.innerHTML;
-  // saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="specialclass">From</span>`
+  el.contenteditable = false;
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+  saveData(spreadsheetData);
 }
 
 function datechange(){
@@ -1471,75 +1397,6 @@ function datechange(){
 
 
 }
-function datechange1(){
-  console.log("datechange",this)
-  $(function() {
-     $(".datepicker").datepicker();
-   });
-
-
-}
-
-
-
-// function swaptext3(){
-//  var tbl = document.getElementById("table-main");
-//   let count = 0;
-//   var a = localStorage.getItem("cell");
-//   console.log("abc",a);
-//   var res = a.split("-");
-//   var res_id = res[2];
-//   var res_id1 = res[1];
-//   console.log("res",res[2]);
-//   var el = document.getElementById(`h-0-${res_id}`);
-//     for (var j = 1; j  <=defaultRowCount; j++){
-//       console.log("testloop",i);
-//       var row = document.getElementById(`r-${j}`);
-//   // var row = document.getElementById("r-8-1");
-//     // var x = row.insertCell(res_id);
-//     var x = document.getElementById(`r-${j}-${res_id}`);
-
-//     var div = document.createElement('div');
-//     div.setAttribute('id',`input_container-${res_id}`);
-//     div.setAttribute('class','input_containr1');
-//      var button = document.createElement('input');
-//      // var button.setAttribute('id','inputid');
-//      // button.setAttribute('onClick','calendarfun();');
-//      // button.onClick = inputfunction();
-//      button.setAttribute('type','text');
-//      button.setAttribute('class', `datepicker1`);
-//      button.setAttribute('id', `datepicker11-${j}`);
-
-//      var img_tag = document.createElement('img');
-//      img_tag.src = "assets/img/calendar.svg";
-//      img_tag.setAttribute('id',`input_img1-${j}`);
-
-//      img_tag.setAttribute('class',`img_class`);
-//      // button.addEventListener("click", showimage);
-//      img_tag.style.display = 'none';
-     
-//     div.appendChild(img_tag);
-//      div.appendChild(button);
-//      x.appendChild(div);
-     
-    
-//     button.setAttribute('onfocus',`document.getElementById('input_img1-${j}').style.display='block';`);
-//      button.setAttribute('onblur',`document.getElementById('input_img1-${j}').style.display='none';`);
-//     let spreadsheetData = getData();
-//     spreadsheetData[j][res_id] = el.innerHTML;
-//     saveData(spreadsheetData);
-//    }
-
-// $(function() {
-//      $(".datepicker1").datepicker();
-
-//    });
-  
-//   el.innerHTML = "To"
-//   let spreadsheetData = getData();
-//   spreadsheetData[0][res_id] = x.innerHTML;
-//   saveData(spreadsheetData);
-// }
 
 function swaptext3(){
   let count = 0;
@@ -1548,7 +1405,7 @@ function swaptext3(){
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
    for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
@@ -1583,28 +1440,33 @@ function swaptext3(){
     
     button.setAttribute('onfocus',`document.getElementById('input_img1-${j}-${res_id}').style.display='block';`);
      button.setAttribute('onblur',`document.getElementById('input_img1-${j}-${res_id}').style.display='none';`);
-    // code for saving the calender data in localstorage
-    // let spreadsheetData = getData();
-    // spreadsheetData[j][res_id] = el.innerHTML;
-    // saveData(spreadsheetData);
+    let spreadsheetData = getData();
+      spreadsheetData[j][res_id] = x.innerHTML;
+      saveData(spreadsheetData);
    }
 
-   $(function() {
-     $(".datepicker1").datepicker();
-   });
-  for (let m = 0; m< defaultColCount.length; m++){
-    console.log("count",count)
-    if(document.getElementById(`h-0-${m}`).innerHTML=="To"){
-      count= count+1;
-      console.log("count",count)
-    }
-
-  }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">To</span>`
+  
+ 
+  el.innerHTML = `<span contenteditable="false" class="specialclass">To</span>`
+  el.contenteditable = false;
   let spreadsheetData = getData();
-  spreadsheetData[0][res_id] = x.innerHTML;
+  spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
 }
+
+function datechange1(){
+  console.log("datechange",this)
+  $(function() {
+     $(".datepicker1").datepicker();
+   });
+
+
+}
+
+ $(function() {
+     $(".datepicker1").datepicker();
+   });
+
 
 function swaptext4(){
   // document.getElementById("demo").innerHTML = "Hello World";
@@ -1615,7 +1477,7 @@ function swaptext4(){
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
 var row = document.getElementById(`r-${j}`);
@@ -1668,32 +1530,19 @@ var row = document.getElementById(`r-${j}`);
     // img_tag1.setAttribute('onClick',`document.getElementById('input_img-${j}').style.display='block';`);
      // button.setAttribute('onblur',`document.getElementById('input_img2-${j}').style.display='none';`);
      
+     
     let spreadsheetData = getData();
     spreadsheetData[j][res_id] = x.innerHTML;
     saveData(spreadsheetData);
 }
 
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">CheckBox</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][res_id] = el.innerHTML;
-  // saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="specialclass">CheckBox</span>`
+  el.contenteditable = false;
+  let spreadsheetData = getData();
+  spreadsheetData[0][res_id] = el.innerHTML;
+  saveData(spreadsheetData);
 }
-// $('.img_class').click(function() {
-//     $('.img_class2').toggle();
-// });
-// function switchImg(){
 
-//     if($('.img_class').css('display') == 'none'){
-//         $('img_class2').css('display', 'block');
-//         $('.img_class').css('display', 'none');
-//     }
-//     else
-//     {
-//       console.log("check if it works");
-//         $('.img_class').css('display', 'none');
-//         $('.img_class2').css('display', 'block');
-//     }
-//   }
 
 
 function swaptext5(){
@@ -1704,7 +1553,7 @@ let count = 0;
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Assign To"){
@@ -1713,7 +1562,8 @@ let count = 0;
     }
 
   }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">Assign To</span>`
+  el.innerHTML = `<span contenteditable="false" class="specialclass">AssignTo</span>`
+  el.contenteditable = false;
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
@@ -1727,7 +1577,7 @@ let count = 0;
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Status"){
@@ -1736,7 +1586,7 @@ let count = 0;
     }
 
   }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">Status</span>`
+  el.innerHTML = "Status"
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
@@ -1750,7 +1600,7 @@ let count = 0;
   var res = a.split("-");
   var res_id = res[2];
   console.log("res",res[2]);
-  var el = document.getElementById(`h-0-${res_id}`);
+  var el = document.getElementById(`r-0-${res_id}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Comment"){
@@ -1759,11 +1609,21 @@ let count = 0;
     }
 
   }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">Comment</span>`
+  el.innerHTML = `<span contenteditable="false" class="specialclass">Comment</span>`
+  el.contenteditable = false;
   let spreadsheetData = getData();
   spreadsheetData[0][res_id] = el.innerHTML;
   saveData(spreadsheetData);
 }
+
+$(function () {
+    $(document).on('dblclick', '#r-0', function(event) {
+        console.log("check this");
+         event.preventDefault();  
+        event.stopPropagation(); 
+
+    });
+});
 
 
 function removeSpecial(){
@@ -2115,6 +1975,12 @@ function deletecolmn(){
       console.log("testloop",i);
       if(j==0){
         var row = document.getElementById('h-0');
+        // var row = document.getElementById("r-8-1");
+        var x = row.deleteCell(res_id);
+        data[j].splice(res_id, 1);
+        saveData(data);
+
+        var row = document.getElementById(`r-${j}`);
         // var row = document.getElementById("r-8-1");
         var x = row.deleteCell(res_id);
         data[j].splice(res_id, 1);
@@ -2672,9 +2538,17 @@ $(document).on('click', 'tr', function(e){
    
 });
 
-$(document).on('dblclick', 'tr', function(e){
+$(document).on('dblclick', '.row-header', function(e){
+  var $row = $(this).closest('tr');
+
+  console.log("row",$row)
    
-    $(this).addClass('highlighted');
+  var r_1 = $row.context.id;
+  console.log("try this",r_1);
+  var res = r_1.split("-");
+  var red_id1 = res[1];
+  // var red_id2 = res[2];
+  $(`#r-${red_id1}`).addClass('highlighted');
 });
 
 
@@ -3022,75 +2896,104 @@ document.getElementById("myInput").style.display = "none";
  // });
 
 function bold(){
-          var a = localStorage.getItem("cell");
+        for (var i = st_row; i <= end_row; i++) {
+            var result = "";
+            for (var j = st_col; j <= end_col; j++) {
+              console.log("r-",j+1,"-",i);
+              var res_id = i;
+              var res_id2 = j;
+              var ban = document.getElementById(`r-${res_id}-${res_id2}`).style.fontWeight;
+              // border.style.borderBottom ="2px solid #000000";
+
+          
+          
+          // var a = localStorage.getItem("cell");
           // document.getElementById(a).style.fontWeight = "normal ";
 
-           var  ban =document.getElementById(a).style.fontWeight  ;
+           // var  ban =document.getElementById(`r-${res_id}-${res_id2}`).style.fontWeight  ;
            console.log("banvalue",ban);
  
          if(ban == 'normal')
             {
-                document.getElementById(a).style.fontWeight = 'bold';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.fontWeight = 'bold';
             }
          else if(ban == 'bold')
             {
-                document.getElementById(a).style.fontWeight = 'normal';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.fontWeight = 'normal';
             }
             else 
             {
-                document.getElementById(a).style.fontWeight = 'bold';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.fontWeight = 'bold';
             }
-
-        }
+              }
+            
+          }
+        
+}
 
            function italic(){
-          var a = localStorage.getItem("cell");
-          // document.getElementById(a).style.fontWeight = "normal ";
-          console.log("italic",a);
-           var  ban =document.getElementById(a).style.fontStyle  ;
+          for (var i = st_row; i <= end_row; i++) {
+            var result = "";
+            for (var j = st_col; j <= end_col; j++) {
+              console.log("r-",j+1,"-",i);
+              var res_id = i;
+              var res_id2 = j;
+              var ban = document.getElementById(`r-${res_id}-${res_id2}`).style.fontStyle;
+           
+           // var  ban =document.getElementById(a).style.fontStyle  ;
            console.log("banvalue",ban);
  
          if(ban == 'normal')
             {
-                document.getElementById(a).style.fontStyle = 'italic';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.fontStyle = 'italic';
             }
          else if(ban == 'italic')
             {
-                document.getElementById(a).style.fontStyle = 'normal';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.fontStyle = 'normal';
             }
             else 
             {
-                document.getElementById(a).style.fontStyle = 'italic';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.fontStyle = 'italic';
             }
+          }
+        }
 
         }
          // text-decoration: line-through;
           
           function strikethrough(){
-          var a = localStorage.getItem("cell");
+          for (var i = st_row; i <= end_row; i++) {
+            var result = "";
+            for (var j = st_col; j <= end_col; j++) {
+              console.log("r-",j+1,"-",i);
+              var res_id = i;
+              var res_id2 = j;
+              var ban = document.getElementById(`r-${res_id}-${res_id2}`).style.textDecoration;
           // document.getElementById(a).style.fontWeight = "normal ";
 
-           var  ban =document.getElementById(a).style.textDecoration  ;
+           // var  ban =document.getElementById(a).style.textDecoration  ;
            console.log("banvalue",ban);
  
          if(ban == 'none')
             {
-                document.getElementById(a).style.textDecoration = 'line-through';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.textDecoration = 'line-through';
             }
          else if(ban == 'line-through')
             {
-                document.getElementById(a).style.textDecoration = 'none';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.textDecoration = 'none';
             }
             else 
             {
-                document.getElementById(a).style.textDecoration = 'line-through';
+                document.getElementById(`r-${res_id}-${res_id2}`).style.textDecoration = 'line-through';
             }
-
+            }
+          }
         }
            
         // function textcolor(){
-        //    var theInput1 = document.getElementById("favcolor");
+        //    var theInput1 = document.getElementsByClassName("favcolor");
         //   var theColor1 = theInput1.value;
+        //   console.log("color check",theColor1);
         //   var a = localStorage.getItem("cell");
         //   var s = document.getElementById(a);
         //   document.getElementById(a).style.color = theInput1.value;
@@ -3111,9 +3014,19 @@ function bold(){
         }
 
         function changeSize(n) {
-          var a = localStorage.getItem("cell");
-        var s = document.getElementById(a);
-        s.style.fontSize = n.value + 'px'
+          for (var i = st_row; i <= end_row; i++) {
+            var result = "";
+            for (var j = st_col; j <= end_col; j++) {
+              console.log("r-",j+1,"-",i);
+              var res_id = i;
+              var res_id2 = j;
+              var s = document.getElementById(`r-${res_id}-${res_id2}`);
+              // var a = localStorage.getItem("cell");
+            // var s = document.getElementById(a);
+            s.style.fontSize = n.value + 'px'
+
+            }
+          }
 
         }
 
@@ -3283,37 +3196,37 @@ function bold(){
   // });
   //  });
 
-$(function () {
-    $(document).on('dblclick', '#table-main td', function()  {
-        newInput(this);
-    });
-});
+// $(function () {
+//     $(document).on('dblclick', '#table-main td', function()  {
+//         newInput(this);
+//     });
+// });
 
-function closeInput(elm) {
-    var value = $(elm).find('input').val();
-    $(elm).empty().text(value);
+// function closeInput(elm) {
+//     var value = $(elm).find('input').val();
+//     $(elm).empty().text(value);
 
-    $(elm).bind("dblclick", function () {
-        newInput(elm);
-    });
-}  
+//     $(elm).bind("dblclick", function () {
+//         newInput(elm);
+//     });
+// }  
         
-function newInput(elm) {
-    $(elm).unbind('dblclick');
+// function newInput(elm) {
+//     $(elm).unbind('dblclick');
 
-    var value = $(elm).text();
-    $(elm).empty();
+//     var value = $(elm).text();
+//     $(elm).empty();
     
-    $("<input>")
-        .attr('type', 'text')
-        .attr('id','input_created')
-        .val(value)
-        .blur(function() {
-            closeInput(elm);
-        })
-        .appendTo($(elm))
-        .focus();
-}
+//     $("<input>")
+//         .attr('type', 'text')
+//         .attr('id','input_created')
+//         .val(value)
+//         .blur(function() {
+//             closeInput(elm);
+//         })
+//         .appendTo($(elm))
+//         .focus();
+// }
 
 
 
@@ -3563,12 +3476,21 @@ $(".favcolor").spectrum({
     $(a).css("color", initialColor);
 
     function updateColor(color) {
-        var value = $(".favcolor").spectrum('get').toHexString();
-// console.log("check value color",value);
- var a = localStorage.getItem("cell");
- var s = document.getElementById(a);
- document.getElementById(a).style.color = value;
- document.getElementById("fonttext").style.color = value;
+      var value = $(".favcolor").spectrum('get').toHexString();
+        
+      // console.log("check value color",value);
+
+      for (var i = st_row; i <= end_row; i++) {
+        var result = "";
+        for (var j = st_col; j <= end_col; j++) {
+          console.log("r-",j+1,"-",i);
+          var res_id = i;
+          var res_id2 = j;
+          var s = document.getElementById(a);
+          document.getElementById(`r-${res_id}-${res_id2}`).style.color = value;
+          document.getElementById("fonttext").style.color = value;
+        }
+      }
     }
 
     $(".favcolor1").spectrum({
@@ -3601,13 +3523,21 @@ $(".favcolor").spectrum({
 
     $(a).css("color", initialColor);
 
+
     function updateColor1(color) {
-        var value = $(".favcolor1").spectrum('get').toHexString();
-// console.log("check value color",value);
- var a = localStorage.getItem("cell");
- var s = document.getElementById(a);
- document.getElementById(a).style.backgroundColor = value;
+      var value = $(".favcolor1").spectrum('get').toHexString();
+      // console.log("check value color",value);
+      for (var i = st_row; i <= end_row; i++) {
+        var result = "";
+        for (var j = st_col; j <= end_col; j++) {
+            console.log("r-",j+1,"-",i);
+            var res_id = i;
+            var res_id2 = j;
+            document.getElementById(`r-${res_id}-${res_id2}`).style.backgroundColor = value;
+          }
+        }
     }
+
     
 
 
@@ -3619,7 +3549,7 @@ function planner() {
   // var res = a.split("-");
   // var res_id = res[2];
   // console.log("res",res[2]);
-  var el1 = document.getElementById(`h-0-1`);
+  var el1 = document.getElementById(`r-0-1`);
   var input = 2;
   while (input <= defaultColCount) {
    console.log(input);
@@ -3627,7 +3557,7 @@ function planner() {
    console.log("checkbox",output);
     
   if(output == 2){
-  var el = document.getElementById(`h-0-${output}`);
+  var el = document.getElementById(`r-0-${output}`);
     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
 var row = document.getElementById(`r-${j}`);
@@ -3661,20 +3591,21 @@ var row = document.getElementById(`r-${j}`);
      
     
     button.setAttribute('onfocus',`document.getElementById('input_img-${j}').style.display='block';`);
-     button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
-     
-    // let spreadsheetData = getData();
-    // spreadsheetData[j][output] = x.innerHTML;
-    // saveData(spreadsheetData);
+    button.setAttribute('onblur',`document.getElementById('input_img-${j}').style.display='none';`);
+    
+    let spreadsheetData = getData();
+    spreadsheetData[j][output] = x.innerHTML;
+    saveData(spreadsheetData);
 }
-  el.innerHTML = `<span contenteditable="false" class="column-header-span">From</span>`;
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][output] = el.innerHTML;
-  // saveData(spreadsheetData);
+  el.innerHTML = `<span contenteditable="false" class="specialclass">From</span>`
+  el.contenteditable = false;
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el.innerHTML;
+  saveData(spreadsheetData);
 
 
 } if(output == 3){
-   var el2 = document.getElementById(`h-0-${output}`);
+   var el2 = document.getElementById(`r-0-${output}`);
    for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
       var row = document.getElementById(`r-${j}`);
@@ -3715,19 +3646,19 @@ var row = document.getElementById(`r-${j}`);
    }
 
 
-
-   $(function() {
+  el2.innerHTML = `<span contenteditable="false" class="specialclass">To</span>`
+  el.contenteditable = false;
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el2.innerHTML;
+  saveData(spreadsheetData);
+ 
+ $(function() {
      $(".datepicker1").datepicker();
    });
-  
-  el2.innerHTML = `<span contenteditable="false" class="column-header-span">To</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][output] = x.innerHTML;
-  // saveData(spreadsheetData);
 
 } if (output == 4) {
      // var tbl = document.getElementById("table-main");
-  var el4 = document.getElementById(`h-0-${output}`);
+  var el4 = document.getElementById(`r-0-${output}`);
     for (var j = 1; j  <=defaultRowCount; j++){
       console.log("testloop",i);
 var row = document.getElementById(`r-${j}`);
@@ -3785,14 +3716,15 @@ var row = document.getElementById(`r-${j}`);
     saveData(spreadsheetData);
 }
 
-  el4.innerHTML = `<span contenteditable="false" class="column-header-span">CheckBox</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][output] = el4.innerHTML;
-  // saveData(spreadsheetData);
+  el4.innerHTML = `<span contenteditable="false" class="specialclass">CheckBox</span>`
+  el.contenteditable = false;
+  let spreadsheetData = getData();
+  spreadsheetData[0][output] = el4.innerHTML;
+  saveData(spreadsheetData);
 } 
 
   if (output == 5) {
-    var el5 = document.getElementById(`h-0-${output}`);
+    var el5 = document.getElementById(`r-0-${output}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Assign To"){
@@ -3801,14 +3733,15 @@ var row = document.getElementById(`r-${j}`);
     }
 
   }
- el5.innerHTML = `<span contenteditable="false" class="column-header-span">Assign To</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][output] = el5.innerHTML;
-  // saveData(spreadsheetData);
+    el5.innerHTML = `<span contenteditable="false" class="specialclass">Assign To</span>`
+    el.contenteditable = false;
+    let spreadsheetData = getData();
+    spreadsheetData[0][output] = el5.innerHTML;
+    saveData(spreadsheetData);
   }
 
   if (output == 6) {
-    var el6 = document.getElementById(`h-0-${output}`);
+    var el6 = document.getElementById(`r-0-${output}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Status"){
@@ -3817,13 +3750,14 @@ var row = document.getElementById(`r-${j}`);
     }
 
   }
-  el6.innerHTML = `<span contenteditable="false" class="column-header-span">Status</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][output] = el6.innerHTML;
-  // saveData(spreadsheetData);
+    el6.innerHTML = `<span contenteditable="false" class="specialclass">Status</span>`
+    el.contenteditable = false;
+    let spreadsheetData = getData();
+    spreadsheetData[0][output] = el6.innerHTML;
+    saveData(spreadsheetData);
   }
   if (output == 7) {
-    var el7 = document.getElementById(`h-0-${output}`);
+    var el7 = document.getElementById(`r-0-${output}`);
   for (let m = 0; m< defaultColCount.length; m++){
     console.log("count",count)
     if(document.getElementById(`h-0-${m}`).innerHTML=="Comment"){
@@ -3832,17 +3766,20 @@ var row = document.getElementById(`r-${j}`);
     }
 
   }
-  el7.innerHTML = `<span contenteditable="false" class="column-header-span">Comment</span>`
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][output] = el7.innerHTML;
-  // saveData(spreadsheetData);
+    el7.innerHTML = `<span contenteditable="false" class="specialclass">Comment</span>`
+    el.contenteditable = false;
+    let spreadsheetData = getData();
+    spreadsheetData[0][output] = el7.innerHTML;
+    saveData(spreadsheetData);
   } 
 
-  el1.innerHTML = `<span contenteditable="false" class="column-header-span">Task</span>`;
-  // let spreadsheetData = getData();
-  // spreadsheetData[0][1] = el1.innerHTML;
-  // saveData(spreadsheetData);
-}
+  
+    el1.innerHTML = `<span contenteditable="false" class="specialclass">Task</span>`
+    el.contenteditable = false;
+    let spreadsheetData = getData();
+    spreadsheetData[0][1] = el1.innerHTML;
+    saveData(spreadsheetData);
+  }
  
 }
 
@@ -3990,4 +3927,81 @@ function openRightMenu() {
 
   
 
- 
+  
+      
+        // $(document).ready(function(){
+        //     $("#from").click(function(){
+        //       $("#task").click(function(){
+        //         $("#r-0").toggle();
+        //         });
+        //     });
+        // });
+
+        $(document).ready(function(){
+          // $(".btn1").click(function(){
+          //   $("p").hide();
+          // });
+           $("#planner").click(function(){
+            $("#r-0").show();
+          });
+          $("#task").click(function(){
+            $("#r-0").show();
+          });
+          $("#from").click(function(){
+            $("#r-0").show();
+          });
+          $(".w3-bar-item").click(function(){
+            $("#r-0").show();
+          });
+          
+        });
+
+document.getElementById('mid').style.display="none";
+
+
+function myFunc() {
+   var y = document.getElementById("bg-change1").getAttribute("class");
+   if (y === "down-cell") {
+     y = "active";
+   } else {
+     y = "down-cell";
+   }
+   document.getElementById("bg-change1").setAttribute("class",y);
+ }
+
+  $(document).on('keydown', '.spreadsheet__table--body', function(e)  {
+    console.log("check is it working");
+    var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2];
+    $(`#r-${res_id}-${res_id2}`).css("color", "black");
+    // $("td").css("textShadow", "black");
+    // $('td').css('textShadow','0 0 0 #000000');
+  });
+  $(document).on('keyup', '.spreadsheet__table--body', function(e){
+     var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2];
+    $(`#r-${res_id}-${res_id2}`).css("color", "transparent");
+    // $("td").css("textShadow", "black");
+    $(`#r-${res_id}-${res_id2}`).css('textShadow','0 0 0 #000000');
+    // text-shadow: 0 0 0 #000000;
+  });
+
+  $(document).on('dblclick', '.spreadsheet__table--body', function(e){
+    var a = localStorage.getItem("cell");
+          console.log("abc",a);
+          var res = a.split("-");
+          var res_id = res[1];
+          var res_id2 = res[2];
+    $(`#r-${res_id}-${res_id2}`).css("color", "black");
+    // $(`#r-${res_id}-${res_id2}`).css("boxShadow", "0px 2px 15px 0px rgba(0, 0, 0, 0.5)");
+     // box-shadow: 0px 2px 18px 0px rgba(0, 0, 0, 0.5);
+    // $("td").css("textShadow", "black");
+    // $('td').css('textShadow','0 0 0 #000000');
+    // text-shadow: 0 0 0 #000000;
+  });

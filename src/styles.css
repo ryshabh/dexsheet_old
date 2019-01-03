@@ -71,7 +71,11 @@ html {
   padding: 5px 10px 5px 10px;
   border: 0px solid #d9d9d9;
   background-color: #F8FAFF;
+  outline: none;
   /*width: 10px;*/
+}
+#home{
+  outline: none;
 }
 
 .down-cell1 {
@@ -82,9 +86,7 @@ html {
   padding-right: 7px;
   /*width: 10px;*/
 }
-.down-cell:hover{
-  background: white;
-}
+
 /*.down-cell1:hover{
   background: white;
 }*/
@@ -1255,6 +1257,20 @@ label{
 
 #main {
   transition: margin-right .5s;
+
+}
+#r-0-0{
+  color: #F1F3F4;
+}
+
+/*.specialclass{
+  text-align: center;
+}*/
+#r-0{
+  background-color: #F1F2F4;
+  text-align: center;
+  /*font-weight: bold;*/
+  display: none;
 
 }
 

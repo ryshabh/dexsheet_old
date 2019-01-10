@@ -1,168 +1,116 @@
 <div class="topper">
-  
-        <span style="float: right; padding: 5px;">
-            <img src="../../assets/img/notification.svg">
-            <img src="../../assets/img/user-png-12.png" style="height: 15px; width: auto; border-radius: 25px; margin-right: 30px;">
-          </span>
-  </div>
-  <section >
-  <div>    
-    <div class="top">
-            <div class="top-row" >
-              <div id="myRow">
-              <!-- <div class="top-cell1">
-                <img src="img/logo.png" style="height:20px; width:20px;"
-                  alt="sheets"
-            class="title__logo">
-                 <span>ALL</span> 
-              </div> -->
-              <div class="top-cell1">
-                 <img src="../../assets/img/dots.svg">
-              </div>
+    <span style="float: right; padding: 5px;">
+        <img src="../../assets/img/notification.svg">
+        <img src="../../assets/img/user-png-12.png" style="height: 15px; width: auto; border-radius: 25px; margin-right: 30px;">
+    </span>
+</div>
+<section >
+    <div>    
+        <div class="top">
+        <div class="top-row" >
+            <div id="myRow">
+                <div class="top-cell1">
+                    <img src="../../assets/img/dots.svg">
+                </div>
             </div>
-
-              <!-- <div id="myRow"></div> -->
-              <div class="top-cell">
-                
-                 <button class="file2" id="table2" type="submit" onclick="getValue();duplicate();"><img src="../../assets/img/Group 3.svg"></button>
-              </div>
-              <div class="top-cell">
-                 <img src="../../assets/img/menu.svg">
-              </div>
-              <!-- <div class="top-cell2"></div> -->
+            <div class="top-cell">
+                <button class="file2" id="table2" type="submit" onclick="duplicate();getpopup();"><img src="../../assets/img/Group 3.svg"></button>
             </div>
-          </div>  
-          <div class="down">
-            <div class="down-row">
-              <div class="down-cell">
-                 <span style="margin-left: 15px;">File</span>
-              </div>
-              <div class="down-cell" id="bg-change1" onclick="myFunc();">
-                 <button class="file" id="home">Home</button>
-              </div>
-              
-                  <div class="down-cell1">
-                   <button  style=" margin-top:5px ; margin-left: 100px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
-              </div>
-              
-              
+            <div class="top-cell">
+                <img src="../../assets/img/menu.svg">
             </div>
-          </div>
-          
-<!--     <table class="mainnav">
-      <tr>
-        <td style="width: 70px">
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">File
-            <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">Open</a></li>
-                  <li><a tabindex="-1" href="#">New</a></li>
-                  <li><a tabindex="-1" href="#">Save</a></li>
-                  <li class="dropdown-submenu">
-                    <a class="test" tabindex="-1" href="#">Save as<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">PDF</a></li>
-                        <li><a tabindex="-1" href="#">Excel</a></li>
-                      </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a class="test" tabindex="-1" href="#">Import<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">Excel</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </div>
-        </td>
-        <td>Home</td>
-        <td style="width: 100%"></td>
-      </tr>
-    </table> -->
-    <div class="mid" id="mid">
-    <div class="mid-row">
-   
-    <div class="mid-cell1">
-      <div class="mid-cell2">
-       <button class="file" id="save" onclick="saveit(); "><span class="tooltiptext">Save</span><img src="../../assets/img/save.svg" class="savebutton">  </button>
-      </div>
-      <div class="mid-cell2">
-        <button class="file" id="print" onclick="myprint();"><span class="tooltiptext">Print</span><img src="../../assets/img/print.svg" class="savebutton"></button>
-      </div>
+        </div>
+    </div>  
+    <div class="down">
+        <div class="down-row">
+            <div class="down-cell">
+                <span style="margin-left: 15px;">File</span>
+            </div>
+            <div class="down-cell" id="bg-change1" onclick="myFunc();">
+                <button class="file" id="home">Home</button>
+            </div>
+            <div class="down-cell1">
+                <button  style=" margin-top:5px ; margin-left: 100px; background-color: #398AFF; border: 0px; border-radius: 1px; color: white; width: 75px; height: 21px;"><img src="../../assets/img/share.svg"> Share</button>
+            </div>
+        </div>
     </div>
-    <div class="mid-cell" style="word-spacing: 8px;">
-     <!-- <input  class="file" type="image"  src="img/sheet.svg" > -->  
-                    <div class="mid-cell3">
-                    <button class="file"><span class="tooltiptext">Sheet</span><img src="../../assets/img/sheet.svg" class="savebutton" ></button></div>
-                    <div class="mid-cell3">
-                    <button class="file" id="planner" onclick="planner();"><span class="tooltiptext">Planner</span><img src="../../assets/img/planner.svg " class="savebutton"></button></div>
-                    <div class="mid-cell3">
+    
+    <div class="mid" id="mid">
+        <div class="mid-row">
+   
+            <div class="mid-cell1">
+                <div class="mid-cell2">
+                    <button class="file" id="save" onclick="saveit(); "><span class="tooltiptext">Save</span><img src="../../assets/img/save.svg" class="savebutton">  </button>
+                </div>
+                <div class="mid-cell2">
+                    <button class="file" id="print" onclick="myprint();"><span class="tooltiptext">Print</span><img src="../../assets/img/print.svg" class="savebutton"></button>
+                </div>
+            </div>
+            <div class="mid-cell" id="hideicon" style="word-spacing: 8px;">
+                <div class="mid-cell3">
+                    <button class="file" id="planner" onclick="resetdata(); planner();"><span class="tooltiptext">Planner</span><img src="../../assets/img/planner.svg " class="savebutton"></button>
+                </div>
+                <div class="mid-cell3">
                     <button class="file"><span class="tooltiptext">Gantt</span><img src="../../assets/img/gantt.svg" class="savebutton"></button></div>
                     <div class="mid-cell3">
-                    <button class="file"><span class="tooltiptext">Calender</span><img src="../../assets/img/calendar.svg" class="savebutton" ></button></div>
-                    <!-- <input class="file" type="image" src="img/planner.svg" onclick="planner();" >
-                    <input class="file" type="image" src="img/gantt.svg" >
-                    <button class="file" id="button"><img src="img/calendar.svg"></button>     -->
-    </div>
-    <div class="mid-cell">
-      <div class="mid-cell4">
-      <button class="file" onclick="document.execCommand('undo',false,null);"><span class="tooltiptext">Backward</span><img src="../../assets/img/backward.svg" ></button>
-    </div>
-    <div class="mid-cell4">
+                    <button class="file"><span class="tooltiptext">Calender</span><img src="../../assets/img/calendar.svg" class="savebutton" ></button>
+                </div>
+            </div>
+            <div class="mid-cell">
+                <div class="mid-cell4">
+                    <button class="file" onclick="document.execCommand('undo',false,null);"><span class="tooltiptext">Backward</span><img src="../../assets/img/backward.svg" ></button>
+                </div>
+                <div class="mid-cell4">
                     <button class="file" onclick="document.execCommand('redo',false,null);"><span class="tooltiptext">Forward</span><img src="../../assets/img/forward.svg" ></button>
-                  </div>
-                  <div class="mid-cell4">
+                </div>
+                <div class="mid-cell4">
                     <button class="file" id="painter" ><span class="tooltiptext">Paint</span><img  src="../../assets/img/paint.svg" class="savebutton"></button>
-                  </div>
-    </div>
-     <div class="mid-cell" style="word-spacing: 5px;">
-        <div class="mid-cell4">
-        <button class="file" onclick="document.execCommand('justifyRight',false,null);"><span class="tooltiptext">Left Indent</span><img src="../../assets/img/Left Indent.svg" class="savebutton"></button>
-      </div>
-      <div class="mid-cell4">
-                    <button class="file" onclick="document.execCommand('justifyLeft',false,null);"><span class="tooltiptext">Right Indent</span><img src="../../assets/img/Right Indent.svg" class="savebutton"></button>
-                  </div>
-    </div>
-    <div class="mid-cell">
-       <select  id="sel1" onchange="changeSize(this);">
-                       <option id="six">6</option>
-                      <option id="seven">7</option>
-                      <option id="8">8</option>
-                      <option id="9">9</option>
-                      <option id="10">10</option>
-                      <option id="11">11</option>
-                      <option id="12">12</option>
-                      <option id="14">14</option>
-                      <option id="16">16</option>
-                      <option id="18">18</option>
-                      <option id="24">24</option>
-                      <option id="36">36</option>
-                      <!-- <input id="else" type="text" value="40" style="display: none; height: 15px; width: 30px;"> -->
-                    </select>
-                
-    </div>
-    <div class="mid-cell" style="word-spacing: 4px;">
-      <div class="mid-cell4">
-      <button class="file" id="jBold" onclick="bold();"><span class="tooltiptext">Bold</span><img src="../../assets/img/bold.svg" class="savebutton"><!-- <p class="text">Bold</p> --></button>
-    </div>
-    <div class="mid-cell4">
+                </div>
+            </div>
+            <div class="mid-cell" style="word-spacing: 5px;">
+                <div class="mid-cell4">
+                    <button class="file" onclick="alignright();"><span class="tooltiptext">Left Indent</span><img src="../../assets/img/Left Indent.svg" class="savebutton"></button>
+                </div>
+                <div class="mid-cell4">
+                    <button class="file" onclick="alignleft();"><span class="tooltiptext">Right Indent</span><img src="../../assets/img/Right Indent.svg" class="savebutton"></button>
+                </div>
+            </div>
+            <div class="mid-cell">
+                <select  id="sel1" onchange="changeSize(this);">
+                    <option id="six">6</option>
+                    <option id="seven">7</option>
+                    <option id="8">8</option>
+                    <option id="9">9</option>
+                    <option id="10">10</option>
+                    <option id="11">11</option>
+                    <option id="12">12</option>
+                    <option id="14">14</option>
+                    <option id="16">16</option>
+                    <option id="18">18</option>
+                    <option id="24">24</option>
+                    <option id="36">36</option>
+                </select>
+            </div>
+            <div class="mid-cell" style="word-spacing: 4px;">
+                <div class="mid-cell4">
+                    <button class="file" id="jBold" onclick="bold();"><span class="tooltiptext">Bold</span><img src="../../assets/img/bold.svg" class="savebutton"><!-- <p class="text">Bold</p> --></button>
+                </div>
+                <div class="mid-cell4">
                     <button class="file" onclick="italic();"><span class="tooltiptext">Italic</span><img src="../../assets/img/italic.svg" class="savebutton"></button>
-                  </div>
-    <div class="mid-cell4">
+                </div>
+                <div class="mid-cell4">
                     <button class="file" onclick="strikethrough();"><span class="tooltiptext">Strikethrough</span><img src="../../assets/img/strikethrough.svg" class="savebutton"></button>
-                  </div>
-                  <div class="mid-cell4">
+                </div>
+                <div class="mid-cell4">
                     <button id="change_color" class="favcolor file" style="position: relative; left: -5px; bottom: -2px; color: grey"><span class="tooltiptext">Textcolor</span><span class="glyphicon glyphicon-text-color" id="fonttext"></span>
-                   </button>
-                 </div>
-                   
-    </div>
+                   <span><img src="assets/img/arrow_2.svg"  ></span></button>
+                </div>
+            </div>
     <div class="mid-cell">
       <div class="mid-cell5">
         <button class=" file" id="favcolor1" ><span class="tooltiptext">TextFill</span>
-      <img src="../../assets/img/text fill.svg" ></button></div>
-      <div class="mid-cell5">        
-                <img src="../../assets/img/arrow_2.svg" class="favcolor1"></div>
+      <img src="../../assets/img/text fill.svg" ><span><img src="assets/img/arrow_2.svg"  ></span></button></div>
+    
                 <div class="mid-cell5">
                     <button class="file" onclick="myFunction3()"><span class="tooltiptext">Table</span><img src="../../assets/img/table.svg"></button></div>
                      <div class="mid-cell3">
@@ -183,15 +131,15 @@
   </div>
   <div class="mid-cell">
     <div class="mid-cell6">
-       <button class="file" onclick="document.execCommand('justifyCenter',false,null);"><span class="tooltiptext">Alignment</span><img src="../../assets/img/alignment.svg" class="savebutton"></button>
+       <button class="file" onclick="aligncenter();"><span class="tooltiptext">Alignment</span><img src="../../assets/img/alignment.svg" class="savebutton"></button>
      </div>
        <div class="mid-cell5">
                     <div class="drop">
                       <button class="dr-btn file" onclick="myFunction2()"><img src="../../assets/img/arrow_2.svg" ></button>
                       <div id="my-Dropdown" class="drop-content" >
                          <button onclick="document.execCommand('justifyCenter',false,null);" ><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
-                        <button onclick="document.execCommand('justifyRight',false,null);"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
-                        <button onclick="document.execCommand('justifyLeft',false,null);"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
+                        <button onclick="alignright();"><span class="glyphicon glyphicon-align-right" style="color: grey height:15px;"></span></button>
+                        <button onclick="alignleft();"><span class="glyphicon glyphicon-align-left" style="color: grey"></span></button>
                       </div>
                     </div>
                   </div>
@@ -222,7 +170,7 @@
        <button class= "file"><span class="tooltiptext">Sigma</span><img src="../../assets/img/sigma.svg" class="savebutton"></button>
      </div>
     </div> -->
-    <div class="mid-cell">
+    <div class="mid-cell8">
       <div class="mid-cell4">
        <button class="file"  onclick="addfilter();"><span class="tooltiptext">Filter</span><img src="../../assets/img/filter.svg" class="savebutton"></button>
      </div>
@@ -235,7 +183,8 @@
   </div>
 </section>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
-  <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <button onclick="closeRightMenu()" class="w3-button w3-large">Close &times;</button>
+  <button onclick="swap_pics2();" class="w3-button w3-large" id="deletebutton">Delete &times;</button>
   <img id="blah" src="#" alt="your image" width="100%" height="auto">
 </div>
   <div id="main"> 
@@ -289,8 +238,8 @@
             Paste
           </li>
           <li>
-            <label id="#bb"> Add Image
-              <input id="imgInp" class="inpadd" type="file" onchange="readURL2(this)">
+            <label id="bb"> Add Image
+              <input id="imgInp" class="inpadd" type="file" onchange="readURL2(this)" onclick="swap_pics2();">
 
              </label> 
           </li>
@@ -309,14 +258,14 @@
           <li class="w3-bar-item w3-button" id="del_col" onclick="deletecolmn()">
             Delete Column
           </li >
-         <li class="dropdown-submenu">
+        <!--  <li class="dropdown-submenu">
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Insert Cell<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="shiftDown();">Shift down</a></li>
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="shiftRight();">Shift right</a></li>
                       </ul>
-          </li>
-          <li class="dropdown-submenu">
+          </li> -->
+         <!--  <li class="dropdown-submenu">
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Delete Cell<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="deleteUp();">Shift Up</a></li>
@@ -324,13 +273,13 @@
                           Shift left
                         </li>
                       </ul>
-          </li>
+          </li> -->
           <li class="dropdown-submenu">
                 <a class="test w3-button w3-white" tabindex="-1" href="#">Special<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext();" id="task">Task Name</a></li>
-                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();" id="from">From</a></li>
-                        <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext3();">To</a></li>
+                        <li><a tabindex="-1" class="w3-bar-item w3-button" onclick="swaptext2();" id="from">Date</a></li>
+                       <!--  <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext3();">To</a></li> -->
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext4();">CheckBox</a></li>
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext5();">Assign To </a></li>
                         <li><a tabindex="-1"  class="w3-bar-item w3-button" onclick="swaptext6();">Status</a></li>
@@ -356,8 +305,116 @@
            <!--  </a> -->
       </ul>
     </div>
-     
+
+    <button class="link-modal" id="linkmodal" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
     
+      <!-- Modal content-->
+      <div class="row">
+            <div class="col-md-11 mx-auto">
+            <div id="first">
+                <div class="myform form "  >
+                     <div class="logo mb-3">
+                         <div class="col-md-12 text-center" >
+                            <h1 style="font-weight: bold;">Create</h1>
+                         </div>
+                         <div class="col-md-6 text-center" >
+                           <button class="link-modal sheet1" id="linkmodal" data-dismiss="modal" data-toggle="modal" data-target="#myModal1" onclick="resetdata();"><img src="assets/img/sheet.svg" height="45px" width="45px;"></button>
+                         </div>
+                         <div class="col-md-6 text-center">
+                           <button class="link-modal planner1" id="linkmodal"  data-toggle="modal" data-target="#myModal1" onclick="resetdata();planner();"><img src="assets/img/planner.svg " height="45px" width="45px;"></button>
+                         </div>
+                         <div class="col-md-6 text-center" >
+                           <h3>Blank</h3>
+                         </div>
+                         <div class="col-md-6 text-center">
+                           <h3>Planner</h3>
+                         </div>
+                    </div>
+            </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<button class="link-modal" id="linkmodal1"  [hidden]="true" data-toggle="modal" data-target="#myModal1">Open Modal</button>
+     <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="row">
+            <div class="col-md-11 mx-auto">
+            <div id="first">
+                <div class="myform form "  >
+                     <div class="logo mb-3">
+                         <div class="col-md-12 text-center" >
+                            <h2 style="font-weight: bold;">Enter the name of the sheet</h2>
+                         </div>
+                         <div class="col-md-12 text-center" style="height: 20px;">
+                           
+                         </div>
+                         <div class="col-md-12 text-center" >
+                           <input type="text" name="text"  class="form-control"  id="newproject"  aria-describedby="emailHelp" placeholder="Enter New Project">
+                         </div>
+
+                         <div class="col-md-12 text-center" style="height: 20px;">
+                         </div>
+
+                         <div class="col-md-6 text-center">
+                           <button type="submit" id="logbutton" class=" btn btn-block mybtn btn-primary tx-tfm " data-dismiss="modal" onclick="getValue();"><a id="link"
+                                href="#">Save</a></button>
+                         </div>
+                         <div class="col-md-6 text-center">
+                           <button type="submit" id="logbutton1" class=" btn btn-block mybtn btn-default tx-tfm "><a id="link"
+                                href="#">Cancel</a></button>
+                         </div>
+                         
+                          <div class="col-md-12 text-center" style="height: 20px;">
+                         </div>
+                    </div>
+            </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<button class="link-modal" id="linkmodal2"  [hidden]="true" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+     <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="row">
+            <div class="col-md-11 mx-auto">
+            <div id="first">
+                <div class="myform form "  >
+                     <div class="logo mb-3">
+                         <div class="col-md-12 text-center" >
+                            <h1 style="font-weight: bold;">Create</h1>
+                         </div>
+                         <div class="col-md-6 text-center" >
+                           <button class="link-modal sheet1" id="linkmodal" data-dismiss="modal" data-toggle="modal" data-target="#myModal1" onclick="resetdata();"><img src="assets/img/sheet.svg" height="45px" width="45px;"></button>
+                         </div>
+                         <div class="col-md-6 text-center">
+                           <button class="link-modal planner1" id="linkmodal1"  data-toggle="modal" data-dismiss="modal" data-target="#myModal1" onclick="resetdata();planner();"><img src="assets/img/planner.svg " height="45px" width="45px;"></button>
+                         </div>
+                         <div class="col-md-6 text-center" >
+                           <h3>Blank</h3>
+                         </div>
+                         <div class="col-md-6 text-center">
+                           <h3>Planner</h3>
+                         </div>
+                    </div>
+            </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 
 <!-- <table class="topnav" style="position: fixed;  top: 870px;" >
   <tr>
